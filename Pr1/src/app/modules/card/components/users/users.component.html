@@ -1,26 +1,6 @@
-<div class="usersCards" >
-  <div *ngFor="let user of users; let i = index">
-
-    <ng-container  *ngIf="statusUser? true : user.activated">
-
-      <div class="user" *ngIf="condition"  [hidden]="false">
-        <div class="name stl"> Name:
-          <span> {{user.name}} </span>
-        </div>
-        <div class="age stl">Age:
-          <span> {{user.age}} </span>
-        </div>
-        <div class="activated stl"> Activated:
-          <span> {{user.activated? 'active': 'non-active'}}  </span>
-        </div>
-        <button (click)="ActivationUser(i)"> Deactivate user </button>
-      </div>
-
-    </ng-container>
+<div class="usersCards" *ngIf="condition">
+  <div *ngFor="let user of users">
+    <app-user [oneOfTheUser]="user"> </app-user>
   </div>
-
- </div>
-
-<button (click)="HideAlluser()"> Deactivate All User </button>
-<button (click)="HideNotActivated()"> Deactivate non-active user</button>
-
+</div>
+<button (click)="deactivateAllUsers(users)">Deactivat All User</button>

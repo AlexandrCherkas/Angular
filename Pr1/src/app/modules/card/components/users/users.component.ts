@@ -1,49 +1,37 @@
 import { Component, OnInit } from '@angular/core';
-
+import { IUser } from 'src/app/interfaces/user';
+import { UserDataService } from 'src/app/modules/services/user-data.service';
+import { ViewChild } from '@angular/core';
+import { UserComponent } from 'src/app/modules/shared/components/user/user.component';
 
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
-  styleUrls: ['./users.component.scss']
+  styleUrls: ['./users.component.scss'],
+  providers: [UserDataService],
 })
-
 export class UsersComponent implements OnInit {
+  public users: IUser[] = [];
 
-  public users : Array <{name: string, age: number, activated ?: boolean }> = [
-    { name: "Tom", age: 25, activated: false},
-    { name: 'Nick', age: 30, activated: false},
-    { name: 'Jack', age: 40, activated: true },
-    { name: 'Jon', age: 50, activated: false }
-    ];
+  public condition: boolean = true;
+  public statusUser: boolean = true;
 
-  constructor() { }
+  @ViewChild(UserComponent)
+  userComponent: UserComponent = new UserComponent();
 
-  ngOnInit(): void {
+  constructor(public usersService: UserDataService) {
+    this.users = usersService.getUsers();
   }
 
-  condition: boolean = true
-  statusUser: boolean = true;
-
-  HideAlluser() : void {
-    this.condition= !this.condition;
+  deactivateAllUsers(users: IUser[]): void {
+    users.forEach((user, index) => {
+      users[index] = this.userComponent.deactivateUser(user);
+    });
   }
 
-  HideNotActivated() : void {
-    this.statusUser = !this.statusUser;
-  }
+  ngOnInit(): void {}
 
-  ActivationUser(i:any) : void {
-    if(this.users[i].activated){
-      this.users[i].activated = false
-    } else {
-      this.users[i].activated = true
-    }
+  hideAllUser(): void {
+    this.condition = !this.condition;
   }
 }
-
-
-
-
-
-
-// `<span [id]='${user.name}'> Non-Active  </span> `

@@ -12,10 +12,11 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatIconModule} from '@angular/material/icon';
 import {MatDividerModule} from '@angular/material/divider';
-
+import { MatButtonModule } from '@angular/material/button';
 
 import { CardModule } from './modules/card/card.module';
 import { DataModule } from './modules/data/data.module';
+
 
 @NgModule({
   declarations: [
@@ -37,7 +38,9 @@ import { DataModule } from './modules/data/data.module';
     FormsModule,
 
     CardModule,
-    DataModule
+    DataModule,
+    MatButtonModule
+
   ],
   providers: [],
   bootstrap: [AppComponent],

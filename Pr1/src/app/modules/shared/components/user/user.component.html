@@ -1,0 +1,32 @@
+<div class="user">
+  <div class="name stl">
+    Name:
+    <span> {{ oneOfTheUser.name }} </span>
+  </div>
+
+  <div class="age stl">
+    Age:
+    <span> {{ oneOfTheUser.age }} </span>
+  </div>
+
+  <div class="activated stl">
+    Activated:
+    <span> {{ oneOfTheUser.activated ? "active" : "non-active" }} </span>
+  </div>
+
+  <p>Likes: {{ likes }} and Dislikes: {{ dislikes }}</p>
+
+  <app-user-item
+    class="stl"
+    (onChanged)="onChanged($event)"
+    (onlog)="onlog()"
+  ></app-user-item>
+
+  <button
+    class="stl"
+    (click)="this.deactivateUser(oneOfTheUser)"
+    [disabled]="!oneOfTheUser.activated"
+  >
+    Deactivate
+  </button>
+</div>
