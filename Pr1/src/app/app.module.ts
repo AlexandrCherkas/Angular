@@ -6,21 +6,28 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
-import { MatCardModule } from '@angular/material/card';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatIconModule} from '@angular/material/icon';
+import { MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule} from '@angular/material/card'
+import { CommonModule } from '@angular/common';
 
-import { CardModule } from './modules/card/card.module';
-import { DataModule } from './modules/data/data.module';
+import { UserShellComponent } from './modules/users/components/user-shell/user-shell.component';
+import { UserListComponent } from './modules/users/components/user-list/user-list.component';
+import { CardComponent } from './modules/shared/components/card/card.component';
+
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+
+    UserShellComponent,
+    UserListComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +35,6 @@ import { DataModule } from './modules/data/data.module';
     BrowserAnimationsModule,
     MatSliderModule,
     MatSlideToggleModule,
-    MatCardModule,
     FormsModule,
     MatRadioModule,
     MatCheckboxModule,
@@ -36,10 +42,9 @@ import { DataModule } from './modules/data/data.module';
     MatIconModule,
     MatDividerModule,
     FormsModule,
-
-    CardModule,
-    DataModule,
-    MatButtonModule
+    MatCardModule,
+    MatButtonModule,
+    CommonModule
 
   ],
   providers: [],
