@@ -9,10 +9,17 @@ import { IUser } from 'src/app/interfaces/user';
 export class UserListComponent implements OnInit {
 
   @Input() oneOfTheUser: any;
-
+  @Input() userlikesStatus: string = "primary"
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  isLikes(oneOfTheUse: IUser):void {
+    if( this.userlikesStatus == "primary"){
+      this.userlikesStatus = "warn"
+    } else{
+      this.userlikesStatus = "primary"
+    }
+  }
 }

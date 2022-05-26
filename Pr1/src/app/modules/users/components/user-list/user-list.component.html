@@ -2,7 +2,6 @@
   <app-card [image]="oneOfTheUser.imageUrl" >
 
     <mat-card-title class="card-header"> {{oneOfTheUser.name}} </mat-card-title>
-    <button mat-button class="card-button"> LIKE {{oneOfTheUser.name}} </button>
 
     <div class="data-conteiner">
       <span class="btn">Age: {{oneOfTheUser.age}}</span>
@@ -10,6 +9,10 @@
       <span class="btn">Department: {{oneOfTheUser.department}}</span>
       <span class="btn">Company: {{oneOfTheUser.company}}</span>
     </div>
+
+    <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" class="card-button" (click)="isLikes(oneOfTheUser)" [color]="userlikesStatus">
+      <mat-icon>favorite</mat-icon>
+    </button>
 
   </app-card>
 

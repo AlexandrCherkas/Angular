@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ICar } from 'src/app/interfaces/car';
+import { CardataService } from '../../services/cardata.service';
 
 @Component({
   selector: 'app-car-shell',
@@ -7,9 +9,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CarShellComponent implements OnInit {
 
-  constructor() { }
+
+  public cars: ICar[] = []
+
+  constructor(public carService: CardataService) { }
 
   ngOnInit(): void {
+    this.cars = this.carService.getCars()
+    console.log(this.cars)
   }
 
 }
+
+export enum Direction {
+  likes,
+  dislikes
+}
+console.log(Direction)

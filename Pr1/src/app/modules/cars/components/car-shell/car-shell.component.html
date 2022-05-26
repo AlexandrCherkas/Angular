@@ -1,1 +1,5 @@
-<p>car-shell works!</p>
+<div class="car-shell" >
+  <ng-container *ngFor="let car of cars">
+    <app-car-list [car]="car" > </app-car-list>
+  </ng-container>
+</div>

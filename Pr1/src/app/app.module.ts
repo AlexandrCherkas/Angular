@@ -15,9 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card'
 import { CommonModule } from '@angular/common';
 
+
 import { UserShellComponent } from './modules/users/components/user-shell/user-shell.component';
 import { UserListComponent } from './modules/users/components/user-list/user-list.component';
+
 import { CardComponent } from './modules/shared/components/card/card.component';
+import { SetbarComponent } from './modules/shared/components/setbar/setbar.component';
+
+import { CarShellComponent } from './modules/cars/components/car-shell/car-shell.component';
+import { CarListComponent  } from './modules/cars/components/car-list/car-list.component';
 
 
 
@@ -27,7 +33,12 @@ import { CardComponent } from './modules/shared/components/card/card.component';
 
     UserShellComponent,
     UserListComponent,
-    CardComponent
+
+    CardComponent,
+    SetbarComponent,
+
+    CarShellComponent,
+    CarListComponent
   ],
   imports: [
     BrowserModule,
