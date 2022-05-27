@@ -1,21 +1,23 @@
 <div class="car-list">
-  <app-card class="car-image" [image]="car.imageUrl" >
+  <ng-container *ngFor="let car of cars">
+    <app-card
+      class="car-image"
+      [image]="car.imageUrl"
+      (addToFavoriteEvent)="addToFavorite($event)"
+      (removeFromFavoriteEvent)="removeFromFavorite($event)"
+      [isLikes]="checkIfFavored(car.id)"
+      [entity]="car"
+    >
+      <mat-card-title class="card-header">
+        {{ car.name }}
+        <span class="car-number"> Number: {{ car.number }}</span>
+      </mat-card-title>
 
-    <mat-card-title class="card-header"> {{car.name}}
-      <span class="car-number"> Number: {{car.number}}</span>
-    </mat-card-title>
-
-    <div class="data-conteiner">
-      <span class="btn">Release year : {{car.releaseYear}}</span>
-      <span class="btn">Color : {{car.color}}</span>
-      <span class="btn">Car id : {{car.id}}</span>
-
-    </div>
-
-    <button mat-icon-button color="warn" aria-label="Example icon button with a heart icon" class="card-button" (click)="isLikes(car)" [color]="carLikesStatus">
-      <mat-icon>favorite</mat-icon>
-    </button>
-
-  </app-card>
-
+      <div class="data-conteiner">
+        <span class="btn">Release year : {{ car.releaseYear }}</span>
+        <span class="btn">Color : {{ car.color }}</span>
+        <span class="btn">Car id : {{ car.id }}</span>
+      </div>
+    </app-card>
+  </ng-container>
 </div>

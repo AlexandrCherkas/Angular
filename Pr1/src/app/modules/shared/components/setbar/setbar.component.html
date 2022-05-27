@@ -1,18 +1,11 @@
-<div class="setbar">
 
-  <div class="likes-user" >
-    <h3>Likes USERS</h3>
-    <ng-container *ngFor="let userLikes of usersLikes">
-      <span> - {{userLikes}}</span>
+<div class="favorites">
+  <div class="favorites-title">Favorites</div>
+  <ng-container *ngFor="let favorite of favorites">
+    <ng-container *ngIf="favorite.type == this.favoriteType">
+      <div class="favorite-ent"> -
+        {{ favorite.name }}
+      </div>
     </ng-container>
-  </div>
-
-  <div class="likes-car">
-    <h3>Likes CARS</h3>
-    <ng-container *ngFor="let carLikes of carsLikes">
-      <span> - {{carLikes}}</span>
-    </ng-container>
-
-  </div>
-
+  </ng-container>
 </div>

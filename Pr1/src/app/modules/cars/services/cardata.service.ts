@@ -8,8 +8,7 @@ export class CardataService {
 
   constructor() { }
 
-  public getCars(): ICar[] {
-    return [
+  private cars: ICar[] = [
       {
         id: 100000,
         name: 'Ford',
@@ -46,6 +45,8 @@ export class CardataService {
 
     ];
 
+  getCars(): ICar[]{
+    return this.cars
   }
 
 

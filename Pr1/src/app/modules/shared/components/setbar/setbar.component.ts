@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { IFavoriteCards } from 'src/app/interfaces/favoriteCard';
+import { Favotite } from '../../enums/favorite';
 
 @Component({
   selector: 'app-setbar',
@@ -7,13 +9,13 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SetbarComponent implements OnInit {
 
-  @Input() usersLikes : any;
-  @Input() carsLikes: [] = []
+  @Input() favorites: Array<IFavoriteCards> = [];
+  @Input() favoriteType!: Favotite;
 
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.usersLikes)
   }
+
 
 }

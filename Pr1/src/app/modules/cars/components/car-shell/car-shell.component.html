@@ -1,5 +1,9 @@
-<div class="car-shell" >
-  <ng-container *ngFor="let car of cars">
-    <app-car-list [car]="car" > </app-car-list>
-  </ng-container>
+<div class="car-shell">
+  <app-car-list class="child" [cars]="cars"> </app-car-list>
+  <app-setbar
+    class="child righted"
+    [favorites]="favorites"
+    [favoriteType]="favoriteType"
+  >
+  </app-setbar>
 </div>
