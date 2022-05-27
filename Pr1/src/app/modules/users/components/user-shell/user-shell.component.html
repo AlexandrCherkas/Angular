@@ -1,6 +1,8 @@
-
-<div class="user-shell" >
-  <ng-container *ngFor="let user of users">
-    <app-user-list [oneOfTheUser]="user"> </app-user-list>
-  </ng-container>
+<div class="user-shell">
+  <app-user-list [users]="users"> </app-user-list>
+  <app-setbar
+    class="child righted"
+    [favorites]="favorites"
+    [favoriteType]="favoriteType"
+  ></app-setbar>
 </div>
