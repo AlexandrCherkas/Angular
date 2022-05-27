@@ -1,6 +1,10 @@
 .user-shell{
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex: 1 1 0;
+  flex-wrap: nowrap;
+}
 
+.righted {
+  order: 999;
+  margin-left: auto;
 }
