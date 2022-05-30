@@ -14,6 +14,9 @@ import { MatDividerModule} from '@angular/material/divider';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule} from '@angular/material/card'
 import { CommonModule } from '@angular/common';
+import { MatInputModule } from '@angular/material/input';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import { UserShellComponent } from './modules/users/components/user-shell/user-shell.component';
 import { UserListComponent } from './modules/users/components/user-list/user-list.component';
@@ -23,6 +26,10 @@ import { SetbarComponent } from './modules/shared/components/setbar/setbar.compo
 
 import { CarShellComponent } from './modules/cars/components/car-shell/car-shell.component';
 import { CarListComponent  } from './modules/cars/components/car-list/car-list.component';
+import { HeaderComponent } from './header/header.component';
+
+import { AddUserListComponent } from './modules/addUser/components/add-user-list/add-user-list.component';
+import { AddUserShellComponent } from './modules/addUser/components/add-user-shell/add-user-shell.component';
 
 
 
@@ -37,7 +44,11 @@ import { CarListComponent  } from './modules/cars/components/car-list/car-list.c
     SetbarComponent,
 
     CarShellComponent,
-    CarListComponent
+    CarListComponent,
+    HeaderComponent,
+
+    AddUserListComponent,
+    AddUserShellComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +65,10 @@ import { CarListComponent  } from './modules/cars/components/car-list/car-list.c
     FormsModule,
     MatCardModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    MatInputModule,
+    ReactiveFormsModule
+
 
   ],
   providers: [],

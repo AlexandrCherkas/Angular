@@ -1,0 +1,51 @@
+<form class="form">
+  <table class="full-width" cellspacing="0">
+
+    <tr>
+      <td>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Company </mat-label>
+          <input matInput (keyup)="setCompany($event)" value="ISsoft"/>
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Departament </mat-label>
+          <input matInput (keyup)="setDepartament($event)" value="Front End" />
+        </mat-form-field>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>First name</mat-label>
+          <input matInput (keyup)="setFirstName($event)" />
+        </mat-form-field>
+      </td>
+      <td>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Second name </mat-label>
+          <input matInput (keyup)="setSecondName($event)" />
+        </mat-form-field>
+      </td>
+    </tr>
+
+    <tr>
+      <td>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Age</mat-label>
+          <input matInput (keyup)="setAge($event)" maxlength="2" />
+        </mat-form-field>
+      </td>
+
+      <td>
+        <label id="example-radio-group-label">Gender:</label>
+        <mat-radio-group aria-label="Select an option">
+          <mat-radio-button value="1"> Male </mat-radio-button>
+          <mat-radio-button value="2"> Female </mat-radio-button>
+        </mat-radio-group>
+      </td>
+    </tr>
+  </table>
+</form>
