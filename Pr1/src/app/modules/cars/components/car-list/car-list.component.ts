@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { ICar } from 'src/app/interfaces/car';
-import { IFavoriteCards } from 'src/app/interfaces/favoriteCard';
-import { IUser } from 'src/app/interfaces/user';
+import { ICar } from 'src/app/modules/cars/interface/car';
+import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
+import { IUser } from 'src/app/modules/users/interface/user';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
 
@@ -11,22 +11,23 @@ import { SelectedEntitiesService } from 'src/app/modules/shared/services/selecte
   styleUrls: ['./car-list.component.scss'],
 })
 export class CarListComponent implements OnInit {
+
   @Input() cars: ICar[] = [];
   @Input() favorites: IFavoriteCards[] = [];
 
+
+
   constructor(private favoritesService: SelectedEntitiesService) {}
 
-  ngOnInit(): void {}
-
-  addToFavorite(car: IUser | ICar): void {
-    this.favoritesService.addToFavorite(car.id, Favotite.Car, car.name);
+  ngOnInit(): void {
   }
 
-  removeFromFavorite(car: IUser | ICar): void {
-    this.favoritesService.removeFromFavorite(car.id, Favotite.Car);
+  toFavorite(car: ICar): void {
+    this.favoritesService.toFavorite(car.id, Favotite.Car);
   }
 
   checkIfFavored(carID: number): boolean {
     return this.favoritesService.checkIfFavored(carID, Favotite.Car);
   }
 }
+

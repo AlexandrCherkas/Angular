@@ -1,11 +1,12 @@
-
 <div class="favorites">
   <div class="favorites-title">Favorites</div>
-  <ng-container *ngFor="let favorite of favorites">
-    <ng-container *ngIf="favorite.type == this.favoriteType">
-      <div class="favorite-ent"> -
-        {{ favorite.name }}
-      </div>
+
+  <ng-container *ngFor="let ent of entity">
+    <ng-container *ngFor="let favorite of favorites">
+      <ng-container *ngIf="ent.id == favorite">
+        <div class="favorite-ent"> - {{ent.name}} </div>
+      </ng-container>
     </ng-container>
   </ng-container>
+
 </div>

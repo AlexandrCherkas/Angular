@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { UserdataService } from '../../services/userdata.service';
-import { IUser } from 'src/app/interfaces/user';
-import { IFavoriteCards } from 'src/app/interfaces/favoriteCard';
+import { IUser} from 'src/app/modules/users/interface/user';
+import { IFavoriteCards} from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
+import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
 
 
 @Component({
@@ -14,13 +15,18 @@ export class UserShellComponent implements OnInit {
 
   public users: IUser[] = [];
   public favorites!: Array<IFavoriteCards>;
-  public favoriteType: Favotite = Favotite.User;
+  // public favoriteNames: any
 
-  constructor(public usersService: UserdataService) { }
+  constructor(
+    public usersService: UserdataService,
+    public favoriteService: SelectedEntitiesService
+    ) {}
 
   ngOnInit(): void {
     this.users = this.usersService.getUsers();
-    console.log(this.users)
+    this.favorites = this.favoriteService.getFavoritesData(Favotite.User);
+
   }
+
 
 }

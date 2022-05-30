@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ICar } from 'src/app/interfaces/car';
+import { ICar} from 'src/app/modules/cars/interface/car';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +10,7 @@ export class CardataService {
 
   private cars: ICar[] = [
       {
-        id: 100000,
+        id: 1,
         name: 'Ford',
         color: 'White',
         releaseYear: 1969,
@@ -19,7 +19,7 @@ export class CardataService {
 
        },
        {
-        id: 200000,
+        id: 2,
         name: 'Volkswagen',
         color: 'Red',
         releaseYear: 2020,
@@ -27,7 +27,7 @@ export class CardataService {
         imageUrl: 'https://www.allcarz.ru/wp-content/uploads/2013/08/foto-vw-golf-7-r_02-650x433.jpg',
        },
        {
-        id: 300000,
+        id: 3,
         name: 'Audi',
         color: 'Green',
         releaseYear: 1994,
@@ -35,7 +35,7 @@ export class CardataService {
         imageUrl: 'https://auto.vercity.ru/gallery/img/automobiles/Audi/1995%20Audi%20RS2%20Avant%20Tropic%20Green%20(8C_B4)/900x/1565772642.jpg',
        },
        {
-        id: 400000,
+        id: 4,
         name: 'Volvo',
         color: 'Black',
         releaseYear: 2022,

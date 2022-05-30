@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IUser } from 'src/app/interfaces/user';
+import { IUser } from 'src/app/modules/users/interface/user';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +11,7 @@ export class UserdataService {
   public getUsers(): IUser[] {
     return [
       {
-        id: 100000,
+        id: 11,
         name: 'Chack',
         age: 56,
         gender: true,
@@ -20,7 +20,7 @@ export class UserdataService {
         imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg1855.jpg'
        },
        {
-        id: 200000,
+        id: 22,
         name: 'Johnny',
         age: 25,
         gender: true,
@@ -29,7 +29,7 @@ export class UserdataService {
         imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg12.jpg'
        },
        {
-        id: 300000,
+        id: 33,
         name: 'Scarlett',
         age: 38,
         gender: false,
@@ -38,7 +38,7 @@ export class UserdataService {
         imageUrl:'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/ce/Scarlett_Johansson.jpg'
        },
        {
-        id: 400000,
+        id: 44,
         name: 'Will',
         age: 40,
         gender: true,

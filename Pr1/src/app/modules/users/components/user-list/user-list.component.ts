@@ -1,10 +1,10 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IUser } from 'src/app/interfaces/user';
+import { IUser } from 'src/app/modules/users/interface/user';
 
-import { IFavoriteCards } from 'src/app/interfaces/favoriteCard';
+import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
-import { ICar } from 'src/app/interfaces/car';
+import { ICar } from 'src/app/modules/cars/interface/car';
 
 
 @Component({
@@ -18,16 +18,11 @@ export class UserListComponent implements OnInit {
   @Input() favorites: IFavoriteCards[] = [];
 
   constructor(private favoritesService: SelectedEntitiesService) { }
-
   ngOnInit(): void {
   }
 
-   addToFavorite(user: IUser | ICar): void {
-    this.favoritesService.addToFavorite(user.id, Favotite.Car, user.name);
-  }
-
-  removeFromFavorite(user: IUser | ICar): void {
-    this.favoritesService.removeFromFavorite(user.id, Favotite.User);
+  addToFavorite(user: IUser): void {
+    this.favoritesService.toFavorite(user.id, Favotite.User);
   }
 
   checkIfFavored(userID: number): boolean {

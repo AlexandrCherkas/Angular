@@ -1,39 +1,47 @@
 import { Injectable } from '@angular/core';
-import { IFavoriteCards } from 'src/app/interfaces/favoriteCard';
+import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from '../enums/favorite';
+
+
+type FavoriteMap = {
+  [key in Favotite]: number[]
+}
+const favoriteMap: FavoriteMap = {
+  [Favotite.Car]: [],
+  [Favotite.User]: [],
+}
 
 @Injectable({
   providedIn: 'root',
 })
+
+
 export class SelectedEntitiesService {
-  private favorites_: Array<IFavoriteCards> = [];
 
   constructor() {}
 
-  getFavoritesData(): Array<IFavoriteCards> {
-    return this.favorites_;
+  getFavoritesData(type: Favotite): Array<any> {
+   return favoriteMap[type];
   }
 
-  addToFavorite(id: number, type: Favotite, name: string): void {
-    this.favorites_.push({
-      id: id,
-      type: type,
-      name: name,
-    });
-  }
 
-  removeFromFavorite(entityID: number, entityType: Favotite): void {
-    let favoriteID = this.favorites_.findIndex((favorite) => {
-      return favorite.id == entityID && favorite.type == entityType;
-    });
-    this.favorites_.splice(favoriteID, 1);
+  toFavorite(id: number, type: Favotite): void {
+    if(favoriteMap[type].includes(id)){
+      let index: number = favoriteMap[type].indexOf(id)
+      favoriteMap[type].splice(index, 1)
+    } else {
+      favoriteMap[type].push(id);
+    }
   }
 
   checkIfFavored(entityId: number, entityType: Favotite): boolean {
-    return this.favorites_.find((favorite) => {
-      return favorite.type == entityType && favorite.id == entityId;
+     return favoriteMap[entityType].find((favorite) => {
+      return favorite == entityId;
     })
       ? true
       : false;
   }
+
+
+
 }

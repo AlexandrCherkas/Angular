@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ICar } from 'src/app/interfaces/car';
+import { ICar } from 'src/app/modules/cars/interface/car';
 import { CardataService } from '../../services/cardata.service';
 
-import { IFavoriteCards } from 'src/app/interfaces/favoriteCard';
+import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
 
@@ -14,8 +14,7 @@ import { SelectedEntitiesService } from 'src/app/modules/shared/services/selecte
 export class CarShellComponent implements OnInit {
 
   public cars: ICar[] = [];
-  public favorites!: Array<IFavoriteCards>;
-  public favoriteType: Favotite = Favotite.Car;
+  public favorites!: Array<any>;
 
   constructor(
     public carService: CardataService,
@@ -23,7 +22,7 @@ export class CarShellComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    (this.cars = this.carService.getCars()),
-      (this.favorites = this.favoriteService.getFavoritesData());
+    this.cars = this.carService.getCars();
+    this.favorites = this.favoriteService.getFavoritesData(Favotite.Car);
   }
 }

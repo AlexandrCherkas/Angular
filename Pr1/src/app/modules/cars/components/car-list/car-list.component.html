@@ -3,10 +3,9 @@
     <app-card
       class="car-image"
       [image]="car.imageUrl"
-      (addToFavoriteEvent)="addToFavorite($event)"
-      (removeFromFavoriteEvent)="removeFromFavorite($event)"
+      (toFavoriteEvent)="toFavorite(car)"
       [isLikes]="checkIfFavored(car.id)"
-      [entity]="car"
+
     >
       <mat-card-title class="card-header">
         {{ car.name }}
