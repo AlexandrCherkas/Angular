@@ -42,5 +42,7 @@ export class AddUserListComponent implements OnInit {
   setAge($event: any): void{
     this.toAgeEvent.emit($event.target.value)
   }
-
+  setGender($event: any): void{
+    this.toGenderEvent.emit($event.value)
+  }
 }

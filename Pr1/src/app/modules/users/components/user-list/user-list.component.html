@@ -8,12 +8,12 @@
       [isLikes]="checkIfFavored(user.id)"
 
     >
-      <mat-card-title class="card-header"> {{user.name}} </mat-card-title>
+      <mat-card-title class="card-header"> {{user.name}} {{user.secondName}}</mat-card-title>
 
       <div class="data-conteiner">
         <span class="btn">Age: {{user.age}} </span>
         <span class="btn">Gender: {{user.gender ? "Male" : "Female" }}</span>
-        <span class="btn">Department: {{user.department }}</span>
+        <span class="btn">Department: {{user.departament }}</span>
         <span class="btn">Company: {{user.company }}</span>
       </div>
 

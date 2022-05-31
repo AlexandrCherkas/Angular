@@ -1,8 +1,13 @@
-<app-add-user-list
-  (toCompanyEvent)="toCompanyEvent($event)"
-  (toDepartamentEvent)="toDepartament($event)"
-  (toFirstNameEvent)="toFirstName($event)"
-  (toSecondNameEvent)="toSecondName($event)"
-  (toAgeEvent)="toAge($event)"
-></app-add-user-list>
-<button mat-stroked-button color="primary" > ADD USER </button>
+<div class="forms">
+  <app-add-user-list
+    (toCompanyEvent)="toCompanyEvent($event)"
+    (toDepartamentEvent)="toDepartament($event)"
+    (toFirstNameEvent)="toFirstName($event)"
+    (toSecondNameEvent)="toSecondName($event)"
+    (toAgeEvent)="toAge($event)"
+    (toGenderEvent)="toGender($event)"
+  ></app-add-user-list>
+  <button mat-stroked-button color="primary" (click)="addUsertoBD()">
+    ADD USER
+  </button>
+</div>

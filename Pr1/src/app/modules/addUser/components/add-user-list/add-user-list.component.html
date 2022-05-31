@@ -41,9 +41,9 @@
 
       <td>
         <label id="example-radio-group-label">Gender:</label>
-        <mat-radio-group aria-label="Select an option">
-          <mat-radio-button value="1"> Male </mat-radio-button>
-          <mat-radio-button value="2"> Female </mat-radio-button>
+        <mat-radio-group aria-label="Select an option" (change)="setGender($event)" >
+          <mat-radio-button value="false"> Male </mat-radio-button>
+          <mat-radio-button value="true"> Female </mat-radio-button>
         </mat-radio-group>
       </td>
     </tr>
