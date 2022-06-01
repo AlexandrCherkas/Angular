@@ -1,16 +1,24 @@
-<form [formGroup]="childFormGroup">
+<form [formGroup]="childFormGroup" novalidate>
   <table class="full-width" cellspacing="0" width="400px">
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>First name</mat-label>
         <input
           matInput
+          id="name"
+          type="text"
           name="name"
           formControlName="name"
           type="text"
           placeholder="Ex. Ivan"
+          required
         />
       </mat-form-field>
+
+      <div *ngIf="childFormGroup.controls['name'].invalid && (childFormGroup.controls['name'].dirty || childFormGroup.controls['name'].touched)" class="alert alert-danger">
+        <span *ngIf="childFormGroup.controls['name'].errors"> First name is required.</span>
+      </div>
+
     </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
@@ -23,8 +31,20 @@
           placeholder="Ex. Ivanov"
         />
       </mat-form-field>
-    </tr>
 
+      <div *ngIf="childFormGroup.controls['secondName'].invalid && (childFormGroup.controls['secondName'].dirty || childFormGroup.controls['secondName'].touched)" class="alert alert-danger">
+        <span *ngIf="childFormGroup.controls['secondName'].errors" style="transition:1s"> Second name is required.</span>
+      </div>
+
+    </tr>
+    <tr>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input matInput placeholder="example@gmail.com" />
+        <mat-error></mat-error>
+      </mat-form-field>
+
+    </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Company </mat-label>
@@ -36,6 +56,9 @@
           placeholder="Ex. ISsoft"
         />
       </mat-form-field>
+      <div *ngIf="childFormGroup.controls['company'].invalid && (childFormGroup.controls['company'].dirty || childFormGroup.controls['company'].touched)" class="alert alert-danger">
+        <span *ngIf="childFormGroup.controls['company'].errors"> Company is required.</span>
+      </div>
     </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
@@ -48,22 +71,29 @@
           placeholder="Ex. Front-End"
         />
       </mat-form-field>
+      <!-- <div *ngIf="childFormGroup.controls['name'].invalid && (childFormGroup.controls['name'].dirty || childFormGroup.controls['name'].touched)" class="alert alert-danger">
+        <span *ngIf="childFormGroup.controls['name'].errors"> Name is required.</span>
+      </div> -->
     </tr>
 
     <tr>
-      <mat-form-field class="full-width" appearance="fill">
+      <mat-form-field class="full-width" appearance="fill" floatLabel="always">
         <mat-label>Age</mat-label>
         <input
           matInput
+          class="right-align"
           name="age"
           formControlName="age"
           type="number"
-          maxlength="2"
           placeholder="Ex. 21"
-          min="18"
-          max="99"
+          min="15"
+          max="100"
         />
+        <span matSuffix>years</span>
       </mat-form-field>
+      <!-- <div *ngIf="childFormGroup.controls['name'].invalid && (childFormGroup.controls['name'].dirty || childFormGroup.controls['name'].touched)" class="alert alert-danger">
+        <span *ngIf="childFormGroup.controls['name'].errors"> Name is required.</span>
+      </div> -->
     </tr>
     <label style="margin: 10px; font-size: small; color: gray"
       >Gender default value: FEMALE</label
