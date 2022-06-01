@@ -4,7 +4,7 @@
 
   <form class="form" [formGroup]="parentFormGroup" >
     <app-create-user-list [formGroup]="parentFormGroup"></app-create-user-list>
-    <button mat-stroked-button color="primary" (click)="sibmit()">Create</button>
+    <button mat-stroked-button color="primary" (click)="sibmit()" [disabled]="!parentFormGroup.valid">Create</button>
   </form>
 
 </div>

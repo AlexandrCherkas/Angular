@@ -19,9 +19,13 @@ export class CreateUserShellComponent implements OnInit {
   }
 
   sibmit() {
-    console.log(this.parentFormGroup)
-    this._userdataServece.createNewUser(this.parentFormGroup.value.user);
+    if(this.parentFormGroup.status == 'VALID'){
+      this._userdataServece.createNewUser(this.parentFormGroup.value.user);
     this._router.navigate(["/users"])
+    }else{
+      console.log('form invalid')
+    }
+
 
   }
 }
