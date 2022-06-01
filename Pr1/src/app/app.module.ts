@@ -26,10 +26,12 @@ import { SetbarComponent } from './modules/shared/components/setbar/setbar.compo
 
 import { CarShellComponent } from './modules/cars/components/car-shell/car-shell.component';
 import { CarListComponent  } from './modules/cars/components/car-list/car-list.component';
-import { HeaderComponent } from './header/header.component';
 
-import { AddUserListComponent } from './modules/addUser/components/add-user-list/add-user-list.component';
-import { AddUserShellComponent } from './modules/addUser/components/add-user-shell/add-user-shell.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { HeaderComponent } from './core/components/header/header.component';
+
+import { CreateUserListComponent } from './modules/users/components/create-user-list/create-user-list.component';
+import { CreateUserShellComponent } from './modules/users/components/create-user-shell/create-user-shell.component';
 
 
 
@@ -45,10 +47,13 @@ import { AddUserShellComponent } from './modules/addUser/components/add-user-she
 
     CarShellComponent,
     CarListComponent,
+
+    FooterComponent,
     HeaderComponent,
 
-    AddUserListComponent,
-    AddUserShellComponent
+    CreateUserListComponent,
+    CreateUserShellComponent
+
   ],
   imports: [
     BrowserModule,

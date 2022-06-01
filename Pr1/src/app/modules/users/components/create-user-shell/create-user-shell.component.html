@@ -1,0 +1,11 @@
+<div class="create-shell">
+
+  <h2 class="nameForm" >CREATE NEW USER </h2>
+
+  <form class="form" [formGroup]="parentFormGroup" >
+    <app-create-user-list [formGroup]="parentFormGroup"></app-create-user-list>
+    <button mat-stroked-button color="primary" (click)="sibmit()">Create</button>
+  </form>
+
+</div>
+

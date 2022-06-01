@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { UserShellComponent } from './components/user-shell/user-shell.component';
+import { CreateUserListComponent } from './components/create-user-list/create-user-list.component';
+import { CreateUserShellComponent } from './components/create-user-shell/create-user-shell.component';
 
 
 
@@ -10,7 +12,9 @@ import { UserShellComponent } from './components/user-shell/user-shell.component
 @NgModule({
   declarations: [
     UserListComponent,
-    UserShellComponent
+    UserShellComponent,
+    CreateUserListComponent,
+    CreateUserShellComponent
   ],
   imports: [
     CommonModule,

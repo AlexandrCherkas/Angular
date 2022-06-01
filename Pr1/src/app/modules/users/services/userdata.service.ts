@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
+import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { IUser } from 'src/app/modules/users/interface/user';
 
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class UserdataService {
 
   public users: IUser[] = [
@@ -50,13 +53,17 @@ export class UserdataService {
   ]
   constructor() { }
 
+  public createID(): number{
+    return Math.floor(Math.random() * 10000);
+  }
+
   public getUsers(): IUser[] {
     return this.users
   }
 
-  public setUser(user: IUser): void {
-    this.users.push(user)
+  public createNewUser(user: IUser): void {
 
+    this.users.push(user)
   }
 
 }

@@ -1,0 +1,91 @@
+<form [formGroup]="childFormGroup">
+  <table class="full-width" cellspacing="0" width="400px">
+    <tr>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>First name</mat-label>
+        <input
+          matInput
+          name="name"
+          formControlName="name"
+          type="text"
+          placeholder="Ex. Ivan"
+        />
+      </mat-form-field>
+    </tr>
+    <tr>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Second name </mat-label>
+        <input
+          matInput
+          name="secondName"
+          formControlName="secondName"
+          type="text"
+          placeholder="Ex. Ivanov"
+        />
+      </mat-form-field>
+    </tr>
+
+    <tr>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Company </mat-label>
+        <input
+          matInput
+          name="company"
+          formControlName="company"
+          type="text"
+          placeholder="Ex. ISsoft"
+        />
+      </mat-form-field>
+    </tr>
+    <tr>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Departament </mat-label>
+        <input
+          matInput
+          name="departament"
+          formControlName="departament"
+          type="text"
+          placeholder="Ex. Front-End"
+        />
+      </mat-form-field>
+    </tr>
+
+    <tr>
+      <mat-form-field class="full-width" appearance="fill">
+        <mat-label>Age</mat-label>
+        <input
+          matInput
+          name="age"
+          formControlName="age"
+          type="number"
+          maxlength="2"
+          placeholder="Ex. 21"
+          min="18"
+          max="99"
+        />
+      </mat-form-field>
+    </tr>
+    <label style="margin: 10px; font-size: small; color: gray"
+      >Gender default value: FEMALE</label
+    >
+    <tr>
+      <label id="radio-group-label" style="margin: 10px; font: bold"
+        >Select gender:</label
+      >
+      <mat-radio-group aria-label="Select an option" formControlName="gender">
+        <mat-radio-button
+          value="false"
+          style="margin: 10px; font-weight: bold; color: rgb(90, 90, 90)"
+        >
+          MALE
+        </mat-radio-button>
+        <mat-radio-button
+          value="true"
+          style="margin: 10px; font-weight: bold; color: rgb(90, 90, 90)"
+        >
+          FEMALE
+        </mat-radio-button>
+      </mat-radio-group>
+    </tr>
+  </table>
+</form>

@@ -4,7 +4,7 @@
   <ng-container *ngFor="let ent of entity">
     <ng-container *ngFor="let favorite of favorites">
       <ng-container *ngIf="ent.id == favorite">
-        <div class="favorite-ent"> - {{ent.name}} </div>
+        <div class="favorite-ent">- {{ ent.name }}</div>
       </ng-container>
     </ng-container>
   </ng-container>

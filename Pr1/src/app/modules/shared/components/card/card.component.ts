@@ -8,9 +8,8 @@ import { IUser } from 'src/app/modules/users/interface/user';
   styleUrls: ['./card.component.scss'],
 })
 export class CardComponent implements OnInit {
-
   @Input() isLikes!: boolean;
-  @Input() image: string = '';
+  @Input() image!: string;
 
   @Output() toFavoriteEvent = new EventEmitter();
 
