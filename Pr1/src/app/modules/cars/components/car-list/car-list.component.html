@@ -9,13 +9,13 @@
     >
       <mat-card-title class="card-header">
         {{ car.name }}
-        <span class="car-number"> Number: {{ car.number }}</span>
+        <span class="car-number"> Number: <span class="grn">{{ car.number }}</span></span>
       </mat-card-title>
 
       <div class="data-conteiner">
-        <span class="btn">Release year : {{ car.releaseYear }}</span>
-        <span class="btn">Color : {{ car.color }}</span>
-        <span class="btn">Car ID : {{ car.id }}</span>
+        <span class="btn">Release year : <span class="grn">{{ car.releaseYear }}</span></span>
+        <span class="btn">Color : <span class="grn">{{ car.color }}</span></span>
+        <span class="btn">Car ID : <span class="grn">{{ car.id }}</span></span>
       </div>
     </app-card>
   </ng-container>

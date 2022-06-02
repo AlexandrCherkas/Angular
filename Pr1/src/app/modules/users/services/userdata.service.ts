@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
-import { MatPseudoCheckboxModule } from '@angular/material/core';
 import { IUser } from 'src/app/modules/users/interface/user';
 
 @Injectable({
   providedIn: 'root'
 })
+
 
 
 export class UserdataService {
@@ -14,6 +14,7 @@ export class UserdataService {
       id: 11,
       name: 'Chack',
       secondName: 'Norris',
+      email: 'norris@gmail.com',
       age: 56,
       gender: true,
       departament: 'Front End',
@@ -24,6 +25,7 @@ export class UserdataService {
       id: 22,
       name: 'Johnny',
       secondName: 'Depp',
+      email: 'depp@gmail.com',
       age: 25,
       gender: true,
       departament: 'Front End',
@@ -34,6 +36,7 @@ export class UserdataService {
       id: 33,
       name: 'Scarlett',
       secondName: 'Johansson',
+      email: 'johansson@gmail.com',
       age: 38,
       gender: false,
       departament: 'Front End',
@@ -44,6 +47,7 @@ export class UserdataService {
       id: 44,
       name: 'Will',
       secondName: 'Smith',
+      email: 'smith@gmail.com',
       age: 40,
       gender: true,
       departament: 'Front End',

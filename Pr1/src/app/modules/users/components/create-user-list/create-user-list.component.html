@@ -13,8 +13,19 @@
           placeholder="Ex. Ivan"
         />
       </mat-form-field>
-      <div *ngIf="childFormGroup.controls['name'].invalid && (childFormGroup.controls['name'].dirty || childFormGroup.controls['name'].touched)" class="alert alert-danger">
-        <div *ngIf="childFormGroup.controls['name'].errors?.['required']"> First name is required.</div>
+
+      <div
+        *ngIf="
+          isValid ||
+          (childFormGroup.controls['name'].invalid &&
+            (childFormGroup.controls['name'].dirty ||
+              childFormGroup.controls['name'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <div *ngIf="childFormGroup.controls['name'].errors?.['required'] ">
+          First name is required.
+        </div>
       </div>
     </tr>
     <tr>
@@ -29,21 +40,54 @@
         />
       </mat-form-field>
 
-      <div *ngIf="childFormGroup.controls['secondName'].invalid && (childFormGroup.controls['secondName'].dirty || childFormGroup.controls['secondName'].touched)" class="alert alert-danger">
-        <span *ngIf="childFormGroup.controls['secondName'].errors" style="transition:1s"> Second name is required.</span>
+      <div
+        *ngIf="
+          isValid ||
+          (childFormGroup.controls['secondName'].invalid &&
+            (childFormGroup.controls['secondName'].dirty ||
+              childFormGroup.controls['secondName'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <span *ngIf="childFormGroup.controls['secondName'].errors">
+          Second name is required.</span
+        >
       </div>
-
     </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Enter your email</mat-label>
-        <input matInput name="email" formControlName="email" placeholder="example@gmail.com" />
+        <input
+          matInput
+          name="email"
+          formControlName="email"
+          placeholder="example@gmail.com"
+        />
         <mat-error></mat-error>
       </mat-form-field>
-      <div *ngIf="childFormGroup.controls['email'].invalid && (childFormGroup.controls['email'].dirty || childFormGroup.controls['email'].touched)" class="alert alert-danger">
-        <span *ngIf="childFormGroup.controls['email'].errors?.['required']"> Email is required.</span>
-        <span *ngIf="childFormGroup.controls['email'].errors?.['email']">  Invalid Email format.</span>
-    </div>
+
+
+      <div
+        *ngIf=" isValid ||
+          (childFormGroup.controls['email'].invalid &&
+            (childFormGroup.controls['email'].dirty ||
+              childFormGroup.controls['email'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <span *ngIf="childFormGroup.controls['email'].errors?.['required']">
+          Email is required.</span
+        >
+        <span *ngIf="childFormGroup.controls['email'].errors?.['email']">
+          Invalid Email format.</span
+        >
+        <span *ngIf="childFormGroup.controls['email'].errors?.['forbiddenName']">
+          The Email must have domen: '@gmail.com'.</span
+        >
+        <span *ngIf="childFormGroup.controls['email'].hasError('usernameAlreadyExists')">
+          This email already exists.
+        </span>
+      </div>
     </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
@@ -57,13 +101,22 @@
           required
         />
       </mat-form-field>
-      <div *ngIf="childFormGroup.controls['company'].invalid && (childFormGroup.controls['company'].dirty || childFormGroup.controls['company'].touched)" class="alert alert-danger">
-        <span *ngIf="childFormGroup.controls['company'].errors?.['required']"> Company is required.</span>
-        <span *ngIf="childFormGroup.controls['company'].errors?.['maxlength']">  The company name must contain no more than 35 characters.</span>
+      <div
+        *ngIf="
+          isValid ||
+          (childFormGroup.controls['company'].invalid &&
+            (childFormGroup.controls['company'].dirty ||
+              childFormGroup.controls['company'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <span *ngIf="childFormGroup.controls['company'].errors?.['required']">
+          Company is required.</span
+        >
+        <span *ngIf="childFormGroup.controls['company'].errors?.['maxlength']">
+          The company name must contain no more than 35 characters.</span
+        >
       </div>
-
-
-
     </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
@@ -76,13 +129,26 @@
           placeholder="Ex. Front-End"
         />
       </mat-form-field>
-      <div *ngIf="childFormGroup.controls['departament'].invalid && (childFormGroup.controls['departament'].dirty || childFormGroup.controls['departament'].touched)" class="alert alert-danger">
-        <span *ngIf="childFormGroup.controls['departament'].errors?.['required']"> Name is required.</span>
-        <span *ngIf="childFormGroup.controls['departament'].errors?.['minlength']">  The department name must contain at least 6 characters.</span>
+      <div
+        *ngIf="
+          isValid ||
+          (childFormGroup.controls['departament'].invalid &&
+            (childFormGroup.controls['departament'].dirty ||
+              childFormGroup.controls['departament'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <span
+          *ngIf="childFormGroup.controls['departament'].errors?.['required']"
+        >
+          Name is required.</span
+        >
+        <span
+          *ngIf="childFormGroup.controls['departament'].errors?.['minlength']"
+        >
+          The department name must contain at least 6 characters.</span
+        >
       </div>
-
-
-
     </tr>
 
     <tr>
@@ -100,21 +166,34 @@
         />
         <span matSuffix>years</span>
       </mat-form-field>
-      <div *ngIf="childFormGroup.controls['age'].invalid && (childFormGroup.controls['age'].dirty || childFormGroup.controls['age'].touched)" class="alert alert-danger">
-        <span *ngIf="childFormGroup.controls['age'].errors?.['required']"> Name is required.</span>
-        <span *ngIf="childFormGroup.controls['age'].errors?.['min']">  The age must be at least 15 years old.</span>
-        <span *ngIf="childFormGroup.controls['age'].errors?.['max']">  The age must be more than 100 years old.</span>
-    </div>
+
+      <div
+        *ngIf="
+          isValid ||
+          (childFormGroup.controls['age'].invalid &&
+            (childFormGroup.controls['age'].dirty ||
+              childFormGroup.controls['age'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <span *ngIf="childFormGroup.controls['age'].errors?.['required']">
+          Name is required.</span
+        >
+        <span *ngIf="childFormGroup.controls['age'].errors?.['min']">
+          The age must be at least 15 years old.</span
+        >
+        <span *ngIf="childFormGroup.controls['age'].errors?.['max']">
+          The age must be more than 100 years old.</span
+        >
+      </div>
     </tr>
-    <label style="margin: 10px; font-size: small; color: gray"
-      >Gender default value: FEMALE</label
-    >
+
     <tr>
-      <label id="radio-group-label" style="margin: 10px; font: bold"
+      <label id="radio-group-label" style="margin: 10px; font: bold "
         >Select gender:</label
       >
-      <mat-radio-group aria-label="Select an option" formControlName="gender">
-        <mat-radio-button
+      <mat-radio-group aria-label="Select an option" formControlName="gender"
+        ><mat-radio-button
           value="false"
           style="margin: 10px; font-weight: bold; color: rgb(90, 90, 90)"
         >
@@ -127,10 +206,20 @@
           FEMALE
         </mat-radio-button>
       </mat-radio-group>
-      <div *ngIf="childFormGroup.controls['gender'].invalid && (childFormGroup.controls['gender'].dirty || childFormGroup.controls['gender'].touched)" class="alert alert-danger">
-        <span *ngIf="childFormGroup.controls['gender'].errors?.['required']"> Gender is required.</span>
+      <div
+        *ngIf="
+          isValid ||
+          (childFormGroup.controls['gender'].invalid &&
+            (childFormGroup.controls['gender'].dirty ||
+              childFormGroup.controls['gender'].touched))
+        "
+        class="alert alert-danger"
+      >
+        <span *ngIf="childFormGroup.controls['gender'].errors?.['required']">
+          Gender is required.</span
+        >
       </div>
     </tr>
   </table>
 </form>
-
+<button (click)="log()"></button>

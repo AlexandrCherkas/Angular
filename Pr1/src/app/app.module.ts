@@ -34,7 +34,6 @@ import { CreateUserListComponent } from './modules/users/components/create-user-
 import { CreateUserShellComponent } from './modules/users/components/create-user-shell/create-user-shell.component';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +51,7 @@ import { CreateUserShellComponent } from './modules/users/components/create-user
     HeaderComponent,
 
     CreateUserListComponent,
-    CreateUserShellComponent
+    CreateUserShellComponent,
 
   ],
   imports: [
@@ -73,8 +72,6 @@ import { CreateUserShellComponent } from './modules/users/components/create-user
     CommonModule,
     MatInputModule,
     ReactiveFormsModule
-
-
   ],
   providers: [],
   bootstrap: [AppComponent],

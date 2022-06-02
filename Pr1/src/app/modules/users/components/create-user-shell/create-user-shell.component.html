@@ -2,10 +2,11 @@
 
   <h2 class="nameForm" >CREATE NEW USER </h2>
 
-  <form class="form" [formGroup]="parentFormGroup" >
-    <app-create-user-list [formGroup]="parentFormGroup"></app-create-user-list>
-    <button mat-stroked-button color="primary" (click)="sibmit()" [disabled]="!parentFormGroup.valid">Create</button>
+  <form class="form" [formGroup]="parentFormGroup" (submit)="submit()" >
+    <app-create-user-list [formGroup]="parentFormGroup" [isValid]="isValid"></app-create-user-list>
+    <button mat-stroked-button color="primary" type="submit">Create</button>
   </form>
 
 </div>
 
+<!-- [disabled]="!parentFormGroup.valid" -->
