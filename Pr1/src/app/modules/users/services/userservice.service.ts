@@ -14,7 +14,7 @@ export class UserserviceService  {
 
   checkIfEmailExists(value: string) {
     this.existingEmails = this._userdataService.getUsersEmail()
-    return of(this.existingEmails.some((a) => a === value)).pipe(
+    return of(this.existingEmails.some((item) => item === value)).pipe(
       delay(1000)
     );
   }

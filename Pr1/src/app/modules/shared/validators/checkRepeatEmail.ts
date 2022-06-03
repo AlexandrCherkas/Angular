@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { UserserviceService } from '../../users/services/userservice.service';
 
-export class UsernameValidator {
+export class UserEmailValidator {
 
   static createValidator(userService: UserserviceService): AsyncValidatorFn {
 

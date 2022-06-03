@@ -4,7 +4,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
 
 import { UserserviceService } from '../../services/userservice.service';
-import { UsernameValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
+import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
 
 @Component({
   selector: 'app-create-user-list',
@@ -35,7 +35,7 @@ export class CreateUserListComponent implements OnInit {
       id: this.createID(),
       name: ['',Validators.required],
       secondName: ['',Validators.required],
-      email:['', [Validators.required, Validators.email, ValidateEmail(/^.+@gmail.com$/)], [UsernameValidator.createValidator(this._userService)] ],
+      email:['', [Validators.required, Validators.email, ValidateEmail(/^.+@gmail.com$/)], [UserEmailValidator.createValidator(this._userService)] ],
       company: ['',[Validators.required, Validators.maxLength(35)]],
       departament: ['',[Validators.required, Validators.minLength(6)]],
       age: ['', [Validators.required, Validators.min(15),Validators.max(100)]],
