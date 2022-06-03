@@ -141,7 +141,7 @@
         <span
           *ngIf="childFormGroup.controls['departament'].errors?.['required']"
         >
-          Name is required.</span
+          Departament is required.</span
         >
         <span
           *ngIf="childFormGroup.controls['departament'].errors?.['minlength']"
@@ -177,7 +177,7 @@
         class="alert alert-danger"
       >
         <span *ngIf="childFormGroup.controls['age'].errors?.['required']">
-          Name is required.</span
+          Age is required.</span
         >
         <span *ngIf="childFormGroup.controls['age'].errors?.['min']">
           The age must be at least 15 years old.</span
@@ -190,7 +190,7 @@
 
     <tr>
       <label id="radio-group-label" style="margin: 10px; font: bold "
-        >Select gender:</label
+        >Select gender :</label
       >
       <mat-radio-group aria-label="Select an option" formControlName="gender"
         ><mat-radio-button
@@ -222,4 +222,4 @@
     </tr>
   </table>
 </form>
-<button (click)="log()"></button>
+

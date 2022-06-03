@@ -20,6 +20,7 @@ export class CreateUserShellComponent implements OnInit {
   ngOnInit(): void {}
 
   submit(): void {
+
     if (this.parentFormGroup.status == 'VALID') {
       this._userdataServece.createNewUser(this.parentFormGroup.value.user);
       this._router.navigate(['/users']);

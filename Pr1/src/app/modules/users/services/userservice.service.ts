@@ -1,21 +1,20 @@
 import { Injectable } from '@angular/core';
-
 import { of } from 'rxjs';
 import { delay } from 'rxjs/operators';
+import { UserdataService } from './userdata.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class UserserviceService {
+export class UserserviceService  {
 
-  private existingUsernames = ['norris@gmail.com', 'depp@gmail.com', 'johansson@gmail.com'];
+  private existingEmails: Array<string>
+  constructor(private _userdataService: UserdataService) { }
 
-
-  constructor() { }
-
-  checkIfUsernameExists(value: string) {
-    return of(this.existingUsernames.some((a) => a === value)).pipe(
+  checkIfEmailExists(value: string) {
+    this.existingEmails = this._userdataService.getUsersEmail()
+    return of(this.existingEmails.some((a) => a === value)).pipe(
       delay(1000)
     );
   }

@@ -6,8 +6,9 @@ import { IUser } from 'src/app/modules/users/interface/user';
 })
 
 
-
 export class UserdataService {
+
+  public usersEmails: Array<string> = []
 
   public users: IUser[] = [
     {
@@ -65,8 +66,12 @@ export class UserdataService {
     return this.users
   }
 
-  public createNewUser(user: IUser): void {
+  public getUsersEmail(): Array<string>{
+    this.usersEmails = this.users.map(user => user.email)
+    return this.usersEmails
+  }
 
+  public createNewUser(user: IUser): void {
     this.users.push(user)
   }
 

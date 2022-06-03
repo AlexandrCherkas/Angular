@@ -1,7 +1,7 @@
 import { AbstractControl, AsyncValidatorFn, ValidationErrors} from '@angular/forms';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UserserviceService } from '../services/userservice.service';
+import { UserserviceService } from '../../users/services/userservice.service';
 
 export class UsernameValidator {
 
@@ -9,7 +9,7 @@ export class UsernameValidator {
 
     return (control: AbstractControl): Observable<any> => {
       return userService
-        .checkIfUsernameExists(control.value)
+        .checkIfEmailExists(control.value)
         .pipe(
           map((result: boolean) =>
             result ? { usernameAlreadyExists: true } : null
