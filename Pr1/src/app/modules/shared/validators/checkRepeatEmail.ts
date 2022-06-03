@@ -12,7 +12,7 @@ export class UserEmailValidator {
         .checkIfEmailExists(control.value)
         .pipe(
           map((result: boolean) =>
-            result ? { usernameAlreadyExists: true } : null
+            result ? { userEmailAlreadyExists: true } : null
           )
         );
     };
