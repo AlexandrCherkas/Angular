@@ -1,8 +1,8 @@
 import { AbstractControl, ValidatorFn, ValidationErrors } from '@angular/forms';
 
-export function ValidateEmail (nameRe: RegExp): ValidatorFn {
+export function ValidateEmail (emailRe: RegExp): ValidatorFn {
   return (control: AbstractControl): ValidationErrors | null => {
-    const forbidden = !nameRe.test(control.value);
-    return forbidden ? {forbiddenName: {value: control.value}} : null;
+    const forbidden = !emailRe.test(control.value);
+    return forbidden ? {forbiddenEmail: {value: control.value}} : null;
   };
 }

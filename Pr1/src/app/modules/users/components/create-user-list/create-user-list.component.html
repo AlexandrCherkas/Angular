@@ -81,7 +81,7 @@
         <span *ngIf="childFormGroup.controls['email'].errors?.['email']">
           Invalid Email format.</span
         >
-        <span *ngIf="childFormGroup.controls['email'].errors?.['forbiddenName']">
+        <span *ngIf="childFormGroup.controls['email'].errors?.['forbiddenEmail']">
           The Email must have domen: '@gmail.com'.</span
         >
         <span *ngIf="childFormGroup.controls['email'].hasError('userEmailAlreadyExists')">
