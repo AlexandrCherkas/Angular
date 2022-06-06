@@ -25,9 +25,6 @@ export class CreateUserListComponent implements OnInit {
     console.log(this._userService)
   }
 
-
-
-
   childFormGroup: FormGroup
 
   ngOnInit(): void {
@@ -42,7 +39,6 @@ export class CreateUserListComponent implements OnInit {
       gender: ['',Validators.required],
       imageUrl: 'http://s1.iconbird.com/ico/2013/6/382/w256h2561372594116ManRed2.png'
     })
-
 
     this.formGroup.addControl('user', this.childFormGroup)
   }

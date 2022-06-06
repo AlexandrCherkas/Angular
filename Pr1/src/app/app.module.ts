@@ -16,6 +16,7 @@ import { MatCardModule} from '@angular/material/card'
 import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import {MatSelectModule} from '@angular/material/select';
 
 
 import { UserShellComponent } from './modules/users/components/user-shell/user-shell.component';
@@ -32,6 +33,9 @@ import { HeaderComponent } from './core/components/header/header.component';
 
 import { CreateUserListComponent } from './modules/users/components/create-user-list/create-user-list.component';
 import { CreateUserShellComponent } from './modules/users/components/create-user-shell/create-user-shell.component';
+
+import { AddressesComponentComponent } from './modules/users/components/addresses-component/addresses-component.component';
+
 
 
 @NgModule({
@@ -53,6 +57,9 @@ import { CreateUserShellComponent } from './modules/users/components/create-user
     CreateUserListComponent,
     CreateUserShellComponent,
 
+    AddressesComponentComponent,
+
+
   ],
   imports: [
     BrowserModule,
@@ -71,7 +78,10 @@ import { CreateUserShellComponent } from './modules/users/components/create-user
     MatButtonModule,
     CommonModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule
+
+
   ],
   providers: [],
   bootstrap: [AppComponent],

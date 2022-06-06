@@ -1,0 +1,24 @@
+
+.formAddress{
+  display: flex;
+  justify-content:center
+}
+.address-full-width {
+  min-width: 150px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.zip-full-width{
+  width: 100px;
+}
+.state-full-width{
+  width: 120px;
+}
+.buttonAddAddress{
+ display: block;
+ margin: 0 auto;
+}

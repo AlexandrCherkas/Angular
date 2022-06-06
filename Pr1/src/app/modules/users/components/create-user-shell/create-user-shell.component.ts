@@ -11,16 +11,19 @@ import { UserdataService } from '../../services/userdata.service';
 })
 export class CreateUserShellComponent implements OnInit {
   parentFormGroup: FormGroup = new FormGroup({});
+
   isValid: boolean = false;
   constructor(
     private _router: Router,
     private _userdataServece: UserdataService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    console.log(this.parentFormGroup)
+  }
 
   submit(): void {
-
+    console.log(this.parentFormGroup)
     if (this.parentFormGroup.status == 'VALID') {
       this._userdataServece.createNewUser(this.parentFormGroup.value.user);
       this._router.navigate(['/users']);

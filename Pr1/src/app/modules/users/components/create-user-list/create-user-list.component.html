@@ -3,78 +3,40 @@
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>First name</mat-label>
-        <input
-          matInput
-          id="name"
-          type="text"
-          name="name"
-          formControlName="name"
-          type="text"
-          placeholder="Ex. Ivan"
-        />
+        <input matInput id="name" type="text" name="name" formControlName="name" type="text" placeholder="Ex. Ivan"/>
       </mat-form-field>
 
-      <div
-        *ngIf="
-          isValid ||
-          (childFormGroup.controls['name'].invalid &&
-            (childFormGroup.controls['name'].dirty ||
-              childFormGroup.controls['name'].touched))
-        "
-        class="alert alert-danger"
-      >
-        <div *ngIf="childFormGroup.controls['name'].errors?.['required'] ">
-          First name is required.
-        </div>
+      <div *ngIf="isValid || (childFormGroup.controls['name'].invalid &&
+            (childFormGroup.controls['name'].dirty ||  childFormGroup.controls['name'].touched))"
+        class="alert alert-danger">
+        <div *ngIf="childFormGroup.controls['name'].errors?.['required'] "> First name is required.</div>
       </div>
     </tr>
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Second name </mat-label>
-        <input
-          matInput
-          name="secondName"
-          formControlName="secondName"
-          type="text"
-          placeholder="Ex. Ivanov"
-        />
+        <input matInput name="secondName"
+          formControlName="secondName" type="text" placeholder="Ex. Ivanov"/>
       </mat-form-field>
 
-      <div
-        *ngIf="
-          isValid ||
-          (childFormGroup.controls['secondName'].invalid &&
-            (childFormGroup.controls['secondName'].dirty ||
-              childFormGroup.controls['secondName'].touched))
-        "
-        class="alert alert-danger"
-      >
-        <span *ngIf="childFormGroup.controls['secondName'].errors">
-          Second name is required.</span
-        >
+      <div *ngIf="isValid || (childFormGroup.controls['secondName'].invalid &&
+            (childFormGroup.controls['secondName'].dirty || childFormGroup.controls['secondName'].touched))"
+        class="alert alert-danger">
+        <span *ngIf="childFormGroup.controls['secondName'].errors"> Second name is required.</span>
       </div>
     </tr>
+
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Enter your email</mat-label>
-        <input
-          matInput
-          name="email"
-          formControlName="email"
-          placeholder="example@gmail.com"
-        />
+        <input matInput name="email" formControlName="email" placeholder="example@gmail.com"/>
         <mat-error></mat-error>
       </mat-form-field>
 
 
-      <div
-        *ngIf=" isValid ||
-          (childFormGroup.controls['email'].invalid &&
-            (childFormGroup.controls['email'].dirty ||
-              childFormGroup.controls['email'].touched))
-        "
-        class="alert alert-danger"
-      >
+      <div *ngIf=" isValid || (childFormGroup.controls['email'].invalid &&
+            (childFormGroup.controls['email'].dirty || childFormGroup.controls['email'].touched))"
+        class="alert alert-danger">
         <span *ngIf="childFormGroup.controls['email'].errors?.['required']">
           Email is required.</span
         >
@@ -92,22 +54,10 @@
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Company </mat-label>
-        <input
-          matInput
-          name="company"
-          formControlName="company"
-          type="text"
-          placeholder="Ex. ISsoft"
-          required
-        />
+        <input matInput name="company" formControlName="company" type="text" placeholder="Ex. ISsoft" required/>
       </mat-form-field>
-      <div
-        *ngIf="
-          isValid ||
-          (childFormGroup.controls['company'].invalid &&
-            (childFormGroup.controls['company'].dirty ||
-              childFormGroup.controls['company'].touched))
-        "
+      <div *ngIf="isValid ||(childFormGroup.controls['company'].invalid &&
+            (childFormGroup.controls['company'].dirty || childFormGroup.controls['company'].touched))"
         class="alert alert-danger"
       >
         <span *ngIf="childFormGroup.controls['company'].errors?.['required']">
@@ -121,70 +71,32 @@
     <tr>
       <mat-form-field class="full-width" appearance="fill">
         <mat-label>Departament </mat-label>
-        <input
-          matInput
-          name="departament"
-          formControlName="departament"
-          type="text"
-          placeholder="Ex. Front-End"
-        />
+        <input matInput name="departament" formControlName="departament" type="text" placeholder="Ex. Front-End"/>
       </mat-form-field>
-      <div
-        *ngIf="
-          isValid ||
-          (childFormGroup.controls['departament'].invalid &&
-            (childFormGroup.controls['departament'].dirty ||
-              childFormGroup.controls['departament'].touched))
-        "
+      <div *ngIf="isValid ||(childFormGroup.controls['departament'].invalid &&
+            (childFormGroup.controls['departament'].dirty || childFormGroup.controls['departament'].touched))"
         class="alert alert-danger"
       >
-        <span
-          *ngIf="childFormGroup.controls['departament'].errors?.['required']"
-        >
-          Departament is required.</span
-        >
-        <span
-          *ngIf="childFormGroup.controls['departament'].errors?.['minlength']"
-        >
-          The department name must contain at least 6 characters.</span
-        >
+        <span *ngIf="childFormGroup.controls['departament'].errors?.['required']">Departament is required.</span>
+        <span *ngIf="childFormGroup.controls['departament'].errors?.['minlength']">The department name must contain at least 6 characters.</span>
       </div>
     </tr>
 
     <tr>
       <mat-form-field class="full-width" appearance="fill" floatLabel="always">
         <mat-label>Age</mat-label>
-        <input
-          matInput
-          class="right-align"
-          name="age"
-          formControlName="age"
-          type="number"
-          placeholder="Ex. 21"
-          min="15"
-          max="100"
-        />
+        <input matInput class="right-align" name="age" formControlName="age" type="number" placeholder="Ex. 21" min="15" max="100"/>
         <span matSuffix>years</span>
       </mat-form-field>
 
       <div
-        *ngIf="
-          isValid ||
-          (childFormGroup.controls['age'].invalid &&
-            (childFormGroup.controls['age'].dirty ||
-              childFormGroup.controls['age'].touched))
-        "
+        *ngIf="isValid || (childFormGroup.controls['age'].invalid &&
+            (childFormGroup.controls['age'].dirty || childFormGroup.controls['age'].touched))"
         class="alert alert-danger"
       >
-        <span *ngIf="childFormGroup.controls['age'].errors?.['required']">
-          Age is required.</span
-        >
-        <span *ngIf="childFormGroup.controls['age'].errors?.['min']">
-          The age must be at least 15 years old.</span
-        >
-        <span *ngIf="childFormGroup.controls['age'].errors?.['max']">
-          The age must be more than 100 years old.</span
-        >
+        <span *ngIf="childFormGroup.controls['age'].errors?.['required']">Age is required.</span>
+        <span *ngIf="childFormGroup.controls['age'].errors?.['min']"> The age must be at least 15 years old.</span>
+        <span *ngIf="childFormGroup.controls['age'].errors?.['max']">The age must be more than 100 years old.</span>
       </div>
     </tr>
 
@@ -222,4 +134,5 @@
     </tr>
   </table>
 </form>
+
 

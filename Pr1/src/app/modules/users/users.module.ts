@@ -5,6 +5,7 @@ import { UserListComponent } from './components/user-list/user-list.component';
 import { UserShellComponent } from './components/user-shell/user-shell.component';
 import { CreateUserListComponent } from './components/create-user-list/create-user-list.component';
 import { CreateUserShellComponent } from './components/create-user-shell/create-user-shell.component';
+import { AddressesComponentComponent } from './components/addresses-component/addresses-component.component';
 
 
 
@@ -14,7 +15,8 @@ import { CreateUserShellComponent } from './components/create-user-shell/create-
     UserListComponent,
     UserShellComponent,
     CreateUserListComponent,
-    CreateUserShellComponent
+    CreateUserShellComponent,
+    AddressesComponentComponent
   ],
   imports: [
     CommonModule,

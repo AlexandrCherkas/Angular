@@ -1,0 +1,62 @@
+
+<h3></h3>
+<form [formGroup]="dynamicForm" class="formAddress">
+  <div formArrayName="address">
+
+    <div *ngFor="let address of addressesFormArray.controls; let i = index;">
+      <div [formGroupName]="i"  class="container">
+
+        <table class="address-full-width" cellspacing="0">
+          <tr>
+            <td>
+              <mat-form-field class="address-full-width" appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput type="text" name="city" formControlName="city" placeholder="Ex. San Francisco"/>
+
+                <mat-error *ngIf="addressesFormArray.controls[i]">
+                  City is required
+                </mat-error>
+
+                <!-- <mat-error *ngIf="address.controls['city'].errors?.['required']">
+                  City is <strong>required</strong>
+                </mat-error> -->
+              </mat-form-field>
+            </td>
+
+
+            <td>
+              <mat-form-field class="state-full-width" appearance="fill">
+                <mat-label>State</mat-label>
+                <input matInput type="text" name="state" formControlName="state" placeholder="Ex. California"/>
+
+              </mat-form-field>
+            </td>
+
+            <td>
+              <mat-form-field class="zip-full-width" appearance="fill">
+                <mat-label>Zip code</mat-label>
+                <input matInput name="zip" formControlName="zip" #postalCode maxlength="5" placeholder="Ex. 94105"  />
+              </mat-form-field>
+            </td>
+           <td>
+              <ng-container *ngIf="addressesFormArray.controls.length > 1">
+                <mat-icon (click)="removeAddress(i)"> delete </mat-icon>
+              </ng-container>
+            </td>
+        </tr>
+        </table>
+
+      </div>
+    </div>
+
+    <div style="margin: 10px;"></div>
+    <button mat-raised-button class="buttonAddAddress" color="primary" type="button" (click)="addAddress()">  Add Address </button>
+
+
+
+  </div>
+</form>
+
+ <!-- <button mat-mini-fab color="primary" (click)="addAddress()">
+      <mat-icon class="add-course-btn">add</mat-icon>
+    </button> -->
