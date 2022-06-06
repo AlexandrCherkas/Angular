@@ -17,6 +17,8 @@ export class AddressesComponentComponent implements OnInit {
 
   dynamicForm: FormGroup;
 
+  fooRequired:boolean = true
+
   constructor(private fb: FormBuilder) {}
 
   ngOnInit() {
@@ -27,16 +29,18 @@ export class AddressesComponentComponent implements OnInit {
     this.formGroup.addControl('addresses', this.dynamicForm )
   }
 
+
   createAddressesGroup() {
     return this.fb.group({
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zip: ['', Validators.required],
+      addressLine: ['', Validators.required],
+      city: [''],
+      zip: [''],
     });
   }
 
   addAddress() {
     this.addressesFormArray.push(this.createAddressesGroup());
+    console.log(this.addressesFormArray.controls[0].get('city')?.hasError('required'))
   }
 
   removeAddress(index: number) {
@@ -44,8 +48,21 @@ export class AddressesComponentComponent implements OnInit {
   }
 
   get addressesFormArray() {
-    console.log(<FormArray>this.dynamicForm.get('address'))
     return <FormArray>this.dynamicForm.get('address');
+  }
+
+
+  changeValidators(index: number) {
+    let input: any = this.addressesFormArray.controls[index].get('city')
+    if (this.fooRequired) {
+      console.log('rgrg')
+      input.setValidators([Validators.required]);
+    } else {
+      input.setValidators(null);
+    }
+
+    input.updateValueAndValidity();
+    this.fooRequired = !this.fooRequired;
   }
 }
 
