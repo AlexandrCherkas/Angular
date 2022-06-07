@@ -1,5 +1,5 @@
 <h3 class="headerAddress">ADDRESS: </h3>
-<form [formGroup]="dynamicForm" class="formAddress">
+<div [formGroup]="dynamicForm" class="formAddress">
   <div formArrayName="address">
 
     <div *ngFor="let address of addressesFormArray.controls; let i = index;">
@@ -10,31 +10,30 @@
             <td>
               <mat-form-field class="address-full-width" appearance="fill">
                 <mat-label>Address-line</mat-label>
-                <input matInput type="text" name="addressLine" formControlName="addressLine" placeholder="Ex. San Francisco"/>
+                <textarea matInput class="re" type="text" name="addressLine" formControlName="addressLine" placeholder="Ex. San Francisco"></textarea>
 
-                <mat-error color="orange" *ngIf="this.addressesFormArray.controls[0].get('addressLine')?.hasError('required')">
+                <mat-error  *ngIf="isValid && this.addressesFormArray.controls[i].get('addressLine')?.hasError('required')">
                   Address-line is required
                 </mat-error>
 
-                           </mat-form-field>
-            </td>
-
-
-            <td>
-              <mat-form-field class="state-full-width" appearance="fill">
-                <mat-label>City</mat-label>
-                <input matInput type="textarea" name="city" formControlName="city" placeholder="Ex. California" (click)="changeValidators(i)"/>
-                <mat-error  *ngIf="this.addressesFormArray.controls[0].get('city')?.hasError('required')">
-                  City is required
-                </mat-error>
               </mat-form-field>
             </td>
 
             <td>
-              <mat-form-field class="zip-full-width" appearance="fill">
+              <mat-form-field class="state-full-width" appearance="fill">
+                <mat-label>City</mat-label>
+                <input matInput type="textarea" name="city" formControlName="city" placeholder="Ex. California" (click)="enableInput(i)"/>
+              </mat-form-field>
+            </td>
+
+            <td>
+              <mat-form-field class="zip-full-width" appearance="fill" >
                 <mat-label>Zip code</mat-label>
 
-                <input matInput name="zip" formControlName="zip" #postalCode maxlength="5" placeholder="Ex. 94105"  />
+                <input matInput  name="zip" formControlName="zip"  placeholder="Ex. 94105"  />
+                <mat-error  *ngIf="this.addressesFormArray.controls[0].get('zip')?.hasError('required')">
+                  Zip is required
+                </mat-error>
               </mat-form-field>
             </td>
            <td>
@@ -57,7 +56,7 @@
 
 
   </div>
-</form>
+</div>
 
  <!-- <button mat-mini-fab color="primary" (click)="addAddress()">
       <mat-icon class="add-course-btn">add</mat-icon>

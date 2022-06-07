@@ -13,6 +13,7 @@ export class CreateUserShellComponent implements OnInit {
   parentFormGroup: FormGroup = new FormGroup({});
 
   isValid: boolean = false;
+
   constructor(
     private _router: Router,
     private _userdataServece: UserdataService
@@ -24,6 +25,7 @@ export class CreateUserShellComponent implements OnInit {
 
   submit(): void {
     console.log(this.parentFormGroup)
+
     if (this.parentFormGroup.status == 'VALID') {
       this._userdataServece.createNewUser(this.parentFormGroup.value.user);
       this._router.navigate(['/users']);

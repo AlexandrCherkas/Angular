@@ -1,11 +1,15 @@
 
 .formAddress{
   display: flex;
-  justify-content:center
+  justify-content:center;
+  margin-bottom: 20px;
 }
 .address-full-width {
   min-width: 150px;
   width: 100%;
+}
+.re{
+  height: 10px;
 }
 
 .example-full-width {
@@ -29,8 +33,10 @@
   font-family: 'Gloria Hallelujah', cursive;
   font-weight: bold;
   text-decoration: underline;
+}
 
-
+.mat-error{
+  margin-bottom: 5px
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Permanent+Marker&display=swap');
