@@ -1,12 +1,17 @@
 form{
-  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
 }
-.full-width{
-  width: 440px;
-}
+
 .alert{
   color: orange;
   margin-bottom: 5px;
   margin-left: 10px;
+}
 
+.gender{
+  display: block;
+  margin: 0 auto;
 }

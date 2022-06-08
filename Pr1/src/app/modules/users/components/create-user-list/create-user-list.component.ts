@@ -1,9 +1,9 @@
-import {trigger,  state,  style,  animate,  transition} from '@angular/animations';
 import { Component, OnInit, Input } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
 
 import { UserserviceService } from '../../services/userservice.service';
+import { UserdataService } from '../../services/userdata.service';
 import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
 
 @Component({
@@ -15,21 +15,16 @@ import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepea
 export class CreateUserListComponent implements OnInit {
 
   @Input() formGroup: FormGroup;
-  @Input() isValid: boolean
 
-  public createID(): number{
-    return Math.floor(Math.random() * 1000000);
-  }
 
-  constructor(private fb: FormBuilder, private _userService: UserserviceService) {
-    console.log(this._userService)
-  }
+
+  constructor(private fb: FormBuilder, private _userService: UserserviceService, private _userdataService: UserdataService) { }
 
   childFormGroup: FormGroup
 
   ngOnInit(): void {
     this.childFormGroup = this.fb.group({
-      id: this.createID(),
+      id: this._userdataService.createID(),
       name: ['',Validators.required],
       secondName: ['',Validators.required],
       email:['', [Validators.required, Validators.email, ValidateEmail(/^.+@gmail.com$/)], [UserEmailValidator.createValidator(this._userService)] ],

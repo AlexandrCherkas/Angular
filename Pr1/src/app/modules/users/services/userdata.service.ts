@@ -1,16 +1,17 @@
 import { Injectable } from '@angular/core';
 import { IUser } from 'src/app/modules/users/interface/user';
+import { IAddress } from '../interface/address';
+import { IUsersWithAddress } from '../interface/user+address';
 
 @Injectable({
   providedIn: 'root'
 })
 
-
 export class UserdataService {
 
   public usersEmails: Array<string> = []
 
-  public users: IUser[] = [
+  public users: IUser[] | IUsersWithAddress[]  = [
     {
       id: 11,
       name: 'Chack',
@@ -20,7 +21,7 @@ export class UserdataService {
       gender: true,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg1855.jpg'
+      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg1855.jpg',
      },
      {
       id: 22,
@@ -31,7 +32,7 @@ export class UserdataService {
       gender: true,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg12.jpg'
+      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg12.jpg',
      },
      {
       id: 33,
@@ -42,7 +43,7 @@ export class UserdataService {
       gender: false,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/ce/Scarlett_Johansson.jpg'
+      imageUrl:'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/ce/Scarlett_Johansson.jpg',
      },
      {
       id: 44,
@@ -53,7 +54,7 @@ export class UserdataService {
       gender: true,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg31.jpg'
+      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg31.jpg',
      }
   ]
   constructor() { }
@@ -62,7 +63,7 @@ export class UserdataService {
     return Math.floor(Math.random() * 10000);
   }
 
-  public getUsers(): IUser[] {
+  public getUsers(): IUser[] | IUsersWithAddress[] {
     return this.users
   }
 
@@ -71,8 +72,20 @@ export class UserdataService {
     return this.usersEmails
   }
 
-  public createNewUser(user: IUser): void {
-    this.users.push(user)
+  public createNewUser(user: IUser, userAddAddress: Array<IAddress>): void {
+    let newUserWithAddress: IUsersWithAddress = {
+      id: user.id,
+      name: user.name,
+      secondName: user.secondName ,
+      email: user.email,
+      age: user.age,
+      gender: user.gender,
+      departament: user.departament,
+      company: user.company,
+      imageUrl: user.imageUrl,
+      address: userAddAddress
+    }
+    this.users.push(newUserWithAddress)
   }
 
 }

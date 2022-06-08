@@ -34,7 +34,8 @@ import { HeaderComponent } from './core/components/header/header.component';
 import { CreateUserListComponent } from './modules/users/components/create-user-list/create-user-list.component';
 import { CreateUserShellComponent } from './modules/users/components/create-user-shell/create-user-shell.component';
 
-import { AddressesComponentComponent } from './modules/users/components/addresses-component/addresses-component.component';
+import { AddressesComponent } from './modules/users/components/addresses/addresses.component';
+import { AddressComponent } from './modules/users/components/address/address.component';
 
 
 
@@ -57,7 +58,8 @@ import { AddressesComponentComponent } from './modules/users/components/addresse
     CreateUserListComponent,
     CreateUserShellComponent,
 
-    AddressesComponentComponent,
+    AddressesComponent,
+    AddressComponent
 
 
   ],

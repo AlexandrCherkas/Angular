@@ -1,0 +1,17 @@
+<div class="container">
+  <h3 class="headerAddress">ADDRESS:</h3>
+  <ng-container  *ngFor="let addressForm of addressesFormsArray.controls; let i = index">
+
+    <div>
+      <app-address [address]="addressForm"></app-address>
+      <ng-container *ngIf="addressesFormsArray.controls.length > 1">
+        <mat-icon color="warn" (click)="removeAddress(i)"> delete </mat-icon>
+      </ng-container>
+    </div>
+
+  </ng-container>
+
+  <button mat-mini-fab  color="primary" type="button"  (click)="addAddress()">
+      <mat-icon>add</mat-icon>
+  </button>
+</div>

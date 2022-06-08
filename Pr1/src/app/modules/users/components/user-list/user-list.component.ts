@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { IUser } from 'src/app/modules/users/interface/user';
+import { IUsersWithAddress } from '../../interface/user+address';
 
 import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
@@ -14,12 +15,11 @@ import { ICar } from 'src/app/modules/cars/interface/car';
 })
 export class UserListComponent implements OnInit {
 
-  @Input() users: IUser[] = [];
+  @Input() users: IUsersWithAddress[] | IUser[]  = [];
   @Input() favorites: IFavoriteCards[] = [];
 
   constructor(private favoritesService: SelectedEntitiesService) { }
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   addToFavorite(user: IUser): void {
     this.favoritesService.toFavorite(user.id, Favotite.User);

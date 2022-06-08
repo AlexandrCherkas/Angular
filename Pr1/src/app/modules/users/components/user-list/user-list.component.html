@@ -16,7 +16,20 @@
         <span class="btn">Department : <span class="grn">{{user.departament }}</span></span>
         <span class="btn">Company : <span class="grn">{{user.company }}</span></span>
         <span class="btn">Email : <span class="grn">{{user.email }}</span></span>
+
+        <ng-container *ngIf="user.address">
+
+
+          <!-- <ng-container *ngFor="let address of user.address; let i = index" >
+
+<span class="btn">Address-line: <span class="grn">{{}}</span>
+
+          </ng-container> -->
+
+
+        </ng-container>
       </div>
+
 
 
     </app-card>

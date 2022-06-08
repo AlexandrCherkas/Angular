@@ -1,5 +1,6 @@
 import { IAddress } from "./address"
-export interface IUser {
+
+export interface IUsersWithAddress {
   id: number,
   name: string,
   secondName: string,
@@ -9,5 +10,5 @@ export interface IUser {
   departament: string,
   company: string,
   imageUrl: string,
-  address?: Array<IAddress>
+  address: Array<IAddress>
 }
