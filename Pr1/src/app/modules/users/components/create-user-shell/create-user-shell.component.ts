@@ -21,7 +21,7 @@ export class CreateUserShellComponent implements OnInit {
 
 
   submit(): void {
-    console.log(this.parentFormGroup.value.addresses)
+    console.log(this.parentFormGroup)
     this.parentFormGroup.markAllAsTouched();
 
     if (this.parentFormGroup.status == 'VALID') {

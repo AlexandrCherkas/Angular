@@ -19,19 +19,23 @@
 
         <ng-container *ngIf="user.address">
 
+          <div *ngFor="let address of user.address; let i = index" >
+            <h4> - Address # {{i + 1}} :</h4>
+            <span class="btw">Address-line : <span class="grn"> {{address.addressLine}}</span> </span>
+            <ng-container *ngIf="address.city">
+              <span class="btw">City : <span class="grn"> {{address.city}}</span> </span>
+            </ng-container>
+            <ng-container *ngIf="address.zip">
+              <span class="btw">Zip : <span class="grn"> {{address.zip}}</span> </span>
+            </ng-container>
 
-          <!-- <ng-container *ngFor="let address of user.address; let i = index" >
-
-<span class="btn">Address-line: <span class="grn">{{}}</span>
-
-          </ng-container> -->
-
+          </div>
 
         </ng-container>
+
       </div>
-
-
-
     </app-card>
   </ng-container>
 </div>
+
+

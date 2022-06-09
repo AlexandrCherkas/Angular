@@ -4,7 +4,7 @@
     <textarea matInput class="re" type="text" name="addressLine" formControlName="addressLine"
       placeholder="Ex. San Francisco"></textarea>
 
-    <mat-error *ngIf="this.address.get('addressLine')?.hasError('required')">Address-line is required</mat-error>
+    <mat-error *ngIf="this.address.get('addressLine')?.hasError('required')">Address-line is <strong>required</strong></mat-error>
   </mat-form-field>
 
   <mat-form-field class="state-full-width" appearance="fill">
@@ -14,7 +14,7 @@
 
   <mat-form-field class="zip-full-width" appearance="fill">
     <mat-label>Zip code</mat-label>
-    <input matInput name="zip" formControlName="zip" placeholder="Ex. 94105" />
-    <mat-error *ngIf="this.address.get('zip')?.hasError('required')">Zip is required</mat-error>
+    <input matInput name="zip" type="number" formControlName="zip" placeholder="Ex. 94105" />
+    <mat-error *ngIf="this.address.get('zip')?.hasError('required')">Zip is <strong>required</strong></mat-error>
   </mat-form-field>
 </div>

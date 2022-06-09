@@ -35,6 +35,8 @@ export class CreateUserListComponent implements OnInit {
       imageUrl: 'http://s1.iconbird.com/ico/2013/6/382/w256h2561372594116ManRed2.png'
     })
 
+    console.log(this.childFormGroup.controls['email'].errors?.['forbiddenEmail'].value != '')
+
     this.formGroup.addControl('user', this.childFormGroup)
   }
 

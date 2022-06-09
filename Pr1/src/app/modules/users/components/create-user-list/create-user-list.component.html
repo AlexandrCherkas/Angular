@@ -19,8 +19,8 @@
         <mat-error *ngIf="(childFormGroup.controls['email'].invalid && (childFormGroup.controls['email'].dirty || childFormGroup.controls['email'].touched))">
           <mat-error *ngIf="childFormGroup.controls['email'].errors?.['required']"> Email is <strong>required</strong> </mat-error>
           <mat-error *ngIf="childFormGroup.controls['email'].errors?.['email']"> Invalid Email format </mat-error>
-          <mat-error *ngIf="childFormGroup.controls['email'].errors?.['forbiddenEmail']"> The Email must have domen: <strong>'@gmail.com'</strong> </mat-error>
-          <mat-error *ngIf="childFormGroup.controls['email'].hasError('userEmailAlreadyExists')"> This email already exists.</mat-error>
+          <mat-error *ngIf="childFormGroup.controls['email'].errors?.['forbiddenEmail'].value != '' "> The Email must have domen: <strong>'@gmail.com'</strong> </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['email'].hasError('userEmailAlreadyExists')"> This email already <strong>exists</strong> .</mat-error>
         </mat-error>
       </mat-form-field>
 
@@ -28,8 +28,8 @@
         <mat-label>Company </mat-label>
         <input matInput name="company" formControlName="company" type="text" placeholder="Ex. ISsoft" required/>
         <mat-error *ngIf="(childFormGroup.controls['company'].invalid && (childFormGroup.controls['company'].dirty || childFormGroup.controls['company'].touched))">
-          <mat-error *ngIf="childFormGroup.controls['company'].errors?.['required']"> Company is required. </mat-error>
-          <mat-error *ngIf="childFormGroup.controls['company'].errors?.['maxlength']"> The company name must contain no more than 35 characters </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['company'].errors?.['required']"> Company is <strong>required</strong>. </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['company'].errors?.['maxlength']"> The company name must contain no more than <strong>35 characters</strong> </mat-error>
         </mat-error>
       </mat-form-field>
 
@@ -38,8 +38,8 @@
         <mat-label>Departament </mat-label>
         <input matInput name="departament" formControlName="departament" type="text" placeholder="Ex. Front-End"/>
         <mat-error *ngIf="(childFormGroup.controls['departament'].invalid && (childFormGroup.controls['departament'].dirty || childFormGroup.controls['departament'].touched))">
-          <mat-error *ngIf="childFormGroup.controls['departament'].errors?.['required']"> Departament is required. </mat-error>
-          <mat-error *ngIf="childFormGroup.controls['departament'].errors?.['minlength']"> The department name must contain at least 6 characters. </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['departament'].errors?.['required']"> Departament is <strong>required</strong>. </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['departament'].errors?.['minlength']"> The department name must contain at least <strong>6 characters.</strong> </mat-error>
         </mat-error>
       </mat-form-field>
 
@@ -47,20 +47,19 @@
         <mat-label>Age</mat-label>
         <input matInput class="right-align" name="age" formControlName="age" type="number" placeholder="Ex. 21" min="15" max="100"/>
         <span matSuffix>years</span>
-        <ng-container *ngIf="(childFormGroup.controls['age'].invalid && (childFormGroup.controls['age'].dirty || childFormGroup.controls['age'].touched))">
-          <mat-error *ngIf="childFormGroup.controls['age'].errors?.['required']">Age is required. </mat-error>
-          <mat-error *ngIf="childFormGroup.controls['age'].errors?.['min']"> The age must be at least 15 years old.</mat-error>
-          <mat-error *ngIf="childFormGroup.controls['age'].errors?.['max']">The age must be more than 100 years old.</mat-error>
-        </ng-container>
+          <mat-error *ngIf="childFormGroup.controls['age'].errors?.['required']">Age is <strong>required</strong>. </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['age'].errors?.['min']"> The age must be at least <strong>15 years old</strong>.</mat-error>
+          <mat-error *ngIf="childFormGroup.controls['age'].errors?.['max']">The age must be more than <strong>100 years old</strong>.</mat-error>
       </mat-form-field>
 
       <div class="container gender">
-        <label id="radio-group-label" style="margin: 10px; font: bold ">Select gender :</label>
+        <label id="radio-group-label" style="margin: 10px; font: bold " class="genderLabel">Select gender :</label>
         <mat-radio-group aria-label="Select an option" formControlName="gender">
           <mat-radio-button  value="false" style="margin: 10px; font-weight: bold; color: rgb(90, 90, 90)">MALE</mat-radio-button>
           <mat-radio-button value="true" style="margin: 10px; font-weight: bold; color: rgb(90, 90, 90)">FEMALE</mat-radio-button>
-            <mat-error *ngIf="childFormGroup.controls['gender'].errors?.['required']"> Gender is required</mat-error>
         </mat-radio-group>
+        <mat-error class="genderError" *ngIf="childFormGroup.controls['gender'].touched && childFormGroup.controls['gender'].errors?.['required']"> Gender is <strong>required</strong></mat-error>
+
       </div>
 </form>
 
