@@ -10,14 +10,14 @@
   </mat-card-content>
 
   <mat-card-actions>
-    <button
-      mat-icon-button
-      aria-label="Example icon button with a heart icon"
-      class="card-button"
-      (click)="addToFavorite()"
-      [color]="this.isLikes ? 'warn' : 'primary'"
-    >
+    <button mat-icon-button class="card-button" (click)="addToFavorite()" [color]="this.isLikes ? 'warn' : 'primary'"  >
       <mat-icon>favorite</mat-icon>
+    </button>
+  </mat-card-actions>
+
+  <mat-card-actions>
+    <button  mat-icon-button color="primary" [routerLink] = "['/edit', id]">
+      <mat-icon>edit</mat-icon>
     </button>
   </mat-card-actions>
 </mat-card>

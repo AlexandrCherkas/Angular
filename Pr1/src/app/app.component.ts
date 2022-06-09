@@ -8,10 +8,5 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title = 'Pr1';
-
-  // public usersLikes: string[] = ['dfsdf','dsfsdfsd']
-  // public carsLikes: [] = []
-
-
 }
 

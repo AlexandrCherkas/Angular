@@ -4,7 +4,7 @@
       class="user-image"
       [image]="user.imageUrl"
       (toFavoriteEvent)="addToFavorite(user)"
-
+      [id]="user.id"
       [isLikes]="checkIfFavored(user.id)"
 
     >

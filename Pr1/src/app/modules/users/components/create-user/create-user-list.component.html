@@ -1,3 +1,6 @@
+
+
+
 <form [formGroup]="childFormGroup" novalidate>
 
       <mat-form-field class="full-width" appearance="fill">
@@ -19,7 +22,7 @@
         <mat-error *ngIf="(childFormGroup.controls['email'].invalid && (childFormGroup.controls['email'].dirty || childFormGroup.controls['email'].touched))">
           <mat-error *ngIf="childFormGroup.controls['email'].errors?.['required']"> Email is <strong>required</strong> </mat-error>
           <mat-error *ngIf="childFormGroup.controls['email'].errors?.['email']"> Invalid Email format </mat-error>
-          <mat-error *ngIf="childFormGroup.controls['email'].errors?.['forbiddenEmail'].value != '' "> The Email must have domen: <strong>'@gmail.com'</strong> </mat-error>
+          <mat-error *ngIf="childFormGroup.controls['email'].errors?.['forbiddenEmail']"> The Email must have domen: <strong>'@gmail.com'</strong> </mat-error>
           <mat-error *ngIf="childFormGroup.controls['email'].hasError('userEmailAlreadyExists')"> This email already <strong>exists</strong> .</mat-error>
         </mat-error>
       </mat-form-field>

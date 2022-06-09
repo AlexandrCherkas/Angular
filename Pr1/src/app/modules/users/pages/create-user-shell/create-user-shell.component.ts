@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserdataService } from '../../services/userdata.service';
+import { IUser } from '../../interface/user';
 
 @Component({
   selector: 'app-create-user-shell',
@@ -21,6 +22,7 @@ export class CreateUserShellComponent implements OnInit {
 
 
   submit(): void {
+
     console.log(this.parentFormGroup)
     this.parentFormGroup.markAllAsTouched();
 

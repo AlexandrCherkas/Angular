@@ -67,9 +67,32 @@ export class UserdataService {
     return this.users
   }
 
+  public getUserByID(id: number): IUser | undefined {
+    let user = this.users.find(user => user.id == id)
+    return user
+  }
+
   public getUsersEmail(): Array<string>{
     this.usersEmails = this.users.map(user => user.email)
     return this.usersEmails
+  }
+
+  changeUser(user: IUser, userAddAddress: Array<IAddress>): void{
+    let modifiedUser: IUsersWithAddress = {
+      id: user.id,
+      name: user.name,
+      secondName: user.secondName ,
+      email: user.email,
+      age: user.age,
+      gender: user.gender,
+      departament: user.departament,
+      company: user.company,
+      imageUrl: user.imageUrl,
+      address: userAddAddress
+    }
+    console.log(modifiedUser)
+    this.users = this.users.map(user => user.id === modifiedUser.id ? modifiedUser : user)
+    console.log(this.users)
   }
 
   public createNewUser(user: IUser, userAddAddress: Array<IAddress>): void {
@@ -87,5 +110,7 @@ export class UserdataService {
     }
     this.users.push(newUserWithAddress)
   }
+
+
 
 }

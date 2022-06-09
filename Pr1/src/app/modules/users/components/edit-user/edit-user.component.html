@@ -1,0 +1,11 @@
+<h2 class="nameForm" >EDIT USER : {{user?.['name']}} {{user?.['secondName']}} </h2>
+<div class="edit-form">
+  <form class="form" [formGroup]="parentFormGroup" (submit)="editUser()" >
+
+    <app-create-user-list [formGroup]="parentFormGroup" [currentUser]="user" > </app-create-user-list>
+    <app-addresses [formGroup]="parentFormGroup" [currentUser]="user" > </app-addresses>
+    <button mat-stroked-button color="primary" type="submit">Save</button>
+
+  </form>
+</div>
+

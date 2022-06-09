@@ -22,10 +22,12 @@ button{
 }
 
 .nameForm{
-color: rgb(5, 49, 5);
-font-family: 'Gloria Hallelujah', cursive;
-font-weight: bold
-
+  display: flex;
+  color: rgb(5, 49, 5);
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bold;
+  justify-content: center;
 }
+
 
 @import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Permanent+Marker&display=swap');

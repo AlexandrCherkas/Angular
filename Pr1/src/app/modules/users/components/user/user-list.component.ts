@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output } from '@angular/core';
 import { IUser } from 'src/app/modules/users/interface/user';
 import { IUsersWithAddress } from '../../interface/user+address';
 
@@ -18,12 +18,19 @@ export class UserListComponent implements OnInit {
   @Input() users: IUsersWithAddress[] | IUser[]  = [];
   @Input() favorites: IFavoriteCards[] = [];
 
+
+
   constructor(private favoritesService: SelectedEntitiesService) { }
   ngOnInit(): void { }
 
   addToFavorite(user: IUser): void {
     this.favoritesService.toFavorite(user.id, Favotite.User);
   }
+
+  // editUser(user: IUser):void{
+
+  //   console.log(user.id)
+  // }
 
   checkIfFavored(userID: number): boolean {
     return this.favoritesService.checkIfFavored(userID, Favotite.User);

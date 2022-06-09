@@ -1,0 +1,28 @@
+.edit-form{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  margin-top: 10px;
+}
+.form{
+  border: 1px solid greenyellow;
+  padding: 20px;
+  margin: 0 auto;
+  align-items: center;
+  justify-content: center;
+}
+.nameForm{
+  display: flex;
+  color: rgb(5, 49, 5);
+  font-family: 'Gloria Hallelujah', cursive;
+  font-weight: bold;
+  justify-content: center;
+}
+
+button{
+  display: block;
+  width: 350px;
+  margin: 0 auto;
+  background-color: gainsboro;
+}
