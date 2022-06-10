@@ -22,3 +22,13 @@ mat-card-header{
   font-family: 'Lato', sans-serif;
   font-size: 15px;
 }
+mat-card-actions{
+  display: inline-block;
+  margin: 0;
+}
+.button-edit{
+  float: right;
+}
+.color {
+  color: green;
+ }

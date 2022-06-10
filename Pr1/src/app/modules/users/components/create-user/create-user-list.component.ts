@@ -22,7 +22,9 @@ export class CreateUserListComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _userService: UserserviceService,
-    private _userdataService: UserdataService) { }
+    private _userdataService: UserdataService)  {}
+
+
 
   ngOnInit(): void {
 
@@ -40,6 +42,14 @@ export class CreateUserListComponent implements OnInit {
 
     this.formGroup.addControl('user', this.childFormGroup)
     this.childFormGroup.patchValue(this.currentUser)
+
+    console.log(this.childFormGroup)
+
   }
+
+
+
+
+
 
 }

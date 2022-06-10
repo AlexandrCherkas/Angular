@@ -14,7 +14,7 @@ export class CardComponent implements OnInit {
   @Input() id!: number;
 
   @Output() toFavoriteEvent = new EventEmitter();
-  // @Output() toEditUserEvent = new EventEmitter();
+
 
   constructor() {}
 
@@ -25,8 +25,4 @@ export class CardComponent implements OnInit {
     this.isLikes = !this.isLikes;
   }
 
-  // editUser(): void{
-  //   console.log(this.id)
-  //   this.toEditUserEvent.emit()
-  // }
 }

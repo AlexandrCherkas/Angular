@@ -8,16 +8,18 @@
   <mat-card-content class="information">
     <ng-content  select=".data-conteiner"></ng-content>
   </mat-card-content>
+<ng-container >
+    <mat-card-actions>
+      <button mat-icon-button class="card-button" (click)="addToFavorite()" [color]="this.isLikes ? 'warn' : 'primary'"  >
+        <mat-icon>favorite</mat-icon>
+      </button>
+    </mat-card-actions>
 
-  <mat-card-actions>
-    <button mat-icon-button class="card-button" (click)="addToFavorite()" [color]="this.isLikes ? 'warn' : 'primary'"  >
-      <mat-icon>favorite</mat-icon>
-    </button>
-  </mat-card-actions>
+    <mat-card-actions class="button-edit" >
+      <button  mat-icon-button  [routerLink] = "['/user/edit', id]" class="edit button color">
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-card-actions>
+  </ng-container>
 
-  <mat-card-actions>
-    <button  mat-icon-button color="primary" [routerLink] = "['/edit', id]">
-      <mat-icon>edit</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+  </mat-card>
