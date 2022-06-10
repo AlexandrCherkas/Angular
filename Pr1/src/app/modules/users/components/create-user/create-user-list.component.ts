@@ -1,11 +1,12 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormControl, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
 
 import { UserserviceService } from '../../services/userservice.service';
 import { UserdataService } from '../../services/userdata.service';
 import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
 import { IUser } from '../../interface/user';
+import { forkJoin, merge } from 'rxjs';
 
 @Component({
   selector: 'app-create-user-list',
@@ -22,8 +23,7 @@ export class CreateUserListComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private _userService: UserserviceService,
-    private _userdataService: UserdataService)  {}
-
+    private _userdataService: UserdataService)  {    }
 
 
   ngOnInit(): void {
@@ -43,13 +43,20 @@ export class CreateUserListComponent implements OnInit {
     this.formGroup.addControl('user', this.childFormGroup)
     this.childFormGroup.patchValue(this.currentUser)
 
-    console.log(this.childFormGroup)
+    forkJoin([
+      this.childFormGroup.get('name')?.valueChanges,
+      this.childFormGroup.get('secondName')?.valueChanges])
+      .subscribe((data) => {  console.log(data) }
+      );
+
+    merge(
+      this.childFormGroup.get('name')?.valueChanges,
+      this.childFormGroup.get('secondName')?.valueChanges)
+      .subscribe((data) => {
+        console.log(data);
+      }
+    )
 
   }
-
-
-
-
-
 
 }
