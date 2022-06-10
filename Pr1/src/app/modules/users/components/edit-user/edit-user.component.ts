@@ -16,7 +16,6 @@ export class EditUserComponent implements OnInit {
 
   @ViewChild("editUserForm")
   private _editUserForm: NgForm;
-
   parentFormGroup: FormGroup = new FormGroup({});
 
   id: any | null;

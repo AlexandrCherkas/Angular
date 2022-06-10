@@ -19,11 +19,15 @@ export class CreateUserListComponent implements OnInit {
   @Input() formGroup: FormGroup;
 
   childFormGroup: FormGroup;
+  response = [];
 
   constructor(
     private fb: FormBuilder,
     private _userService: UserserviceService,
-    private _userdataService: UserdataService)  {    }
+    private _userdataService: UserdataService)  {
+
+
+     }
 
 
   ngOnInit(): void {
@@ -43,19 +47,9 @@ export class CreateUserListComponent implements OnInit {
     this.formGroup.addControl('user', this.childFormGroup)
     this.childFormGroup.patchValue(this.currentUser)
 
-    forkJoin([
-      this.childFormGroup.get('name')?.valueChanges,
-      this.childFormGroup.get('secondName')?.valueChanges])
-      .subscribe((data) => {  console.log(data) }
-      );
 
-    merge(
-      this.childFormGroup.get('name')?.valueChanges,
-      this.childFormGroup.get('secondName')?.valueChanges)
-      .subscribe((data) => {
-        console.log(data);
-      }
-    )
+
+
 
   }
 
