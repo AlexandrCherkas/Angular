@@ -31,8 +31,9 @@ export class CreateUserListComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+
     this.childFormGroup = this.fb.group({
-      id: this._userdataService.createID(),
+      id: this._userdataService.createID().subscribe((id: number) => id),
       name: ['', Validators.required],
       secondName: ['', Validators.required],
       email: [

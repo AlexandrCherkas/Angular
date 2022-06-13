@@ -23,7 +23,7 @@ export class UserShellComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.users = this._usersService.getUsers();
-    this.favorites = this.favoriteService.getFavoritesData(Favotite.User);
+    this._usersService.getUsers().subscribe( (users: IUser[]) => this.users = users);
+    this.favoriteService.getFavoritesData(Favotite.User).subscribe((users:any[]) => this.favorites = users);
   }
 }

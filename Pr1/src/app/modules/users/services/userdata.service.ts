@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { delay, Observable, of } from 'rxjs';
 import { IUser } from 'src/app/modules/users/interface/user';
 import { IAddress } from '../interface/address';
 import { IUsersWithAddress } from '../interface/user+address';
@@ -59,25 +60,25 @@ export class UserdataService {
   ]
   constructor() { }
 
-  public createID(): number{
-    return Math.floor(Math.random() * 10000);
+  public createID(): Observable<number>{
+    return of(Math.floor(Math.random() * 10000)).pipe(delay(2000))
   }
 
-  public getUsers(): IUser[] | IUsersWithAddress[] {
-    return this.users
+  public getUsers(): Observable < IUser[] | IUsersWithAddress[]> {
+    return of(this.users).pipe(delay(2000))
   }
 
-  public getUserByID(id: number): IUser | undefined {
+  public getUserByID(id: number): Observable< IUser> {
     let user = this.users.find(user => user.id == id)
-    return user
+    return of(user).pipe(delay(2000))
   }
 
-  public getUsersEmail(): Array<string>{
+  public getUsersEmail(): Observable <string[]>{
     this.usersEmails = this.users.map(user => user.email)
-    return this.usersEmails
+    return  of(this.usersEmails).pipe(delay(2000))
   }
 
-  changeUser(user: IUser, userAddAddress: Array<IAddress>): void{
+  public changeUser(user: IUser, userAddAddress: Array<IAddress>): void{
     let modifiedUser: IUser = {
       id: user.id,
       name: user.name,
@@ -90,9 +91,7 @@ export class UserdataService {
       imageUrl: user.imageUrl,
       address: userAddAddress
     }
-    console.log(modifiedUser)
     this.users = this.users.map(user => user.id === modifiedUser.id ? modifiedUser : user)
-    console.log(this.users)
   }
 
   public createNewUser(user: IUser, userAddAddress: Array<IAddress>): void {

@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { delay, Observable, of } from 'rxjs';
 import { ICar} from 'src/app/modules/cars/interface/car';
 
 @Injectable({
@@ -45,8 +46,8 @@ export class CardataService {
 
     ];
 
-  getCars(): ICar[]{
-    return this.cars
+  getCars(): Observable <ICar[]> {
+    return of(this.cars).pipe(delay(2000))
   }
 
 

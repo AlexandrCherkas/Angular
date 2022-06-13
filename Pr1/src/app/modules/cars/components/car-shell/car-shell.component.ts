@@ -22,7 +22,7 @@ export class CarShellComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.cars = this.carService.getCars();
-    this.favorites = this.favoriteService.getFavoritesData(Favotite.Car);
+    this.carService.getCars().subscribe((cars: ICar[]) => this.cars = cars);
+    this.favoriteService.getFavoritesData(Favotite.Car).subscribe((cars: any[]) => this.favorites = cars );
   }
 }

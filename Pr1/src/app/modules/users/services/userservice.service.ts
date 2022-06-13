@@ -13,7 +13,7 @@ export class UserserviceService  {
   constructor(private _userdataService: UserdataService) { }
 
   checkIfEmailExists(value: string) {
-    this.existingEmails = this._userdataService.getUsersEmail()
+    this._userdataService.getUsersEmail().subscribe((emails:string[]) => this.existingEmails = emails)
     return of(this.existingEmails.some((item) => item === value)).pipe(
       delay(1000)
     );

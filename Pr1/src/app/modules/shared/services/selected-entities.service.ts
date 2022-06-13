@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, of, delay } from 'rxjs';
 import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from '../enums/favorite';
 
@@ -20,8 +21,8 @@ export class SelectedEntitiesService {
 
   constructor() {}
 
-  getFavoritesData(type: Favotite): Array<any> {
-   return favoriteMap[type];
+  getFavoritesData(type: Favotite): Observable <any[]> {
+   return of(favoriteMap[type]).pipe(delay(2000));
   }
 
 

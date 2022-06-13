@@ -32,7 +32,7 @@ export class EditUserComponent implements OnInit  {
 
   ngOnInit(): void {
     this.id = this._route.snapshot.paramMap.get('id')
-    this.user = this._userdataService.getUserByID(this.id)
+    this._userdataService.getUserByID(this.id).subscribe((user: IUser) => this.user = user)
   }
 
   onShowUser(key: string, childFormGroup: FormGroup): void{
@@ -54,7 +54,8 @@ export class EditUserComponent implements OnInit  {
     this.parentFormGroup.markAllAsTouched();
 
     if (this.parentFormGroup.status == 'VALID') {
-      this._userdataService.changeUser(this.parentFormGroup.value.user, this.parentFormGroup.getRawValue().addresses);
+      this._userdataService.changeUser(this.parentFormGroup.value.user,
+        this.parentFormGroup.getRawValue().addresses);
       this._router.navigate(['/users']);
     }
   }
