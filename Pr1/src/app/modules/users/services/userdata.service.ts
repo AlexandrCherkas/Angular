@@ -78,7 +78,7 @@ export class UserdataService {
   }
 
   changeUser(user: IUser, userAddAddress: Array<IAddress>): void{
-    let modifiedUser: IUsersWithAddress = {
+    let modifiedUser: IUser = {
       id: user.id,
       name: user.name,
       secondName: user.secondName ,

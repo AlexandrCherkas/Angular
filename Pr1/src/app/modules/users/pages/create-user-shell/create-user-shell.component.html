@@ -1,7 +1,7 @@
 <h2 class="nameForm" >CREATE NEW USER </h2>
 <div class="create-shell">
   <form class="form" [formGroup]="parentFormGroup" (submit)="submit()" >
-    <app-create-user-list [formGroup]="parentFormGroup"> </app-create-user-list>
+    <app-create-user-list [formGroup]="parentFormGroup" (userFormData)="onCreateUser('user', $event)"> </app-create-user-list>
     <app-addresses [formGroup]="parentFormGroup"> </app-addresses>
     <button mat-stroked-button color="primary" type="submit">Create</button>
 

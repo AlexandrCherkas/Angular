@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 import { UserShellComponent } from './modules/users/pages/user-shell/user-shell.component';
 import { UserListComponent } from './modules/users/components/user/user-list.component';
@@ -36,6 +37,9 @@ import { CreateUserShellComponent } from './modules/users/pages/create-user-shel
 import { AddressesComponent } from './modules/users/components/addresses/addresses.component';
 import { AddressComponent } from './modules/users/components/address/address.component';
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
+
+import { DialogLeavePageComponent } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
 
 
 
@@ -60,8 +64,9 @@ import { EditUserComponent } from './modules/users/components/edit-user/edit-use
 
     AddressesComponent,
     AddressComponent,
-    EditUserComponent
-
+    EditUserComponent,
+    DialogLeavePageComponent,
+    DialogAnimationsExampleDialog
 
   ],
   imports: [
@@ -82,7 +87,8 @@ import { EditUserComponent } from './modules/users/components/edit-user/edit-use
     CommonModule,
     MatInputModule,
     ReactiveFormsModule,
-    MatSelectModule
+    MatSelectModule,
+    MatDialogModule,
 
 
   ],

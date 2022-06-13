@@ -14,7 +14,7 @@ import { SelectedEntitiesService } from 'src/app/modules/shared/services/selecte
 export class UserShellComponent implements OnInit {
   @Input() user: IUser
 
-  public users: IUser[] | IUsersWithAddress[] = [];
+  public users: IUser[] = [];
   public favorites!: Array<IFavoriteCards>;
 
   constructor(

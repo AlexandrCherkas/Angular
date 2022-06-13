@@ -3,7 +3,7 @@
 <div class="edit-form">
   <form class="form" [formGroup]="parentFormGroup" (submit)="editUser()" #editUserForm="ngForm">
 
-    <app-create-user-list [formGroup]="parentFormGroup" [currentUser]="user" > </app-create-user-list>
+    <app-create-user-list [formGroup]="parentFormGroup" (userFormData)="onShowUser('user', $event)"> </app-create-user-list>
     <app-addresses [formGroup]="parentFormGroup" [currentUser]="user" > </app-addresses>
     <button mat-stroked-button color="primary" type="submit">Save</button>
 

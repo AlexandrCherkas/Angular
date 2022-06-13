@@ -1,13 +1,6 @@
 <div class="user-list">
   <ng-container *ngFor="let user of users">
-    <app-card
-      class="user-image"
-      [image]="user.imageUrl"
-      (toFavoriteEvent)="addToFavorite(user)"
-      [id]="user.id"
-      [isLikes]="checkIfFavored(user.id)"
-
-    >
+    <app-card class="user-image" [image]="user.imageUrl" (toFavoriteEvent)="addToFavorite(user)" [id]="user.id" [isLikes]="checkIfFavored(user.id)">
       <mat-card-title class="card-header"> {{user.name}} {{user.secondName}}</mat-card-title>
 
       <div class="data-conteiner">

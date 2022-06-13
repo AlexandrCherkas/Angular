@@ -11,7 +11,9 @@ import { IUser } from '../../interface/user';
   styleUrls: ['./create-user-shell.component.scss'],
 })
 export class CreateUserShellComponent implements OnInit {
+
   parentFormGroup: FormGroup = new FormGroup({});
+  key: string = 'user';
 
   constructor(
     private _router: Router,
@@ -20,6 +22,9 @@ export class CreateUserShellComponent implements OnInit {
 
   ngOnInit(): void {}
 
+  onCreateUser(key: string, childFormGroup: FormGroup): void{
+    this.parentFormGroup.addControl(key, childFormGroup)
+  }
 
   submit(): void {
 

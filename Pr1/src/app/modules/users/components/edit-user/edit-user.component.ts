@@ -4,39 +4,50 @@ import { IUser } from '../../interface/user';
 import { UserdataService } from '../../services/userdata.service';
 import { FormGroup, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
+import { DialogLeavePageComponent } from 'src/app/modules/shared/components/dialog-leave-page/dialog-leave-page.component';
 
 
 
 @Component({
   selector: 'app-edit-user',
   templateUrl: './edit-user.component.html',
-  styleUrls: ['./edit-user.component.scss']
+  styleUrls: ['./edit-user.component.scss'],
+
 })
-export class EditUserComponent implements OnInit {
+export class EditUserComponent implements OnInit  {
 
   @ViewChild("editUserForm")
+
   private _editUserForm: NgForm;
   parentFormGroup: FormGroup = new FormGroup({});
 
-  id: any | null;
-  user: IUser | undefined
+  id: any;
+  user: IUser
 
   constructor(
     private _route: ActivatedRoute,
     private _userdataService: UserdataService,
-    private _router: Router ) {  }
+    private _router: Router,
+    public popup: DialogLeavePageComponent ) {  }
 
   ngOnInit(): void {
-    this._route.paramMap.subscribe(params => {
-      this.id = params.get('id');
-    });
-
+    this.id = this._route.snapshot.paramMap.get('id')
     this.user = this._userdataService.getUserByID(this.id)
   }
 
-  hasUnsavedData(): boolean | null {
+  onShowUser(key: string, childFormGroup: FormGroup): void{
+    this.parentFormGroup.addControl(key, childFormGroup)
+    this.parentFormGroup.get(key).patchValue(this.user)
+  }
+
+  hasUnsavedData(): boolean {
     return this._editUserForm.dirty;
   }
+
+  showW(): boolean{
+    return true
+  }
+
 
   editUser(): void{
     console.log(this.parentFormGroup)

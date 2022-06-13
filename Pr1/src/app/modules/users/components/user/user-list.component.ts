@@ -27,11 +27,6 @@ export class UserListComponent implements OnInit {
     this.favoritesService.toFavorite(user.id, Favotite.User);
   }
 
-  // editUser(user: IUser):void{
-
-  //   console.log(user.id)
-  // }
-
   checkIfFavored(userID: number): boolean {
     return this.favoritesService.checkIfFavored(userID, Favotite.User);
   }

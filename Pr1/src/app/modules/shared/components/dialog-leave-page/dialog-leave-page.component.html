@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Attention</h2>
+<div mat-dialog-content>
+  You have some unsaved changes and it will be lost. Do you want to leave the page?
+</div>
+<div mat-dialog-actions>
+  <button mat-button mat-dialog-close (click)="onNoClick()">No</button>
+  <button mat-button mat-dialog-close cdkFocusInitial (click)="onOkClick()">Ok</button>
+</div>
