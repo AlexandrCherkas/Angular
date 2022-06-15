@@ -5,14 +5,12 @@ import { IAddress } from '../interface/address';
 import { IUsersWithAddress } from '../interface/user+address';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-
 export class UserdataService {
+  public usersEmails: Array<string> = [];
 
-  public usersEmails: Array<string> = []
-
-  public users: IUser[] | IUsersWithAddress[]  = [
+  public users: IUser[] | IUsersWithAddress[] = [
     {
       id: 11,
       name: 'Chack',
@@ -22,9 +20,9 @@ export class UserdataService {
       gender: true,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg1855.jpg',
-     },
-     {
+      imageUrl: 'https://www.kinonews.ru/insimgs/persimg/persimg1855.jpg',
+    },
+    {
       id: 22,
       name: 'Johnny',
       secondName: 'Depp',
@@ -33,9 +31,9 @@ export class UserdataService {
       gender: true,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg12.jpg',
-     },
-     {
+      imageUrl: 'https://www.kinonews.ru/insimgs/persimg/persimg12.jpg',
+    },
+    {
       id: 33,
       name: 'Scarlett',
       secondName: 'Johansson',
@@ -44,9 +42,10 @@ export class UserdataService {
       gender: false,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/ce/Scarlett_Johansson.jpg',
-     },
-     {
+      imageUrl:
+        'https://static.wikia.nocookie.net/marvelcinematicuniverse/images/c/ce/Scarlett_Johansson.jpg',
+    },
+    {
       id: 44,
       name: 'Will',
       secondName: 'Smith',
@@ -55,61 +54,88 @@ export class UserdataService {
       gender: true,
       departament: 'Front End',
       company: 'ISsoft',
-      imageUrl:'https://www.kinonews.ru/insimgs/persimg/persimg31.jpg',
-     }
-  ]
-  constructor() { }
+      imageUrl: 'https://www.kinonews.ru/insimgs/persimg/persimg31.jpg',
+    },
+  ];
+  constructor() {}
 
-  public createID(): Observable<number>{
-    return of(Math.floor(Math.random() * 10000)).pipe(delay(2000))
+  // public createID(): Observable<number> {
+  //   return of(Math.floor(Math.random() * 10000))
+  //     .pipe(
+  //       delay(1000)
+  //     );
+  // }
+
+  public getUsers(filter: string = ''): Observable<IUser[] | IUsersWithAddress[]> {
+    const users = filter
+    ? this.users.filter((user: IUser) => `${user.name} ${user.secondName}`.toLowerCase().includes(filter))
+    : this.users;
+
+    return of(users)
+    .pipe(
+      delay(1000)
+    );
   }
 
-  public getUsers(): Observable < IUser[] | IUsersWithAddress[]> {
-    return of(this.users).pipe(delay(2000))
+  public getUserByID(id: number): Observable<IUser> {
+    let user = this.users.find((user) => user.id == id);
+    return of(user)
+      .pipe(
+        delay(1000)
+      );
   }
 
-  public getUserByID(id: number): Observable< IUser> {
-    let user = this.users.find(user => user.id == id)
-    return of(user).pipe(delay(2000))
+  public getUsersEmail(): Observable<string[]> {
+    this.usersEmails = this.users.map((user) => user.email);
+    return of(this.usersEmails)
+      .pipe(
+        delay(1000)
+      );
   }
 
-  public getUsersEmail(): Observable <string[]>{
-    this.usersEmails = this.users.map(user => user.email)
-    return  of(this.usersEmails).pipe(delay(2000))
+  public searchUser(name: string): Observable<IUser[]> {
+    let userArr = this.users.filter(
+      (user) =>
+        user.name.toLowerCase().includes(name) ||
+        user.secondName.toLowerCase().includes(name)
+    );
+    return of(userArr)
+      .pipe(
+        delay(1000)
+      );
   }
 
-  public changeUser(user: IUser, userAddAddress: Array<IAddress>): void{
+  public changeUser(user: IUser, userAddAddress: Array<IAddress>): void {
     let modifiedUser: IUser = {
       id: user.id,
       name: user.name,
-      secondName: user.secondName ,
+      secondName: user.secondName,
       email: user.email,
       age: user.age,
       gender: user.gender,
       departament: user.departament,
       company: user.company,
       imageUrl: user.imageUrl,
-      address: userAddAddress
-    }
-    this.users = this.users.map(user => user.id === modifiedUser.id ? modifiedUser : user)
+      address: userAddAddress,
+    };
+    this.users = this.users.map((user) =>
+      user.id === modifiedUser.id ? modifiedUser : user
+    );
   }
 
   public createNewUser(user: IUser, userAddAddress: Array<IAddress>): void {
     let newUserWithAddress: IUsersWithAddress = {
       id: user.id,
       name: user.name,
-      secondName: user.secondName ,
+      secondName: user.secondName,
       email: user.email,
       age: user.age,
       gender: user.gender,
       departament: user.departament,
       company: user.company,
       imageUrl: user.imageUrl,
-      address: userAddAddress
-    }
-    this.users.push(newUserWithAddress)
+      address: userAddAddress,
+    };
+    this.users.push(newUserWithAddress);
   }
-
-
-
 }

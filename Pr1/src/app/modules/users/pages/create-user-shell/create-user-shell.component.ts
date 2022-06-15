@@ -1,6 +1,6 @@
 import { prepareEventListenerParameters } from '@angular/compiler/src/render3/view/template';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserdataService } from '../../services/userdata.service';
 import { IUser } from '../../interface/user';
@@ -22,9 +22,10 @@ export class CreateUserShellComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  onCreateUser(key: string, childFormGroup: FormGroup): void{
-    this.parentFormGroup.addControl(key, childFormGroup)
+  onCreateUser(key: string, Form: FormGroup | FormArray): void{
+    this.parentFormGroup.addControl(key, Form)
   }
+
 
   submit(): void {
 
@@ -32,7 +33,7 @@ export class CreateUserShellComponent implements OnInit {
     this.parentFormGroup.markAllAsTouched();
 
     if (this.parentFormGroup.status == 'VALID') {
-      this._userdataServece.createNewUser(this.parentFormGroup.value.user, this.parentFormGroup.value.addresses);
+      this._userdataServece.createNewUser(this.parentFormGroup.value.user, this.parentFormGroup.value.address);
       this._router.navigate(['/users']);
     }
   }

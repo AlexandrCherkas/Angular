@@ -1,12 +1,10 @@
-<h2 class="nameForm" >EDIT USER : {{user?.['name']}} {{user?.['secondName']}} </h2>
+<h2 class="nameForm" >EDIT USER </h2>
 
 <div class="edit-form">
+
   <form class="form" [formGroup]="parentFormGroup" (submit)="editUser()" #editUserForm="ngForm">
-
-    <app-create-user-list [formGroup]="parentFormGroup" (userFormData)="onShowUser('user', $event)"> </app-create-user-list>
-    <app-addresses [formGroup]="parentFormGroup" [currentUser]="user" > </app-addresses>
+    <app-create-user [formGroup]="parentFormGroup" (userFormData)="onChengeUser('user', $event)" [currentUser]="user$" [key]="'user'"> </app-create-user>
+    <app-addresses [formGroup]="parentFormGroup"  (userAddresses)="onChengeUser('address', $event)"  [currentUser]="user$" [key]="'address'"> </app-addresses>
     <button mat-stroked-button color="primary" type="submit">Save</button>
-
   </form>
 </div>
-

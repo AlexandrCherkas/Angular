@@ -18,6 +18,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 import { UserShellComponent } from './modules/users/pages/user-shell/user-shell.component';
 import { UserListComponent } from './modules/users/components/user/user-list.component';
@@ -31,15 +32,18 @@ import { CarListComponent  } from './modules/cars/components/car-list/car-list.c
 import { FooterComponent } from './core/components/footer/footer.component';
 import { HeaderComponent } from './core/components/header/header.component';
 
-import { CreateUserListComponent } from './modules/users/components/create-user/create-user-list.component';
+import { CreateUserListComponent } from './modules/users/components/create-user/create-user.component';
 import { CreateUserShellComponent } from './modules/users/pages/create-user-shell/create-user-shell.component';
 
 import { AddressesComponent } from './modules/users/components/addresses/addresses.component';
 import { AddressComponent } from './modules/users/components/address/address.component';
-import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 
-import { DialogLeavePageComponent } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
-import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
+import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
+
+// import { DialogLeavePageComponent } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+// import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { SearchComponent } from './modules/shared/components/search/search.component';
 
 
 
@@ -64,9 +68,13 @@ import { DialogAnimationsExampleDialog } from './modules/shared/components/dialo
 
     AddressesComponent,
     AddressComponent,
+
     EditUserComponent,
-    DialogLeavePageComponent,
-    DialogAnimationsExampleDialog
+    EditUserShellComponent,
+    // DialogLeavePageComponent,
+    // DialogAnimationsExampleDialog,
+
+    SearchComponent
 
   ],
   imports: [
@@ -89,6 +97,7 @@ import { DialogAnimationsExampleDialog } from './modules/shared/components/dialo
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
+    MatAutocompleteModule
 
 
   ],

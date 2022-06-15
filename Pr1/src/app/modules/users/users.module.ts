@@ -8,6 +8,7 @@ import { CreateUserShellComponent } from './components/create-user-shell/create-
 import { AddressesComponent } from './components/addresses/addresses.component';
 import { AddressComponent } from './components/address/address.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
+import { EditUserShellComponent } from './pages/edit-user-shell/edit-user-shell.component';
 
 
 
@@ -20,7 +21,8 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
     CreateUserShellComponent,
     AddressesComponent,
     AddressComponent,
-    EditUserComponent
+    EditUserComponent,
+    EditUserShellComponent
   ],
   imports: [
     CommonModule,

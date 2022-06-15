@@ -5,6 +5,7 @@ import { IUsersWithAddress } from '../../interface/user+address';
 import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
+import { takeUntil, takeWhile } from 'rxjs';
 
 @Component({
   selector: 'app-user-shell',
@@ -16,6 +17,7 @@ export class UserShellComponent implements OnInit {
 
   public users: IUser[] = [];
   public favorites!: Array<IFavoriteCards>;
+  public componentActive = true;
 
   constructor(
     private _usersService: UserdataService,
@@ -23,7 +25,23 @@ export class UserShellComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this._usersService.getUsers().subscribe( (users: IUser[]) => this.users = users);
-    this.favoriteService.getFavoritesData(Favotite.User).subscribe((users:any[]) => this.favorites = users);
+    this._usersService.getUsers()
+      .pipe(takeWhile(() => this.componentActive))
+      .subscribe( (users: IUser[]) => this.users = users);
+
+    this.favoriteService.getFavoritesData(Favotite.User)
+      .pipe(takeWhile(() => this.componentActive))
+      .subscribe((users: any[]) => this.favorites = users);
   }
+
+  usersListAfterSearch(searchValue: any){
+    this._usersService.getUsers(searchValue)
+    .pipe(takeWhile(() => this.componentActive))
+    .subscribe( (users: IUser[]) => this.users = users);
+  }
+
+  ngOnDestroy(): void{
+    this.componentActive = false
+  }
+
 }

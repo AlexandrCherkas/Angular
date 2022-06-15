@@ -9,14 +9,19 @@ import { UserdataService } from './userdata.service';
 
 export class UserserviceService  {
 
-  private existingEmails: Array<string>
-  constructor(private _userdataService: UserdataService) { }
+  private _existingEmails: Array<string>
+
+  constructor(private _userdataService: UserdataService) {
+    this._userdataService.getUsersEmail().subscribe(
+      (emails:string[]) => this._existingEmails = emails )
+  }
 
   checkIfEmailExists(value: string) {
-    this._userdataService.getUsersEmail().subscribe((emails:string[]) => this.existingEmails = emails)
-    return of(this.existingEmails.some((item) => item === value)).pipe(
-      delay(1000)
-    );
+
+    return of(this._existingEmails.some((item) => item === value)).
+      pipe(
+        delay(1000)
+      );
   }
 
 }

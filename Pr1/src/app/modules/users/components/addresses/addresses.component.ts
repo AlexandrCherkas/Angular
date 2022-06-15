@@ -1,14 +1,11 @@
 import { IfStmt } from '@angular/compiler';
-import { Component, OnInit, Input } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  FormArray,
-} from '@angular/forms';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import {  FormGroup,  FormControl,  FormBuilder,  Validators,  FormArray,} from '@angular/forms';
 import { zip } from 'rxjs';
 import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
+import { forkJoin, merge, Observable } from 'rxjs';
+import { IUser } from '../../interface/user';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
   selector: 'app-addresses',
@@ -17,23 +14,38 @@ import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail
 })
 export class AddressesComponent implements OnInit {
   @Input() formGroup: FormGroup;
-  @Input() currentUser: any;
+  @Input() currentUser: Observable <IUser | undefined>
+  @Input() key: string;
+  @Output() userAddresses = new EventEmitter<FormArray>();
 
   addressesFormsArray: FormArray;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) {
 
-  ngOnInit() {
-    this.addressesFormsArray = this.fb.array([this.createAddressesGroup()]);
+  }
 
-    this.formGroup.addControl('addresses', this.addressesFormsArray);
+  ngOnInit(): void {
+    this.addressesFormsArray = this.fb.array([this.createAddressesGroup()])
 
-    if (this.currentUser?.['address'] && this.currentUser?.['address'].length > 1) {
-      for (let i = 1; i < this.currentUser?.['address'].length; i++) {
-        this.addAddress();
-      }
-      this.addressesFormsArray.patchValue(this.currentUser?.['address']);
+    if(this.currentUser){
+
+
+      this.currentUser.pipe(takeUntil(this.currentUser)).subscribe(data => {
+        console.log(data)
+        if(data?.['address']){
+
+          console.log('yfdf')
+          for (let i = 1; i < data?.['address'].length; i++) {
+            this.addAddress();
+          }
+          this.addressesFormsArray.patchValue(data?.['address']);
+        }
+
+      })
     }
+    this.userAddresses.emit(this.addressesFormsArray)
+
+
   }
 
   createAddressesGroup() {

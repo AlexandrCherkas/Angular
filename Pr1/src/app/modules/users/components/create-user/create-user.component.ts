@@ -6,34 +6,35 @@ import { UserserviceService } from '../../services/userservice.service';
 import { UserdataService } from '../../services/userdata.service';
 import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
 import { IUser } from '../../interface/user';
-import { forkJoin, merge } from 'rxjs';
+import { forkJoin, merge, Observable } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
+import { takeUntil } from 'rxjs/operators';
 
 @Component({
-  selector: 'app-create-user-list',
-  templateUrl: './create-user-list.component.html',
-  styleUrls: ['./create-user-list.component.scss'],
+  selector: 'app-create-user',
+  templateUrl: './create-user.component.html',
+  styleUrls: ['./create-user.component.scss'],
 })
 export class CreateUserListComponent implements OnInit {
   @Input() formGroup: FormGroup;
+  @Input() currentUser: Observable <IUser | undefined>
+  @Input() key: string
   @Output() userFormData = new EventEmitter<FormGroup>();
 
-  key: string = 'user';
 
   childFormGroup: FormGroup;
   response = {};
   private _editUserForm: NgForm;
+  ID = Math.floor(Math.random() * 10000)
 
   constructor(
     private fb: FormBuilder,
     private _userService: UserserviceService,
     private _userdataService: UserdataService
-  ) {}
-
-  ngOnInit(): void {
+  ) {
 
     this.childFormGroup = this.fb.group({
-      id: this._userdataService.createID().subscribe((id: number) => id),
+      id: this.ID,
       name: ['', Validators.required],
       secondName: ['', Validators.required],
       email: [
@@ -53,7 +54,18 @@ export class CreateUserListComponent implements OnInit {
         'http://s1.iconbird.com/ico/2013/6/382/w256h2561372594116ManRed2.png',
     });
 
-    this.userFormData.emit(this.childFormGroup);
+  }
+
+  ngOnInit(): void {
+
+    if(this.currentUser){
+      console.log()
+      this.currentUser.pipe().subscribe(data => {
+        this.childFormGroup.patchValue(data)
+      })
+    }
+
+    this.userFormData.emit(this.childFormGroup)
 
     merge(
       this.childFormGroup
