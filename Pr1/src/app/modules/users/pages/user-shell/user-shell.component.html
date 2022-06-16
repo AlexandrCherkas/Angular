@@ -1,5 +1,5 @@
 <!-- <app-search></app-search> -->
-<app-search (changeValueInput)="usersListAfterSearch($event)"></app-search>
+<app-search (changeValueInput)="usersListAfterSearch($event)"  [search]="search"></app-search>
 
 <div class="user-shell">
   <app-user-list [users]="users"> </app-user-list>

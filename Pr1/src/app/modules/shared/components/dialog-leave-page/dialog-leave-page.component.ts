@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Output } from '@angular/core';
 import { MatDialog, MatDialogRef} from '@angular/material/dialog';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,12 +12,14 @@ import { MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 export class DialogLeavePageComponent {
 
+  popupAnswer$: Observable<boolean>
+
   constructor( public dialog: MatDialog ) {}
 
-   openDialog(): void {
-   this.dialog.open(DialogAnimationsExampleDialog, {
-      width: '400px'
-    });
+   openDialog(): any {
+    const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, { width: '400px' })
+    this.popupAnswer$ = dialogRef.afterClosed() ;
+    return this.popupAnswer$
   }
 
 }
@@ -25,19 +28,14 @@ export class DialogLeavePageComponent {
   selector: 'dialog-animations-example-dialog',
   templateUrl: 'dialog-leave-page.component.html',
 })
+
 export class DialogAnimationsExampleDialog {
+
   constructor(public dialogRef: MatDialogRef <DialogAnimationsExampleDialog> ) {}
 
-  onNoClick(): boolean{
-    console.log('False')
-    return false
+  onConfirmClick(): void {
+    this.dialogRef.close(true);
   }
-
-  onOkClick(): boolean{
-    console.log('True')
-    return true
-  }
-
 }
 
 

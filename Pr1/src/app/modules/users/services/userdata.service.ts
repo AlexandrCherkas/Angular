@@ -66,16 +66,17 @@ export class UserdataService {
   //     );
   // }
 
-  public getUsers(filter: string = ''): Observable<IUser[] | IUsersWithAddress[]> {
+  public getUsers(filter: string = ''): Observable<IUser[] | string> {
     const users = filter
     ? this.users.filter((user: IUser) => `${user.name} ${user.secondName}`.toLowerCase().includes(filter))
     : this.users;
-
     return of(users)
     .pipe(
       delay(1000)
     );
   }
+
+
 
   public getUserByID(id: number): Observable<IUser> {
     let user = this.users.find((user) => user.id == id);
@@ -93,17 +94,15 @@ export class UserdataService {
       );
   }
 
-  public searchUser(name: string): Observable<IUser[]> {
-    let userArr = this.users.filter(
-      (user) =>
-        user.name.toLowerCase().includes(name) ||
-        user.secondName.toLowerCase().includes(name)
-    );
-    return of(userArr)
-      .pipe(
-        delay(1000)
-      );
-  }
+  // public searchUser(name: string): Observable<IUser[] > {
+  //   let userArr = this.users.filter(
+  //     user => user.name.toLowerCase().includes(name) || user.secondName.toLowerCase().includes(name)
+  //   );
+  //   return of(userArr)
+  //     .pipe(
+  //       delay(1000)
+  //     );
+  // }
 
   public changeUser(user: IUser, userAddAddress: Array<IAddress>): void {
     let modifiedUser: IUser = {
@@ -118,8 +117,7 @@ export class UserdataService {
       imageUrl: user.imageUrl,
       address: userAddAddress,
     };
-    this.users = this.users.map((user) =>
-      user.id === modifiedUser.id ? modifiedUser : user
+    this.users = this.users.map((user) => user.id === modifiedUser.id ? modifiedUser : user
     );
   }
 

@@ -5,7 +5,8 @@ import { CarShellComponent } from './modules/cars/components/car-shell/car-shell
 import { UserShellComponent } from './modules/users/pages/user-shell/user-shell.component';
 import { CreateUserShellComponent } from './modules/users/pages/create-user-shell/create-user-shell.component';
 import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
-import { ExitEditUserFormGuard } from './core/guards/exit-edit-user-form.guard';
+import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
+import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 
 
 
@@ -13,9 +14,9 @@ const routes: Routes = [
   {path : 'cars', component: CarShellComponent},
   {path : 'users', component: UserShellComponent},
   {path : 'registration', component: CreateUserShellComponent },
-  {path : 'user/edit/:id', component: EditUserShellComponent},
+  {path : 'user/edit/:id', component: EditUserComponent, canDeactivate : [LeaveEditUserFormGuard] },
 ];
-// canDeactivate:[ExitEditUserFormGuard]
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]

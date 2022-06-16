@@ -1,6 +1,12 @@
 import { IfStmt } from '@angular/compiler';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {  FormGroup,  FormControl,  FormBuilder,  Validators,  FormArray,} from '@angular/forms';
+import {
+  FormGroup,
+  FormControl,
+  FormBuilder,
+  Validators,
+  FormArray,
+} from '@angular/forms';
 import { zip } from 'rxjs';
 import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
 import { forkJoin, merge, Observable } from 'rxjs';
@@ -14,38 +20,28 @@ import { takeUntil } from 'rxjs/operators';
 })
 export class AddressesComponent implements OnInit {
   @Input() formGroup: FormGroup;
-  @Input() currentUser: Observable <IUser | undefined>
+  @Input() currentUser: Observable<IUser | undefined>;
   @Input() key: string;
   @Output() userAddresses = new EventEmitter<FormArray>();
 
   addressesFormsArray: FormArray;
 
-  constructor(private fb: FormBuilder) {
-
-  }
+  constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
-    this.addressesFormsArray = this.fb.array([this.createAddressesGroup()])
+    this.addressesFormsArray = this.fb.array([this.createAddressesGroup()]);
 
-    if(this.currentUser){
-
-
-      this.currentUser.pipe(takeUntil(this.currentUser)).subscribe(data => {
-        console.log(data)
-        if(data?.['address']){
-
-          console.log('yfdf')
+    if (this.currentUser) {
+      this.currentUser.pipe(takeUntil(this.currentUser)).subscribe((data) => {
+        if (data?.['address']) {
           for (let i = 1; i < data?.['address'].length; i++) {
             this.addAddress();
           }
           this.addressesFormsArray.patchValue(data?.['address']);
         }
-
-      })
+      });
     }
-    this.userAddresses.emit(this.addressesFormsArray)
-
-
+    this.userAddresses.emit(this.addressesFormsArray);
   }
 
   createAddressesGroup() {

@@ -1,6 +1,8 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, OnChanges } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { debounceTime, distinctUntilChanged } from 'rxjs';
+import { debounceTime, distinctUntilChanged, Observable, take, takeUntil } from 'rxjs';
+import { ThemePalette } from '@angular/material/core';
+import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 
 @Component({
@@ -10,23 +12,35 @@ import { debounceTime, distinctUntilChanged } from 'rxjs';
 })
 export class SearchComponent implements OnInit {
 
+  color: ThemePalette = 'primary';
+  mode: ProgressSpinnerMode = 'determinate'
+  value = 0;
+
+  same: any
+
   @Output() changeValueInput = new EventEmitter<string>();
+  @Input() search: Observable<any>
 
   public searchControl = new FormControl("");
 
-  constructor() {}
+  constructor() { }
 
   ngOnInit(): void {
 
-    this.searchControl.valueChanges.pipe(
+    this.searchControl.valueChanges
+    .pipe(
       debounceTime(500),
-      distinctUntilChanged()
-    ).subscribe((value: string) => {
+      distinctUntilChanged())
+    .subscribe((value: string) => {
+      this.mode = 'indeterminate'
       this.changeValueInput.emit(value.toLowerCase());
+
     })
-  }
+
 
   }
+
+}
 
 
 

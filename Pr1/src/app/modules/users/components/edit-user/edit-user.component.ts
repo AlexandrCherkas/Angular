@@ -5,6 +5,7 @@ import { UserdataService } from '../../services/userdata.service';
 import { FormArray, FormGroup, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { DialogLeavePageComponent } from 'src/app/modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { CanDeactivatePage } from 'src/app/core/guards/leave-edit-user-form.guard';
 
 
 
@@ -14,11 +15,12 @@ import { DialogLeavePageComponent } from 'src/app/modules/shared/components/dial
   styleUrls: ['./edit-user.component.scss'],
 
 })
-export class EditUserComponent implements OnInit  {
+export class EditUserComponent implements OnInit, CanDeactivatePage  {
 
   @ViewChild("editUserForm")
 
   private _editUserForm: NgForm;
+
   parentFormGroup: FormGroup = new FormGroup({});
   formGroup: FormGroup
   id: any;
@@ -28,7 +30,8 @@ export class EditUserComponent implements OnInit  {
   constructor(
     private _route: ActivatedRoute,
     private _userdataService: UserdataService,
-    private _router: Router) {  }
+    private _router: Router,
+    private _dialog: DialogLeavePageComponent) {  }
 
   ngOnInit(): void {
     this.id = this._route.snapshot.paramMap.get('id')
@@ -39,12 +42,12 @@ export class EditUserComponent implements OnInit  {
     this.parentFormGroup.addControl(key, Form)
   }
 
-  hasUnsavedData(): boolean {
-    return this._editUserForm.dirty;
+  canDeactivateMetod(): Observable<boolean> | boolean {
+   return this._dialog.openDialog()
   }
 
   editUser(): void{
-    console.log(this.parentFormGroup)
+    console.log(this.parentFormGroup, this._editUserForm.dirty)
     this.parentFormGroup.markAllAsTouched();
 
     if (this.parentFormGroup.status == 'VALID') {

@@ -20,6 +20,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
+
 import { UserShellComponent } from './modules/users/pages/user-shell/user-shell.component';
 import { UserListComponent } from './modules/users/components/user/user-list.component';
 
@@ -41,9 +42,11 @@ import { AddressComponent } from './modules/users/components/address/address.com
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
 
-// import { DialogLeavePageComponent } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
-// import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { DialogLeavePageComponent } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
 import { SearchComponent } from './modules/shared/components/search/search.component';
+
+import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
 
 
 
@@ -71,10 +74,11 @@ import { SearchComponent } from './modules/shared/components/search/search.compo
 
     EditUserComponent,
     EditUserShellComponent,
-    // DialogLeavePageComponent,
-    // DialogAnimationsExampleDialog,
+    DialogLeavePageComponent,
+    DialogAnimationsExampleDialog,
 
-    SearchComponent
+    SearchComponent,
+
 
   ],
   imports: [
@@ -101,7 +105,7 @@ import { SearchComponent } from './modules/shared/components/search/search.compo
 
 
   ],
-  providers: [],
+  providers: [LeaveEditUserFormGuard, DialogLeavePageComponent, UserShellComponent],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
