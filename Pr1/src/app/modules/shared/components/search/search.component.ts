@@ -19,13 +19,15 @@ export class SearchComponent implements OnInit {
   same: any
 
   @Output() changeValueInput = new EventEmitter<string>();
-  @Input() search: Observable<any>
+  @Input() search$: Observable<any>
 
   public searchControl = new FormControl("");
 
   constructor() { }
 
   ngOnInit(): void {
+
+    this.search$.subscribe(value => this.mode = value)
 
     this.searchControl.valueChanges
     .pipe(

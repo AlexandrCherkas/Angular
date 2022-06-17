@@ -26,6 +26,7 @@ export class UserShellComponent implements OnInit {
   public componentActive = true;
 
   public search: Observable<any>
+  private parentSubj: Subject<any> = new Subject();
 
   constructor(
     private _usersService: UserdataService,
@@ -48,19 +49,20 @@ export class UserShellComponent implements OnInit {
     this._usersService.getUsers(searchValue)
       .pipe(takeWhile(() => this.componentActive))
       .subscribe((users: IUser[]) => {
-        this.users = users
+        this.users = users,
+        this.chengeStatusSpiner()
       });
 
-     this.search = this.chengeStatusSpiner()
+
 
   }
 
+  public get parentObs$(): Observable<any>{
+    return this.parentSubj.asObservable();
+  }
 
-  public chengeStatusSpiner(): Observable<any> {
-    return of(false)
-    .pipe(
-      delay(1000)
-    )
+  public chengeStatusSpiner(): void {
+    this.parentSubj.next('determinate')
   }
 
   ngOnDestroy(): void{
