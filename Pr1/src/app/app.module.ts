@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +19,12 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { HttpClientModule } from '@angular/common/http';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableModule } from '@angular/material/table';
+
 
 
 import { UserShellComponent } from './modules/users/pages/user-shell/user-shell.component';
@@ -101,11 +107,18 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
     ReactiveFormsModule,
     MatSelectModule,
     MatDialogModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatSortModule,
+
+    // MatPaginator,
+    // MatTableModule
+
 
 
   ],
   providers: [LeaveEditUserFormGuard, DialogLeavePageComponent, UserShellComponent],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

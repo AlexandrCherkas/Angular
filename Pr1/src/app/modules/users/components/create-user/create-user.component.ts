@@ -7,7 +7,7 @@ import { UserdataService } from '../../services/userdata.service';
 import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
 import { IUser } from '../../interface/user';
 import { forkJoin, merge, Observable } from 'rxjs';
-import { debounceTime, map, distinctUntilChanged } from 'rxjs/operators';
+import { debounceTime, map, distinctUntilChanged, takeWhile } from 'rxjs/operators';
 import { takeUntil } from 'rxjs/operators';
 
 @Component({
@@ -21,6 +21,7 @@ export class CreateUserListComponent implements OnInit {
   @Input() key: string
   @Output() userFormData = new EventEmitter<FormGroup>();
 
+  private componentArtive  = true
 
   childFormGroup: FormGroup;
   response = {};
@@ -59,10 +60,11 @@ export class CreateUserListComponent implements OnInit {
   ngOnInit(): void {
 
     if(this.currentUser){
-      console.log()
-      this.currentUser.pipe().subscribe(data => {
-        this.childFormGroup.patchValue(data)
-      })
+      this.currentUser
+        .pipe(takeWhile(() => this.componentArtive))
+        .subscribe(data => {
+          this.childFormGroup.patchValue(data)
+       })
     }
 
     this.userFormData.emit(this.childFormGroup)
@@ -91,5 +93,8 @@ export class CreateUserListComponent implements OnInit {
     return (generatedEmail.name + generatedEmail.secondName + generatedEmail.domen)
   }
 
+  ngOnDestroy():void{
+    this.componentArtive = false
+  }
 
 }

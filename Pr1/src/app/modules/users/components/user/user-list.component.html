@@ -1,34 +1,72 @@
 <div class="user-list">
-  <ng-container *ngFor="let user of users">
-    <app-card class="user-image" [image]="user.imageUrl" (toFavoriteEvent)="addToFavorite(user)" [id]="user.id" [isLikes]="checkIfFavored(user.id)">
-      <mat-card-title class="card-header"> {{user.name}} {{user.secondName}}</mat-card-title>
+  <ng-container *ngFor="let user of modifiedCardUsers">
+
+    <app-card class="user-image" [image]="user.picture.large" (toFavoriteEvent)="addToFavorite(user)" [id]="user.login.uuid" [isLikes]="checkIfFavored(user.login.uuid)">
+      <mat-card-title class="card-header"> {{user.name.title}} {{user.name.first}} {{user.name.last}}</mat-card-title>
 
       <div class="data-conteiner">
-        <span class="btn">Age : <span class="grn">{{user.age}} </span> </span>
+        <span class="btn">Age : <span class="grn">{{user.dob.age}} </span> </span>
         <span class="btn">Gender : <span class="grn">{{user.gender ? "Male" : "Female" }}</span></span>
-        <span class="btn">Department : <span class="grn">{{user.departament }}</span></span>
-        <span class="btn">Company : <span class="grn">{{user.company }}</span></span>
+        <span class="btn">Phone : <span class="grn">{{user.phone }}</span></span>
+        <span class="btn">Nationality : <span class="grn">{{user.nat}}</span></span>
         <span class="btn">Email : <span class="grn">{{user.email }}</span></span>
 
-        <ng-container *ngIf="user.address">
+        <ng-container *ngIf="user.location">
 
-          <div *ngFor="let address of user.address; let i = index" >
-            <h4> - Address # {{i + 1}} :</h4>
-            <span class="btw">Address-line : <span class="grn"> {{address.addressLine}}</span> </span>
-            <ng-container *ngIf="address.city">
-              <span class="btw">City : <span class="grn"> {{address.city}}</span> </span>
+            <h4> - Address #  :</h4>
+            <span class="btw">Country : <span class="grn"> {{user.location.country}}</span> </span>
+            <ng-container *ngIf="user.location.city">
+              <span class="btw">City : <span class="grn"> {{user.location.city}}</span> </span>
             </ng-container>
-            <ng-container *ngIf="address.zip">
-              <span class="btw">Zip : <span class="grn"> {{address.zip}}</span> </span>
+            <ng-container *ngIf="user.location.postcode">
+              <span class="btw">Postcode : <span class="grn"> {{user.location.postcode}}</span> </span>
             </ng-container>
-
-          </div>
-
         </ng-container>
-
       </div>
     </app-card>
   </ng-container>
-</div>
 
+
+
+</div>
+<ng-container *ngIf="usersFormServere">
+  <mat-paginator
+    [length]="usersFormServere.length"
+    [pageSize]="3"
+    [pageSizeOptions]="[3, 6, 9]"
+    aria-label="Select page"
+    (page)="OnPageChange($event)">
+  </mat-paginator>
+</ng-container>
+
+<!-- <ng-container *ngFor="let user of users">
+  <app-card class="user-image" [image]="user.imageUrl" (toFavoriteEvent)="addToFavorite(user)" [id]="user.id" [isLikes]="checkIfFavored(user.id)">
+    <mat-card-title class="card-header"> {{user.name}} {{user.secondName}}</mat-card-title>
+
+    <div class="data-conteiner">
+      <span class="btn">Age : <span class="grn">{{user.age}} </span> </span>
+      <span class="btn">Gender : <span class="grn">{{user.gender ? "Male" : "Female" }}</span></span>
+      <span class="btn">Department : <span class="grn">{{user.departament }}</span></span>
+      <span class="btn">Company : <span class="grn">{{user.company }}</span></span>
+      <span class="btn">Email : <span class="grn">{{user.email }}</span></span>
+
+      <ng-container *ngIf="user.address">
+
+        <div *ngFor="let address of user.address; let i = index" >
+          <h4> - Address # {{i + 1}} :</h4>
+          <span class="btw">Address-line : <span class="grn"> {{address.addressLine}}</span> </span>
+          <ng-container *ngIf="address.city">
+            <span class="btw">City : <span class="grn"> {{address.city}}</span> </span>
+          </ng-container>
+          <ng-container *ngIf="address.zip">
+            <span class="btw">Zip : <span class="grn"> {{address.zip}}</span> </span>
+          </ng-container>
+
+        </div>
+
+      </ng-container>
+
+    </div>
+  </app-card>
+</ng-container> -->
 

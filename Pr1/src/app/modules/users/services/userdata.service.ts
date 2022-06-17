@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { delay, Observable, of } from 'rxjs';
 import { IUser } from 'src/app/modules/users/interface/user';
@@ -9,6 +10,7 @@ import { IUsersWithAddress } from '../interface/user+address';
 })
 export class UserdataService {
   public usersEmails: Array<string> = [];
+  public usersHttp: any
 
   public users: IUser[] | IUsersWithAddress[] = [
     {
@@ -57,14 +59,11 @@ export class UserdataService {
       imageUrl: 'https://www.kinonews.ru/insimgs/persimg/persimg31.jpg',
     },
   ];
-  constructor() {}
+  constructor(private _http: HttpClient) {}
 
-  // public createID(): Observable<number> {
-  //   return of(Math.floor(Math.random() * 10000))
-  //     .pipe(
-  //       delay(1000)
-  //     );
-  // }
+  public getUsersFromHttp(filter: string = ''): Observable<any>{
+    return this._http.get('https://randomuser.me/api/?page=3&results=10&seed=abc')
+  }
 
   public getUsers(filter: string = ''): Observable<IUser[] | string> {
     const users = filter

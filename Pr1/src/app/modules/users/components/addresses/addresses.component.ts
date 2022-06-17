@@ -11,7 +11,7 @@ import { zip } from 'rxjs';
 import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
 import { forkJoin, merge, Observable } from 'rxjs';
 import { IUser } from '../../interface/user';
-import { takeUntil } from 'rxjs/operators';
+import { takeUntil, takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-addresses',
@@ -25,6 +25,7 @@ export class AddressesComponent implements OnInit {
   @Output() userAddresses = new EventEmitter<FormArray>();
 
   addressesFormsArray: FormArray;
+  private componentArtive  = true
 
   constructor(private fb: FormBuilder) {}
 
@@ -32,13 +33,15 @@ export class AddressesComponent implements OnInit {
     this.addressesFormsArray = this.fb.array([this.createAddressesGroup()]);
 
     if (this.currentUser) {
-      this.currentUser.pipe(takeUntil(this.currentUser)).subscribe((data) => {
-        if (data?.['address']) {
-          for (let i = 1; i < data?.['address'].length; i++) {
-            this.addAddress();
+      this.currentUser
+        .pipe(takeWhile(() => this.componentArtive))
+        .subscribe((data) => {
+          if (data?.['address']) {
+            for (let i = 1; i < data?.['address'].length; i++) {
+              this.addAddress();
+            }
+            this.addressesFormsArray.patchValue(data?.['address']);
           }
-          this.addressesFormsArray.patchValue(data?.['address']);
-        }
       });
     }
     this.userAddresses.emit(this.addressesFormsArray);
@@ -63,5 +66,9 @@ export class AddressesComponent implements OnInit {
 
   removeAddress(index: number) {
     this.addressesFormsArray.removeAt(index);
+  }
+
+  ngOnDestroy():void{
+    this.componentArtive = false
   }
 }

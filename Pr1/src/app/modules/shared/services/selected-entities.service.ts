@@ -22,13 +22,14 @@ export class SelectedEntitiesService {
   constructor() {}
 
   getFavoritesData(type: Favotite): Observable <any[]> {
-   return of(favoriteMap[type]).pipe(delay(2000));
+    console.log('dfsdf')
+   return of(favoriteMap[type]).pipe(delay(1000));
   }
 
 
-  toFavorite(id: number, type: Favotite): void {
+  toFavorite(id: any, type: Favotite): void {
     if(favoriteMap[type].includes(id)){
-      let index: number = favoriteMap[type].indexOf(id)
+      let index: any = favoriteMap[type].indexOf(id)
       favoriteMap[type].splice(index, 1)
     } else {
       favoriteMap[type].push(id);
@@ -36,7 +37,7 @@ export class SelectedEntitiesService {
   }
 
   checkIfFavored(entityId: number, entityType: Favotite): boolean {
-     return favoriteMap[entityType].find((favorite) => {
+    return favoriteMap[entityType].find((favorite) => {
       return favorite == entityId;
     })
       ? true

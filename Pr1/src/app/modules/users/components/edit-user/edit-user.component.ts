@@ -25,6 +25,7 @@ export class EditUserComponent implements OnInit, CanDeactivatePage  {
   formGroup: FormGroup
   id: any;
   user$: Observable <IUser>;
+  private _statusFormDirty: boolean = false
 
 
   constructor(
@@ -46,10 +47,19 @@ export class EditUserComponent implements OnInit, CanDeactivatePage  {
    return this._dialog.openDialog()
   }
 
-  editUser(): void{
-    console.log(this.parentFormGroup, this._editUserForm.dirty)
-    this.parentFormGroup.markAllAsTouched();
+  disablecanDeactivate(): boolean {
+    return this._statusFormDirty
+  }
 
+  hasUnsavedData(): boolean{
+    console.log(this._editUserForm)
+    return this._editUserForm.dirty
+  }
+
+  editUser(): void{
+    this.parentFormGroup.markAllAsTouched();
+    console.log(this.parentFormGroup)
+    this._statusFormDirty = true
     if (this.parentFormGroup.status == 'VALID') {
       this._userdataService.changeUser(this.parentFormGroup.value.user, this.parentFormGroup.getRawValue().address);
       this._router.navigate(['/users']);

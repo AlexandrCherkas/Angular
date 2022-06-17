@@ -2,6 +2,6 @@
 <app-search (changeValueInput)="usersListAfterSearch($event)"  [searchStatus$]="parentObs$"></app-search>
 
 <div class="user-shell">
-  <app-user-list [users]="users"> </app-user-list>
+  <app-user-list [users]="users" [usersObs$]="usersObs$"> </app-user-list>
   <app-setbar  class="child righted"  [favorites]="favorites"  [entity]="users" ></app-setbar>
 </div>

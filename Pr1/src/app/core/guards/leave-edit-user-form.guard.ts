@@ -6,6 +6,8 @@ import { EditUserComponent } from 'src/app/modules/users/components/edit-user/ed
 
 export interface CanDeactivatePage {
   canDeactivateMetod:() => Observable <boolean> | Promise <boolean> | boolean;
+  hasUnsavedData:() => Observable <boolean> | Promise <boolean> | boolean;
+  disablecanDeactivate:() => Observable <boolean> | Promise <boolean> | boolean;
 }
 
 @Injectable({
@@ -13,10 +15,11 @@ export interface CanDeactivatePage {
 })
 
 export class LeaveEditUserFormGuard implements CanDeactivate<CanDeactivatePage> {
+
   canDeactivate(
     component:CanDeactivatePage): Observable <boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      // console.log(component.canDeactivateMetod())
-    return component.canDeactivateMetod()
+
+    return component.disablecanDeactivate() ? true :  !component.hasUnsavedData() || component.canDeactivateMetod()
 
   }
 
