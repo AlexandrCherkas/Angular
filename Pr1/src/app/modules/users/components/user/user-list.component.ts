@@ -21,51 +21,26 @@ import { IRemoteUser } from '../../interface/remote_users';
 
 export class UserListComponent implements OnInit {
 
-  @ViewChild (MatPaginator) paginator: MatPaginator;
-
-
-  @Input() users: IUsersWithAddress[] | IUser[]  = [];
+  @Input() users: IUser[]  = [];
   @Input() favorites: IFavoriteCards[] = [];
-  @Input() usersObs$: Observable<any>;
-
-  public modifiedCardUsers: any
-  public usersFormServere: any
-
-  private _componentActive = true
-
 
   constructor(private favoritesService: SelectedEntitiesService) { }
 
-  ngOnInit(): void {
-    this.usersObs$
-    .pipe(takeWhile(() => this._componentActive))
-    .subscribe(data => {
-      this.usersFormServere = data,
-      this.modifiedCardUsers = this.usersFormServere.slice(0, 3)
-    })
+  ngOnInit(): void {}
 
+
+
+  addToFavorite(user: IUser): void {
+    console.log(user.id)
+    this.favoritesService.toFavorite(user.id, Favotite.User);
   }
 
-  OnPageChange(event: PageEvent): void{
-    const startIndex = event.pageIndex * event.pageSize;
-    let endIndex = startIndex + event.pageSize
-    if( endIndex > this.usersFormServere.length){
-      endIndex = this.usersFormServere.length
-    }
-    this.modifiedCardUsers = this.usersFormServere.slice(startIndex, endIndex)
-  }
-
-  addToFavorite(user: IRemoteUser): void {
-    console.log(user.login.uuid)
-    this.favoritesService.toFavorite(user.login.uuid, Favotite.User);
-  }
-
-  checkIfFavored(userID: number): boolean {
+  checkIfFavored(userID: string): boolean {
     return this.favoritesService.checkIfFavored(userID, Favotite.User);
   }
 
   ngOnDestroy(): void{
-    this._componentActive = false
+    // this.componentActive = false
   }
 
 }

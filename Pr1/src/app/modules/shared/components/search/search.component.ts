@@ -12,14 +12,12 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 })
 export class SearchComponent implements OnInit {
 
-  color: ThemePalette = 'primary';
-  mode: ProgressSpinnerMode = 'determinate'
-  value = 0;
-
-  same: any
+  public color: ThemePalette = 'primary';
+  public mode: ProgressSpinnerMode = 'determinate'
+  public value = 0;
 
   @Output() changeValueInput = new EventEmitter<string>();
-  @Input() searchStatus$: Observable<any>
+  @Input() spinerStatus: Observable<any>
 
   public searchControl = new FormControl("");
   private componentArtive  = true
@@ -28,9 +26,9 @@ export class SearchComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.searchStatus$
-      .pipe(takeWhile(() => this.componentArtive))
-      .subscribe(value => this.mode = value)
+    this.spinerStatus
+      .pipe()
+      .subscribe( status => this.mode = status)
 
     this.searchControl.valueChanges
     .pipe(
@@ -40,11 +38,10 @@ export class SearchComponent implements OnInit {
     .subscribe((value: string) => {
       this.mode = 'indeterminate'
       this.changeValueInput.emit(value.toLowerCase());
-
     })
 
-
   }
+
   ngOnDestroy():void{
     this.componentArtive = false
   }

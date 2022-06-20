@@ -3,9 +3,11 @@ export interface IRemoteUser {
     date: Date,
     age: number,
   },
-  gender: string,
+  gender: boolean,
   location: {
-    city: string
+    city: string,
+    country: string,
+    postcode: number
   },
   name: {
       title: string,
@@ -26,5 +28,8 @@ export interface IRemoteUser {
       large: string,
       medium: string,
       thumbnail: string,
-  }
+  },
+  phone: number,
+  nat: string
+
 }

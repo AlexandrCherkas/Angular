@@ -1,13 +1,14 @@
 import { IAddress } from "./address"
 export interface IUser {
-  id: number,
+  id: string,
+  title: string,
   name: string,
   secondName: string,
-  email: string,
   age: number,
   gender: boolean,
-  departament: string,
-  company: string,
-  imageUrl: string,
+  phone: number,
+  nationality: string,
+  email: string,
+  picture: string,
   address?: Array<IAddress>
 }

@@ -5,17 +5,9 @@ import { IUsersWithAddress } from '../../interface/user+address';
 import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
-import {
-  Observable,
-  observeOn,
-  of,
-  Subject,
-  takeUntil,
-  takeWhile,
-  BehaviorSubject,
-  delay,
-} from 'rxjs';
+import { Observable, observeOn, of, Subject, takeUntil, takeWhile, BehaviorSubject, delay, from} from 'rxjs';
 import { Injectable, Inject } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-user-shell',
@@ -24,61 +16,75 @@ import { Injectable, Inject } from '@angular/core';
 })
 @Injectable()
 export class UserShellComponent implements OnInit {
-  @Input() user: IUser;
+
   @Output() statusSpiner = new EventEmitter();
 
   public users: IUser[] = [];
-  public usersHttp: Observable<any>;
   public favorites!: Array<IFavoriteCards>;
   public componentActive = true;
 
-  public search: Observable<any>;
-  private parentSubj: Subject<any> = new Subject();
-  private usersSubj: Subject<any> = new Subject();
+  public length: number = 96;
+  public pageIndex: number = 0;
+  public pageSize: number = 6;
+  public pageSizeOptions: number[] = [6, 12, 24, 48]
+
+  public spinerStatusSubj: Subject<string> = new Subject()
 
   constructor(
-    private _usersService: UserdataService,
+    private usersService: UserdataService,
     public favoriteService: SelectedEntitiesService
   ) {}
 
   ngOnInit(): void {
-
-    this._usersService
-      .getUsersFromHttp()
-      .pipe(takeWhile(() => this.componentActive))
-      .subscribe((users: any) => {
-        (this.usersHttp = users.results),
-          console.log(users.results),
-          this.usersSubj.next(users.results);
-      });
-
-    this.favoriteService.getFavoritesData(Favotite.User)
-      .pipe(takeWhile(() => this.componentActive))
-      .subscribe(users => {this.favorites = users, console.log(users)});
+    this.getUsers();
+    this.getFavoriteUsers()
   }
 
-  usersListAfterSearch(searchValue: any) {
-    this._usersService.getUsersFromHttp()
+  getUsers(): void{
+    this.usersService.getUsers(this.pageIndex, this.pageSize)
       .pipe(takeWhile(() => this.componentActive))
       .subscribe((users: any) => {
-        this.usersSubj.next(
-          searchValue ? users.results.filter((user: IUser) =>`${user.name?.['first']} ${user.name?.['last']}`.toLowerCase().includes(searchValue)): users.results
-        ),
-          this.chengeStatusSpiner();
+        console.log(users)
+        this.users = users
       });
   }
 
-  public get parentObs$(): Observable<any> {
-    return this.parentSubj.asObservable();
+  getFavoriteUsers(): any {
+    return  this.favoriteService.getFavoritesData(Favotite.User)
+      .pipe(takeWhile(() => this.componentActive))
+      .subscribe(users => {this.favorites = users});
   }
 
-  public get usersObs$(): Observable<any> {
-    return this.usersSubj.asObservable();
+  OnPageChange(event: PageEvent): void{
+    this.pageIndex = event.pageIndex + 1;
+    this.pageSize = event.pageSize;
+    this.getUsers()
   }
 
-  public chengeStatusSpiner(): void {
-    this.parentSubj.next('determinate');
+  searchUses(event: string){
+
+    const pageIndex: number = 0;
+    const pageSize: number = 96;
+    const defaultSize: number = 6
+    const nikName = event;
+    this.usersService.searchUsersByName(pageIndex, pageSize, nikName, defaultSize)
+    .pipe(takeWhile(() => this.componentActive))
+      .subscribe((users: any) => {
+        this.users = users,
+        this.spinerStatusSubj.next('determinate')
+      });
   }
+  // public get parentObs$(): Observable<any> {
+  //   return this.parentSubj.asObservable();
+  // }
+
+  public get statusSpiner$(): Observable<any> {
+    return this.spinerStatusSubj.asObservable();
+  }
+
+  // public chengeStatusSpiner(): void {
+  //   this.parentSubj.next('determinate');
+  // }
 
   ngOnDestroy(): void {
     this.componentActive = false;

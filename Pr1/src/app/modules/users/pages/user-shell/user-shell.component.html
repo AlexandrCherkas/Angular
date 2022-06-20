@@ -1,7 +1,16 @@
-<!-- <app-search></app-search> -->
-<app-search (changeValueInput)="usersListAfterSearch($event)"  [searchStatus$]="parentObs$"></app-search>
+
+<app-search (changeValueInput)="searchUses($event)" [spinerStatus]="statusSpiner$"></app-search>
+
 
 <div class="user-shell">
-  <app-user-list [users]="users" [usersObs$]="usersObs$"> </app-user-list>
+  <app-user-list [users]="users" > </app-user-list>
   <app-setbar  class="child righted"  [favorites]="favorites"  [entity]="users" ></app-setbar>
 </div>
+
+<mat-paginator
+    [length]="length"
+    [pageSize]="pageSize"
+    [pageSizeOptions]="pageSizeOptions"
+    aria-label="Select page"
+    (page)="OnPageChange($event)">
+</mat-paginator>

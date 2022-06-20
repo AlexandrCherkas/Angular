@@ -11,7 +11,7 @@ import { IUser } from 'src/app/modules/users/interface/user';
 export class CardComponent implements OnInit {
   @Input() isLikes!: boolean;
   @Input() image!: string;
-  @Input() id!: number;
+  @Input() id!: any;
 
   @Output() toFavoriteEvent = new EventEmitter();
 

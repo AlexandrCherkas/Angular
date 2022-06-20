@@ -36,7 +36,7 @@ export class SelectedEntitiesService {
     }
   }
 
-  checkIfFavored(entityId: number, entityType: Favotite): boolean {
+  checkIfFavored(entityId: any, entityType: Favotite): boolean {
     return favoriteMap[entityType].find((favorite) => {
       return favorite == entityId;
     })

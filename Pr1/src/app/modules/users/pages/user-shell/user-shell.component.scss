@@ -2,10 +2,15 @@
   display: flex;
   flex: 1 1 0;
   flex-wrap: nowrap;
-
 }
 
 .righted {
   order: 999;
   margin-left: auto;
+}
+
+mat-paginator{
+  display: flex;
+  border-top: 2px solid greenyellow ;
+  justify-content: center;
 }

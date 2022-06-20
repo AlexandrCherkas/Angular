@@ -59,13 +59,15 @@ export class CreateUserListComponent implements OnInit {
 
   ngOnInit(): void {
 
-    if(this.currentUser){
+
+
       this.currentUser
         .pipe(takeWhile(() => this.componentArtive))
         .subscribe(data => {
-          this.childFormGroup.patchValue(data)
+          console.log(data[0])
+          this.childFormGroup.patchValue(data[0])
        })
-    }
+
 
     this.userFormData.emit(this.childFormGroup)
 
