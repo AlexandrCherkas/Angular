@@ -1,17 +1,9 @@
 import { IfStmt } from '@angular/compiler';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import {
-  FormGroup,
-  FormControl,
-  FormBuilder,
-  Validators,
-  FormArray,
-} from '@angular/forms';
-import { zip } from 'rxjs';
-import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail';
-import { forkJoin, merge, Observable } from 'rxjs';
+import { FormGroup, FormBuilder, Validators, FormArray } from '@angular/forms';
+import { Observable } from 'rxjs';
 import { IUser } from '../../interface/user';
-import { takeUntil, takeWhile } from 'rxjs/operators';
+import {  takeWhile } from 'rxjs/operators';
 
 @Component({
   selector: 'app-addresses',

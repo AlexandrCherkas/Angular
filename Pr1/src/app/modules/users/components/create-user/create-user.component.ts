@@ -4,11 +4,10 @@ import { ValidateEmail } from 'src/app/modules/shared/validators/checkDomenEmail
 
 import { UserserviceService } from '../../services/userservice.service';
 import { UserdataService } from '../../services/userdata.service';
-import { UserEmailValidator } from 'src/app/modules/shared/validators/checkRepeatEmail';
 import { IUser } from '../../interface/user';
-import { forkJoin, merge, Observable } from 'rxjs';
+import { merge, Observable } from 'rxjs';
 import { debounceTime, map, distinctUntilChanged, takeWhile } from 'rxjs/operators';
-import { takeUntil } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-create-user',
@@ -22,17 +21,11 @@ export class CreateUserListComponent implements OnInit {
   @Output() userFormData = new EventEmitter<FormGroup>();
 
   private componentArtive  = true
+  public childFormGroup: FormGroup;
+  public mergeEmail = {};
+  public ID = Math.floor(Math.random() * 10000)
 
-  childFormGroup: FormGroup;
-  response = {};
-  private _editUserForm: NgForm;
-  ID = Math.floor(Math.random() * 10000)
-
-  constructor(
-    private fb: FormBuilder,
-    private _userService: UserserviceService,
-    private _userdataService: UserdataService
-  ) {
+  constructor(private fb: FormBuilder ) {
 
     this.childFormGroup = this.fb.group({
       id: this.ID,
@@ -45,7 +38,7 @@ export class CreateUserListComponent implements OnInit {
           Validators.email,
           ValidateEmail(/^.+@gmail.com$/),
         ],
-        [UserEmailValidator.createValidator(this._userService)],
+        // [UserEmailValidator.createValidator(this._userService)],
       ],
       company: ['', [Validators.required, Validators.maxLength(35)]],
       departament: ['', [Validators.required, Validators.minLength(6)]],
@@ -59,15 +52,13 @@ export class CreateUserListComponent implements OnInit {
 
   ngOnInit(): void {
 
-
-
+    if(this.currentUser){
       this.currentUser
         .pipe(takeWhile(() => this.componentArtive))
         .subscribe(data => {
-          console.log(data[0])
-          this.childFormGroup.patchValue(data[0])
-       })
-
+          this.childFormGroup.patchValue(data)
+        })
+    }
 
     this.userFormData.emit(this.childFormGroup)
 
@@ -80,11 +71,13 @@ export class CreateUserListComponent implements OnInit {
         .valueChanges.pipe(
           map((value) => ({ secondName: value.toLowerCase() }))
         )
-    ).subscribe((value) => {
-      Object.assign(this.response, value),
+    )
+    .pipe(takeWhile(() => this.componentArtive))
+    .subscribe((value) => {
+      Object.assign(this.mergeEmail, value),
         this.childFormGroup
           .get('email')
-          .setValue(this.createDefaultEmail(this.response));
+          .setValue(this.createDefaultEmail(this.mergeEmail));
     });
   }
 

@@ -1,7 +1,6 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { UserdataService } from '../../services/userdata.service';
 import { IUser } from 'src/app/modules/users/interface/user';
-import { IUsersWithAddress } from '../../interface/user+address';
 import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
@@ -44,15 +43,14 @@ export class UserShellComponent implements OnInit {
     this.usersService.getUsers(this.pageIndex, this.pageSize)
       .pipe(takeWhile(() => this.componentActive))
       .subscribe((users: any) => {
-        console.log(users)
         this.users = users
       });
   }
 
   getFavoriteUsers(): any {
     return  this.favoriteService.getFavoritesData(Favotite.User)
-      .pipe(takeWhile(() => this.componentActive))
-      .subscribe(users => {this.favorites = users});
+              .pipe(takeWhile(() => this.componentActive))
+              .subscribe(users => {this.favorites = users});
   }
 
   OnPageChange(event: PageEvent): void{
@@ -62,7 +60,6 @@ export class UserShellComponent implements OnInit {
   }
 
   searchUses(event: string){
-
     const pageIndex: number = 0;
     const pageSize: number = 96;
     const defaultSize: number = 6
@@ -74,17 +71,10 @@ export class UserShellComponent implements OnInit {
         this.spinerStatusSubj.next('determinate')
       });
   }
-  // public get parentObs$(): Observable<any> {
-  //   return this.parentSubj.asObservable();
-  // }
 
   public get statusSpiner$(): Observable<any> {
     return this.spinerStatusSubj.asObservable();
   }
-
-  // public chengeStatusSpiner(): void {
-  //   this.parentSubj.next('determinate');
-  // }
 
   ngOnDestroy(): void {
     this.componentActive = false;

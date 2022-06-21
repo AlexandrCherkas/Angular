@@ -11,6 +11,7 @@ export class ApiServiceService {
   constructor(private httpService: HttpServiceService) { }
 
   getUsers(path: string, params?: object): Observable<any>{
+    console.log(path)
     return this.httpService.get(path, params).pipe(
       map((response: any) => {
        return response;
@@ -43,7 +44,7 @@ export class ApiServiceService {
     console.log(userID)
     return this.httpService.get(path).pipe(
       map((response: any) => {
-       return response.filter((user: any) => user.login.uuid == userID)
+        return response.filter((user: any) => user.login.uuid == userID)
       })
     )
   }

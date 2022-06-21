@@ -4,9 +4,6 @@ import { IUser } from '../../interface/user';
 import { UserdataService } from '../../services/userdata.service';
 import { FormArray, FormGroup, NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { DialogLeavePageComponent } from 'src/app/modules/shared/components/dialog-leave-page/dialog-leave-page.component';
-import { CanDeactivatePage } from 'src/app/core/guards/leave-edit-user-form.guard';
-
 
 
 @Component({
@@ -15,28 +12,21 @@ import { CanDeactivatePage } from 'src/app/core/guards/leave-edit-user-form.guar
   styleUrls: ['./edit-user.component.scss'],
 
 })
-export class EditUserComponent implements OnInit, CanDeactivatePage  {
-
-  @ViewChild("editUserForm")
-
-  private _editUserForm: NgForm;
+export class EditUserComponent implements OnInit  {
 
   parentFormGroup: FormGroup = new FormGroup({});
   formGroup: FormGroup
   id: any;
   user$: Observable <IUser>;
-  private _statusFormDirty: boolean = false
-
 
   constructor(
-    private _route: ActivatedRoute,
-    private _userdataService: UserdataService,
-    private _router: Router,
-    private _dialog: DialogLeavePageComponent) {  }
+    private route: ActivatedRoute,
+    private userdataService: UserdataService,
+    private router: Router) {  }
 
   ngOnInit(): void {
-    this.id = this._route.snapshot.paramMap.get('id')
-    this.user$ = this._userdataService.getUserByID(this.id)
+    this.id = this.route.snapshot.paramMap.get('id')
+    this.user$ = this.userdataService.getUserByID(this.id)
   }
 
   onChengeUser(key: string, Form: FormArray | FormGroup): void{
@@ -44,25 +34,16 @@ export class EditUserComponent implements OnInit, CanDeactivatePage  {
   }
 
   canDeactivateMetod(): Observable<boolean> | boolean {
-   return this._dialog.openDialog()
-  }
-
-  disablecanDeactivate(): boolean {
-    return this._statusFormDirty
-  }
-
-  hasUnsavedData(): boolean{
-    console.log(this._editUserForm)
-    return this._editUserForm.dirty
+    return this.parentFormGroup.dirty
   }
 
   editUser(): void{
     this.parentFormGroup.markAllAsTouched();
-    console.log(this.parentFormGroup)
-    this._statusFormDirty = true
+
     if (this.parentFormGroup.status == 'VALID') {
-      this._userdataService.changeUser(this.parentFormGroup.value.user, this.parentFormGroup.getRawValue().address);
-      this._router.navigate(['/users']);
+      this.parentFormGroup.markAsPristine();
+      this.userdataService.changeUser(this.parentFormGroup.value.user, this.parentFormGroup.getRawValue().address);
+      this.router.navigate(['/users']);
     }
   }
 }

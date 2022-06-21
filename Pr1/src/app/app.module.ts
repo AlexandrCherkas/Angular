@@ -48,8 +48,8 @@ import { AddressComponent } from './modules/users/components/address/address.com
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
 
-import { DialogLeavePageComponent } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
-import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+
+import {DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
 import { SearchComponent } from './modules/shared/components/search/search.component';
 
 import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
@@ -80,7 +80,6 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
 
     EditUserComponent,
     EditUserShellComponent,
-    DialogLeavePageComponent,
     DialogAnimationsExampleDialog,
 
     SearchComponent,
@@ -118,7 +117,7 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
 
 
   ],
-  providers: [LeaveEditUserFormGuard, DialogLeavePageComponent, UserShellComponent],
+  providers: [LeaveEditUserFormGuard, UserShellComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

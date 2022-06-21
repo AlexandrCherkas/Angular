@@ -6,15 +6,15 @@
 
       <div class="data-conteiner">
         <span class="btn">Age : <span class="grn">{{user.age}} </span> </span>
-        <span class="btn">Gender : <span class="grn">{{user.gender}</span></span>
-        <span class="btn">Phone : <span class="grn">{{user.phone}}</span></span>
-        <span class="btn">Nationality : <span class="grn">{{user.nationality}}</span></span>
+        <span class="btn">Gender : <span class="grn">{{user.gender ? "Male" : "Female" }}</span></span>
+        <span class="btn">Phone : <span class="grn">{{user.departament}}</span></span>
+        <span class="btn">Nationality : <span class="grn">{{user.company}}</span></span>
         <span class="btn">Email : <span class="grn">{{user.email}}</span></span>
 
 
           <ng-container *ngFor="let address of user.address; let i = index" >
             <h4> - Address #  :</h4>
-            <span class="btw">Country : <span class="grn"> {{address.country}}</span> </span>
+            <span class="btw">Country : <span class="grn"> {{address.addressLine}}</span> </span>
             <ng-container *ngIf="address.city">
               <span class="btw">City : <span class="grn"> {{address.city}}</span> </span>
             </ng-container>

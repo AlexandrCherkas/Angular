@@ -2,7 +2,7 @@
 
 <div class="edit-form">
 
-  <form class="form" [formGroup]="parentFormGroup" (submit)="editUser()" #editUserForm="ngForm">
+  <form class="form" [formGroup]="parentFormGroup" (submit)="editUser()">
     <app-create-user [formGroup]="parentFormGroup" (userFormData)="onChengeUser('user', $event)" [currentUser]="user$" [key]="'user'"> </app-create-user>
     <app-addresses [formGroup]="parentFormGroup"  (userAddresses)="onChengeUser('address', $event)"  [currentUser]="user$" [key]="'address'"> </app-addresses>
     <button mat-stroked-button color="primary" type="submit">Save</button>

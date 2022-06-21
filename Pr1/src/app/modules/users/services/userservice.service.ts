@@ -17,7 +17,6 @@ export class UserserviceService  {
   }
 
   checkIfEmailExists(value: string) {
-
     return of(this._existingEmails.some((item) => item === value)).
       pipe(
         delay(1000)

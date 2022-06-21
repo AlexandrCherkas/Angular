@@ -22,7 +22,6 @@ export class SelectedEntitiesService {
   constructor() {}
 
   getFavoritesData(type: Favotite): Observable <any[]> {
-    console.log('dfsdf')
    return of(favoriteMap[type]).pipe(delay(1000));
   }
 

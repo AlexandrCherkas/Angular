@@ -6,8 +6,8 @@ export interface IUser {
   secondName: string,
   age: number,
   gender: boolean,
-  phone: number,
-  nationality: string,
+  departament: number,
+  company: string,
   email: string,
   picture: string,
   address?: Array<IAddress>
