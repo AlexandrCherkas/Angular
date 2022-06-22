@@ -3,7 +3,7 @@ import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { IUser } from '../../interface/user';
 import { UserdataService } from '../../services/userdata.service';
 import { FormArray, FormGroup, NgForm } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { Observable, takeWhile } from 'rxjs';
 
 
 @Component({
@@ -16,8 +16,10 @@ export class EditUserComponent implements OnInit  {
 
   parentFormGroup: FormGroup = new FormGroup({});
   formGroup: FormGroup
+  componentActive = true
   id: any;
   user$: Observable <IUser>;
+
 
   constructor(
     private route: ActivatedRoute,
@@ -25,7 +27,11 @@ export class EditUserComponent implements OnInit  {
     private router: Router) {  }
 
   ngOnInit(): void {
-    this.id = this.route.snapshot.paramMap.get('id')
+    this.route.paramMap
+    .pipe(takeWhile(() => this.componentActive))
+    .subscribe(params => {
+      this.id = params.get('id');
+    });
     this.user$ = this.userdataService.getUserByID(this.id)
   }
 
@@ -45,5 +51,9 @@ export class EditUserComponent implements OnInit  {
       this.userdataService.changeUser(this.parentFormGroup.value.user, this.parentFormGroup.getRawValue().address);
       this.router.navigate(['/users']);
     }
+  }
+
+  ngOnDestroy(): void {
+    this.componentActive = false;
   }
 }

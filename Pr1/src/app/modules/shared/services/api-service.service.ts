@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { HttpServiceService } from './http-service.service';
 
 
@@ -11,8 +11,8 @@ export class ApiServiceService {
   constructor(private httpService: HttpServiceService) { }
 
   getUsers(path: string, params?: object): Observable<any>{
-    console.log(path)
     return this.httpService.get(path, params).pipe(
+
       map((response: any) => {
        return response;
       })

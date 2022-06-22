@@ -17,7 +17,7 @@ export class UserdataService {
   users= []
   constructor(private apiService: ApiServiceService) {}
 
-  public getUsers(page: number, results: number, params?: any): any {
+  public getUsers(page: number, results: number, params?: any): Observable<any> {
     const path = `?page=${page}&results=${results}&seed=abc`;
     return this.apiService.getUsers(path)
       .pipe(map((usersDTOs: IRemoteUser[]) => {
@@ -26,7 +26,7 @@ export class UserdataService {
     )
   }
 
-  public searchUsersByName(page: number, results: number, filter: any, defaultResults: number): any{
+  public searchUsersByName(page: number, results: number, filter: any, defaultResults: number): Observable<any> {
     const path = `?page=${page}&results=${results}&seed=abc`;
     const defaultPath = `?page=${page}&results=${defaultResults}&seed=abc`;
     const params = { filter: filter, defaultPath: defaultPath }
@@ -39,7 +39,7 @@ export class UserdataService {
     )
   }
 
-  public getUserByID(id: string): any {
+  public getUserByID(id: string): Observable<any> {
     const params = {userId: id };
     const path  = `?page=0&results=96&seed=abc`;
     return this.apiService.getUserByID(path, params)
