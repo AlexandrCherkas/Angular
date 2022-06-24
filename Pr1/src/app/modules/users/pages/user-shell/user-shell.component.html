@@ -1,8 +1,19 @@
 
 <app-search (changeValueInput)="searchUses($event)" [spinerStatus]="statusSpinner$"></app-search>
-<button mat-stroked-button color="primary" id="refreshPage" >Refresh page</button>
+<div class="block">
+  <button mat-stroked-button color="primary" id="refreshPage" >Refresh page</button>
+
+  <button mat-stroked-button color="primary"
+    [disabled]="statusButton"
+    id="button"
+
+    >Button for task #4
+  </button>
+
+</div>
 
 
+<!-- (click)="disableMethod()" -->
 
 
 <div class="user-shell">

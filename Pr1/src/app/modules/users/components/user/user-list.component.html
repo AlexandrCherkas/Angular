@@ -1,7 +1,15 @@
 <div class="user-list">
   <ng-container *ngFor="let user of users">
 
-    <app-card class="user-image" [image]="user.picture" (toFavoriteEvent)="addToFavorite(user)" [id]="user.id" [isLikes]="checkIfFavored(user.id)">
+    <app-card class="user-image"
+      [image]="user.picture"
+      [id]="user.id"
+      [isLikes]="checkIfFavored(user.id)"
+      (toFavoriteEvent)="addToFavorite(user)"
+
+      (toExportToExcelEvent)="exportUserToExcel(user.id, user.name)"
+      (toSaveEvent)="saveUser(user.id, user.name)"
+      >
       <mat-card-title class="card-header"> {{user.title}} {{user.name}} {{user.secondName}}</mat-card-title>
 
       <div class="data-conteiner">

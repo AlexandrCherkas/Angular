@@ -1,31 +1,11 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ElementRef,
-} from '@angular/core';
+import { Component, OnInit,  Output,  EventEmitter } from '@angular/core';
 import { UserdataService } from '../../services/userdata.service';
 import { IUser } from 'src/app/modules/users/interface/user';
 import { IFavoriteCards } from 'src/app/modules/shared/interface/favoriteCard';
 import { Favotite } from 'src/app/modules/shared/enums/favorite';
 import { SelectedEntitiesService } from 'src/app/modules/shared/services/selected-entities.service';
-import {
-  Observable,
-  observeOn,
-  of,
-  Subject,
-  takeUntil,
-  takeWhile,
-  BehaviorSubject,
-  delay,
-  from,
-  switchMap,
-  interval,
-  fromEvent,
-} from 'rxjs';
+import { Observable, observeOn, of, Subject, takeUntil, takeWhile, BehaviorSubject, delay, from, switchMap, interval, fromEvent,
+  take,  finalize,  mergeMap,  concatMap, pipe,  exhaustMap, tap } from 'rxjs';
 import { Injectable, Inject } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
@@ -38,7 +18,7 @@ import { MatButton } from '@angular/material/button';
 })
 @Injectable()
 export class UserShellComponent implements OnInit {
-  @Output() statusSpiner = new EventEmitter();
+  @Output() statusSpinner = new EventEmitter();
 
   public users: IUser[] = [];
   public favorites!: Array<IFavoriteCards>;
@@ -50,10 +30,8 @@ export class UserShellComponent implements OnInit {
   public pageSizeOptions: number[] = [6, 12, 24, 48];
 
   public spinnerStatusSubj: Subject<string> = new Subject();
-  //////////////////////
 
-  private clickStream = new Subject<Event>();
-  obs: Observable<Event> = this.clickStream.asObservable();
+  public statusButton = false;
 
   constructor(
     private usersService: UserdataService,
@@ -65,16 +43,39 @@ export class UserShellComponent implements OnInit {
 
     fromEvent(document.getElementById('refreshPage'), 'click')
       .pipe(
+        takeWhile(() => this.componentActive),
         switchMap(() => {
           return this.usersService
             .getUsers(this.pageIndex, this.pageSize)
-            .pipe(switchMap((res) => res));
+            .pipe(
+              takeWhile(() => this.componentActive),
+              switchMap((res) => res));
         })
       )
-      .subscribe((data) => data);
+      .subscribe(() => console.log('ok'));
+
+    fromEvent(document.getElementById('button'), 'click')
+      .pipe(
+        takeWhile(() => this.componentActive),
+        tap(() => console.log('Send')),
+        exhaustMap(() => {
+          return this.usersService.getUsers(this.pageIndex, this.pageSize).pipe(
+            takeWhile(() => this.componentActive),
+            exhaustMap((res) => res)
+          );
+        })
+      )
+      .subscribe(() => console.log('ok'));
 
     this.getUsers();
     this.getFavoriteUsers();
+  }
+
+  disableMethod(): void {
+    this.statusButton = true;
+    this.usersService
+      .getUsers(this.pageIndex, this.pageSize)
+      .subscribe(() => (this.statusButton = false));
   }
 
   getUsers(): void {

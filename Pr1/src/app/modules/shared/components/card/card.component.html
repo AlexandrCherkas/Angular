@@ -16,13 +16,13 @@
     </mat-card-actions>
 
     <mat-card-actions class="button-export" >
-      <button  mat-icon-button   class="edit button color" >
+      <button  mat-icon-button  (click)="exportToExcel()" class="edit button color" >
         <mat-icon matTooltip="Import to Excel">import_export</mat-icon>
       </button>
     </mat-card-actions>
 
     <mat-card-actions class="button-save" >
-      <button  mat-icon-button   class="edit button color" matTooltip="Save">
+      <button  mat-icon-button  id='save' (click)="save()" class="edit button color" matTooltip="Save">
         <mat-icon>save</mat-icon>
       </button>
     </mat-card-actions>

@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { fromEvent } from 'rxjs';
+
+import { fromEvent, mergeMap, of, switchMap } from 'rxjs';
 import { ICar } from 'src/app/modules/cars/interface/car';
 import { IUser } from 'src/app/modules/users/interface/user';
 import { UserdataService } from 'src/app/modules/users/services/userdata.service';
-
 
 @Component({
   selector: 'app-card',
@@ -19,23 +19,9 @@ export class CardComponent implements OnInit {
   @Output() toSaveEvent = new EventEmitter();
   @Output() toExportToExcelEvent = new EventEmitter();
 
-  constructor( private userService: UserdataService) {}
+  constructor() {}
 
-  ngOnInit(): void {
-
-    // fromEvent(document.getElementById('save'), 'click')
-    // .pipe(
-    //   switchMap(() => {
-    //     return this.usersService
-    //       .getUsers(this.pageIndex, this.pageSize)
-    //       .pipe(switchMap((res) => res));
-    //   })
-    // )
-    // .subscribe((data) => data);
-
-
-
-  }
+  ngOnInit(): void {}
 
   addToFavorite(): void {
     this.toFavoriteEvent.emit();
@@ -49,5 +35,4 @@ export class CardComponent implements OnInit {
   exportToExcel(): void {
     this.toExportToExcelEvent.emit();
   }
-
 }
