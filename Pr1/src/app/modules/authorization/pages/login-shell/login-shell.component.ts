@@ -17,7 +17,7 @@ export class LoginShellComponent implements OnInit {
 
 
   constructor(
-    private authorizationService: AuthorizationService ,
+    private authorizationService: AuthorizationService,
     private router: Router ) {}
 
   ngOnInit(): void {
@@ -33,7 +33,8 @@ export class LoginShellComponent implements OnInit {
       this.authorizationService.verificationUser(this.parentFormGroup.value.user)
         .subscribe(data => {
           if(data){
-            this.loginUser.emit(data)
+            this.authorizationService.authorizedUser(data)
+            // console.log(this.authorizationService.currentUser())
             this.router.navigate(['/users']);
           }
         });

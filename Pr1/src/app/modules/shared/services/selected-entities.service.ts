@@ -7,6 +7,7 @@ import { Favotite } from '../enums/favorite';
 type FavoriteMap = {
   [key in Favotite]: number[]
 }
+
 const favoriteMap: FavoriteMap = {
   [Favotite.Car]: [],
   [Favotite.User]: [],

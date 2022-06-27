@@ -6,4 +6,8 @@ import { Injectable } from '@angular/core';
 export class HeaderService {
 
   constructor() { }
+
+  authorizedUser(user: string): void{
+
+  }
 }

@@ -11,13 +11,16 @@
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Pass </mat-label>
       <input matInput name="pass"  formControlName="pass" type="text" placeholder="Ex. 1234567"/>
-        <mat-error *ngIf="pass.errors?.['required']"> Pass is <strong>required</strong> </mat-error>
+
+          <mat-error *ngIf="pass.errors?.['required']"> Pass is <strong>required</strong> </mat-error>
+
     </mat-form-field>
 
     <mat-form-field class="full-width" appearance="fill">
       <mat-label>Confirm pass </mat-label>
       <input matInput name="confirmPass"  formControlName="confirmPass" type="text" placeholder="Ex. 1234567"/>
           <mat-error *ngIf="confirmPass.errors?.['required']"> Confirm pass is <strong>required</strong> </mat-error>
+          <mat-error *ngIf="confirmPass.errors?.['mismatch']"> Confirm pass is not <strong>match</strong> </mat-error>
     </mat-form-field>
 
   </div>

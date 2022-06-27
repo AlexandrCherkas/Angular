@@ -1,6 +1,15 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
 
+function passwordMatchValidator(password: string): ValidatorFn {
+  return (control: FormControl) => {
+    console.log(control)
+    if (!control || !control.parent) {
+      return null;
+    }
+    return control.parent.get(password).value === control.value ? null : { mismatch: true };
+  };
+}
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -20,27 +29,16 @@ export class RegistrationComponent implements OnInit {
 
       passFormGroup: this.fb.group ({
         pass: ['', Validators.required],
-        confirmPass: ['', Validators.required]
+        confirmPass: ['', [Validators.required, passwordMatchValidator('pass')]]
       })
 
-    },  { validator: this.checkPasswords })
+    })
 
   }
 
   ngOnInit(): void {
     this.registrationFormData.emit(this.registrationFormGroup)
   }
-
-  checkPasswords(group: FormGroup) {
-    let pass = group.controls?.['pass'].value;
-    let confirmPass = group.controls?.['confirmPass'].value;
-    return pass === confirmPass ? null : { notSame: true }
-  }
-
-
-
-
-
 
   get pass(): any {
     return this.registrationFormGroup.get('passFormGroup.pass');

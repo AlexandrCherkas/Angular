@@ -11,8 +11,8 @@
       <button mat-stroked-button color="primary" routerLink="/create">Add User</button>
       <button mat-stroked-button color="primary" routerLink="/users">Users</button>
       <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
-      <h2>{{user}}</h2>
-      <button mat-stroked-button color="primary" routerLink="/login">Log out</button>
+      <button mat-stroked-button color="primary" >{{user}}</button>
+      <button mat-stroked-button color="primary" (click)="logOut()">Log out</button>
     </ng-container>
 
   </div>
