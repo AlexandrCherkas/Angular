@@ -1,0 +1,9 @@
+<div  class="login container">
+  <h2> Registration USER</h2>
+
+  <form class="form" [formGroup]="parentFormGroup" (submit)="submit()" >
+    <app-registration [formGroup]="parentFormGroup" (registrationFormData)="onRegistrationUser($event)"></app-registration>
+    <button mat-stroked-button color="primary" type="submit">Registration</button>
+  </form>
+
+</div>

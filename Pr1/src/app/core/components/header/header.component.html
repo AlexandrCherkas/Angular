@@ -1,11 +1,20 @@
 <header class="header">
   <img src={{logo}} width="70px">
   <div class="navigation">
-    <button mat-stroked-button color="primary" routerLink="/registration">Add User</button>
-    <button mat-stroked-button color="primary" routerLink="/users">Users</button>
-    <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
+
+    <ng-container *ngIf="!user">
+      <button mat-stroked-button color="primary" routerLink="/registration">Registration</button>
+      <button mat-stroked-button color="primary" routerLink="/login">Login</button>
+    </ng-container>
+
+    <ng-container *ngIf="user">
+      <button mat-stroked-button color="primary" routerLink="/create">Add User</button>
+      <button mat-stroked-button color="primary" routerLink="/users">Users</button>
+      <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
+      <h2>{{user}}</h2>
+      <button mat-stroked-button color="primary" routerLink="/login">Log out</button>
+    </ng-container>
 
   </div>
 </header>
-
 

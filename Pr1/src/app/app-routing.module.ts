@@ -7,14 +7,18 @@ import { CreateUserShellComponent } from './modules/users/pages/create-user-shel
 import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
 import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
-
+import { RegistrationShellComponent } from './modules/authorization/pages/registration-shell/registration-shell.component';
+import { LoginShellComponent } from './modules/authorization/pages/login-shell/login-shell.component';
 
 
 const routes: Routes = [
   {path : 'cars', component: CarShellComponent},
   {path : 'users', component: UserShellComponent},
-  {path : 'registration', component: CreateUserShellComponent },
+  {path : 'create', component: CreateUserShellComponent },
   {path : 'user/edit/:id', component: EditUserComponent, canDeactivate : [LeaveEditUserFormGuard] },
+
+  {path : 'registration', component: RegistrationShellComponent},
+  {path : 'login', component: LoginShellComponent},
 ];
 
 @NgModule({

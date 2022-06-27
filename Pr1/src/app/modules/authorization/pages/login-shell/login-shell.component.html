@@ -1,0 +1,12 @@
+<div class="login container">
+  <h2> Login USER</h2>
+
+  <form class="form" [formGroup]="parentFormGroup" (submit)="submit()" >
+    <app-login [formGroup]="parentFormGroup" (loginFormData)="onLoginUser($event)"></app-login>
+    <button mat-stroked-button color="primary" type="submit">Login</button>
+  </form>
+
+</div >
+<div>
+  <p>r2d2</p> <p>   Louane </p>
+</div>

@@ -8,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
 
   public logo: string ="../assets/images/apple-touch-icon.png"
+  public user;
+
   constructor() { }
+
+
 
   ngOnInit(): void {
   }

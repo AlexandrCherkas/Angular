@@ -48,11 +48,16 @@ import { AddressComponent } from './modules/users/components/address/address.com
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
 
+import { RegistrationShellComponent } from './modules/authorization/pages/registration-shell/registration-shell.component';
+import { RegistrationComponent } from './modules/authorization/components/registration/registration.component';
+import { LoginShellComponent } from './modules/authorization/pages/login-shell/login-shell.component';
+import { LoginComponent } from './modules/authorization/components/login/login.component';
 
-import {DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
+import { DialogAnimationsExampleDialog } from './modules/shared/components/dialog-leave-page/dialog-leave-page.component';
 import { SearchComponent } from './modules/shared/components/search/search.component';
 
 import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
+
 
 
 
@@ -83,6 +88,11 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
     DialogAnimationsExampleDialog,
 
     SearchComponent,
+
+    RegistrationShellComponent,
+    RegistrationComponent,
+    LoginShellComponent,
+    LoginComponent
 
 
   ],

@@ -48,4 +48,16 @@ export class ApiServiceService {
       })
     )
   }
+
+  public apiVerificationUser(path: string, params?: object): Observable<any> {
+    let login = params?.['login'];
+    let pass = params?.['pass'];
+    return this.httpService.get(path, params).pipe(
+      map((response: any) => {
+        return response.filter((user: any) => user.name.first == login)
+      })
+    )
+  }
+
+
 }
