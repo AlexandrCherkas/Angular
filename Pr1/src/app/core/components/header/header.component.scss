@@ -1,11 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lato:wght@300&family=Permanent+Marker&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Permanent+Marker&display=swap');
+
 header{
   display: flex;
+  flex-flow: row wrap;
   align-items: center;
   border-bottom: 2px solid greenyellow;
   padding: 5px;
   height: 70px;
   margin-bottom: 20px;
   overflow:  hidden;
+
+
 }
 .navigation{
   margin-left: 30px;
@@ -15,6 +21,24 @@ button{
   background-color: gainsboro;
   border: black;
 }
-h3{
-  display: inline-block;
+
+p{
+  display: inline;
+  margin-left: 25px;
+  font-size: 25px;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: rgb(7, 68, 7);
+  font-weight: bold;
+  margin-right: 30px;
+}
+
+.righted{
+  order: 999;
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.userPhoto{
+  display: inline;
+  border-radius: 35px;
 }

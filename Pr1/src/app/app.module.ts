@@ -1,7 +1,9 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
@@ -58,6 +60,10 @@ import { SearchComponent } from './modules/shared/components/search/search.compo
 
 import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
 
+import { AuthorizationModule } from './modules/authorization/authorization.module';
+import { CarsModule } from './modules/cars/cars.module';
+import { UsersModule } from './modules/users/users.module';
+
 
 
 
@@ -92,13 +98,14 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
     RegistrationShellComponent,
     RegistrationComponent,
     LoginShellComponent,
-    LoginComponent
+    // LoginComponent
 
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+
     BrowserAnimationsModule,
     MatSliderModule,
     MatSlideToggleModule,
@@ -121,9 +128,9 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
     MatPaginatorModule,
     MatSortModule,
 
-    // MatPaginator,
-    // MatTableModule
-
+    // AuthorizationModule,
+    CarsModule,
+    UsersModule
 
 
   ],

@@ -21,7 +21,6 @@ export class HttpServiceService {
     const fullPath = this.getUrl(path, params)
     return this.http.get(fullPath).pipe(
       map((response: any) => {
-        console.log(response.results)
         return response.results;
       })
     )

@@ -17,12 +17,13 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
     this.authorizationService.currentUser()
       .subscribe( (data) =>
-      { return this.user = data?.['userName'], console.log(data)}
+      { return this.user = data?.['userName'], this.photo = data?.['photoUser']}
       )
   }
 
   logOut(): void{
-    this.user = ''
+    this.user = undefined;
+    this.photo = undefined;
   }
 
   // public get user(): any{

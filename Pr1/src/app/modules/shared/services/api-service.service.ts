@@ -54,7 +54,7 @@ export class ApiServiceService {
     let pass = params?.['pass'];
     return this.httpService.get(path, params).pipe(
       map((response: any) => {
-        return response.filter((user: any) => user.name.first == login)
+        return response.filter((user: any) => user.name.first == login && user.login.password == pass)
       })
     )
   }

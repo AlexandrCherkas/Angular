@@ -5,6 +5,8 @@ import { LoginShellComponent } from './pages/login-shell/login-shell.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 
+import { AuthRoutingModule } from './authorization-routing.module';
+
 
 
 @NgModule({
@@ -15,7 +17,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     RegistrationComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    // AuthRoutingModule
   ]
 })
 export class AuthorizationModule { }

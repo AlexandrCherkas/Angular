@@ -1,5 +1,6 @@
 <header class="header">
   <img src={{logo}} width="70px">
+
   <div class="navigation">
 
     <ng-container *ngIf="!user">
@@ -11,10 +12,18 @@
       <button mat-stroked-button color="primary" routerLink="/create">Add User</button>
       <button mat-stroked-button color="primary" routerLink="/users">Users</button>
       <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
-      <button mat-stroked-button color="primary" >{{user}}</button>
-      <button mat-stroked-button color="primary" (click)="logOut()">Log out</button>
     </ng-container>
-
   </div>
+
+
+  <ng-container *ngIf="user">
+
+    <div class="righted">
+      <img  class="userPhoto" src={{photo}} width="50px">
+      <p>{{user}}</p>
+      <button mat-stroked-button  class='buttonLogOut' color="primary" (click)="logOut()" routerLink="/login">Log out</button>
+  </div>
+  </ng-container>
+
 </header>
 

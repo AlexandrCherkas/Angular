@@ -34,8 +34,10 @@ export class LoginShellComponent implements OnInit {
         .subscribe(data => {
           if(data){
             this.authorizationService.authorizedUser(data)
-            // console.log(this.authorizationService.currentUser())
-            this.router.navigate(['/users']);
+              this.router.navigate(['/users']);
+          }
+          else {
+            alert ('Please, check the entered data name or password!!')
           }
         });
 

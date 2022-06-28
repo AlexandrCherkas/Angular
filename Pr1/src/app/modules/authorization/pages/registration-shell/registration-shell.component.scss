@@ -1,3 +1,24 @@
-.container{
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Lato:wght@300&family=Permanent+Marker&family=Secular+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Gloria+Hallelujah&family=Permanent+Marker&display=swap');
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  margin-top: 10px;
+}
+
+h2{
+  display: inline;
+  margin-top: 30px;
+  font-size: 25px;
+  font-family: 'Gloria Hallelujah', cursive;
+  color: rgb(7, 68, 7);
+  font-weight: bold;
+  margin-bottom: 50px;
+}
+button{
   display: block;
+  margin: 0 auto;
 }
