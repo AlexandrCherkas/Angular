@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
+import { takeWhile } from 'rxjs';
+import { IAuthUser } from '../../interfaces/IAuthUser';
+import { AuthorizationService } from '../../services/authorization.service';
 
 @Component({
   selector: 'app-registration-shell',
@@ -8,9 +12,12 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class RegistrationShellComponent implements OnInit {
 
-  parentFormGroup: FormGroup = new FormGroup({});
+  public parentFormGroup: FormGroup = new FormGroup({});
+  private componentActive = true;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private authService: AuthorizationService) { }
 
   ngOnInit(): void {
   }
@@ -20,9 +27,28 @@ export class RegistrationShellComponent implements OnInit {
   }
 
   submit(): void{
-    console.log('Registr')
     this.parentFormGroup.markAllAsTouched();
-    console.log(this.parentFormGroup)
 
+    if (this.parentFormGroup.status == 'VALID') {
+
+      let user: IAuthUser = {
+        username: this.parentFormGroup.value.user?.['username'],
+        pass: this.parentFormGroup.value.user?.['passFormGroup'].pass
+      }
+
+      this.authService.createNewUser(user)
+        .pipe(takeWhile(() => this.componentActive))
+        .subscribe(data => {
+          alert(`${data}`)
+          this.router.navigate(['/login']);
+        })
+
+
+    }
   }
+
+  ngOnDestroy(): void {
+    this.componentActive = false;
+  }
+
 }

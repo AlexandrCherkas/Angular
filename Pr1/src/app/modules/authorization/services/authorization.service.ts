@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { FormControl, FormGroup, FormGroupDirective, NgForm } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
-import { map, Observable, of, Subject, tap } from 'rxjs'
+import { delay, map, Observable, of, Subject, tap } from 'rxjs'
 import { ApiServiceService } from '../../shared/services/api-service.service';
-
+import { IAuthUser } from '../interfaces/IAuthUser';
 
 
 @Injectable({
@@ -12,36 +11,33 @@ import { ApiServiceService } from '../../shared/services/api-service.service';
 
 export class AuthorizationService {
 
-  USER = new Subject();
+  public UserM: IAuthUser
+  private USER = new Subject<IAuthUser>();
+  private authenticatedUsers: IAuthUser[] = []
 
-  constructor(private apiService: ApiServiceService) { }
+  constructor() { }
 
-  public verificationUser(data: FormGroup): Observable<any> {
-    console.log(data)
-    const path = '?page=0&results=96&seed=abc';
-    return this.apiService.apiVerificationUser(path, data)
-    .pipe(
-      map((userDTO) => {
-        const user = userDTO[0]
-        return user;
-      })
-    );
-
+  public verificationUser(data: IAuthUser): Observable<IAuthUser> {
+    let user = this.authenticatedUsers.find((user) => user.username == data?.['login'] && user.pass == data?.['pass'])
+    return of(user).pipe(delay(500))
   }
 
-  public authorizedUser(user: object): void{
-    const title = user?.['name'].title
-    const first = user?.['name'].first
-    const last = user?.['name'].last
-    const photo = user?.['picture'].thumbnail
-    console.log(title, first, last )
-    let DTO = { userName: title + ' ' + first + ' ' + last, photoUser: photo }
-    this.USER.next(DTO)
+  public authorizedUser(user: IAuthUser): Observable<boolean>{
+    this.USER.next(user)
+    return of(true).pipe(delay(500))
   }
 
-  public currentUser(): Observable<any>{
+  public getCurrentUser(): Observable<IAuthUser>{
+    console.log('tuck tuck')
     return this.USER.asObservable()
   }
+
+  public createNewUser(user: IAuthUser): Observable<string>{
+    this.authenticatedUsers.push(user)
+    let message = 'You have registered a new user with the name: ' + user?.['username'].toUpperCase()
+    return of(message).pipe(delay(500))
+  }
+
 
 
 

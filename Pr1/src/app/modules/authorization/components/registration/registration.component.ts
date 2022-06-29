@@ -1,15 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, ValidatorFn, Validators } from '@angular/forms';
-
-function passwordMatchValidator(password: string): ValidatorFn {
-  return (control: FormControl) => {
-    console.log(control)
-    if (!control || !control.parent) {
-      return null;
-    }
-    return control.parent.get(password).value === control.value ? null : { mismatch: true };
-  };
-}
+import { passwordMatchValidator } from '../../validators/compare-pass';
 @Component({
   selector: 'app-registration',
   templateUrl: './registration.component.html',
@@ -20,7 +11,6 @@ export class RegistrationComponent implements OnInit {
   @Output() registrationFormData = new EventEmitter<FormGroup>();
 
   public registrationFormGroup: FormGroup;
-  // public passFormGroup: FormGroup;
 
   constructor(private fb: FormBuilder) {
 

@@ -12,43 +12,52 @@ import { CreateUserShellComponent } from './modules/users/pages/create-user-shel
 // import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 // import { RegistrationShellComponent } from './modules/authorization/pages/registration-shell/registration-shell.component';
 // import { LoginShellComponent } from './modules/authorization/pages/login-shell/login-shell.component';
-// import { AllowEntryGuard } from './core/guards/allow-entry.guard';
+import { AllowEntryGuard } from './core/guards/allow-entry.guard';
 
 
 const routes: Routes = [
   {
-    path : '', redirectTo: 'login', pathMatch: 'full'
+    path : '',
+    redirectTo: 'login',
+    pathMatch: 'full'
   },
   {
-    path : 'cars', loadChildren: () => import('./modules/cars/cars.module')
-    .then(module => module.CarsModule)
+    path : 'login',
+    component: LoginShellComponent
   },
   {
-    path : 'users', loadChildren: () => import('./modules/users/users.module')
-    .then(module => module.UsersModule)
+    path : 'registration',
+    component: RegistrationShellComponent
+  },
+
+  {
+    path : 'cars',
+    canActivate: [AllowEntryGuard],
+    loadChildren: () => import('./modules/cars/cars.module')
+      .then(module => module.CarsModule),
+
   },
   {
-    path : 'create',  component: CreateUserShellComponent
-    // loadChildren: () => import('./modules/users/users.module')
-    // .then(module => module.UsersModule)
+    path : 'users',
+    canActivate: [AllowEntryGuard],
+    loadChildren: () => import('./modules/users/users.module')
+      .then(module => module.UsersModule)
   },
+
+  // {
+  //  path : 'create',
+  //  canActivate: [AllowEntryGuard],
+  //   loadChildren: () => import('./modules/users/users.module')
+  //   .then(module => module.UsersModule)
+  // },
   // {
   //   path : 'user/edit/:id', loadChildren: () => import('./modules/users/users.module')
   //   .then(module => module.UsersModule)
   // },
 
-  {
-    path : 'registration',  component: RegistrationShellComponent
 
-    // loadChildren: () => import('./modules/authorization/authorization.module')
-    // .then(module => module.AuthorizationModule)
-},
-  {
-    path : 'login', component: LoginShellComponent
 
-    // loadChildren: () => import('./modules/authorization/authorization.module')
-    // .then(module => module.AuthorizationModule)
-}];
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

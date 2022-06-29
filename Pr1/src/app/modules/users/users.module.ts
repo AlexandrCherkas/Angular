@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { BrowserModule } from '@angular/platform-browser';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AngularMaterialModule } from 'src/angular-material.module';
+import { SharedModule } from '../shared/shared.module';
+
 import { UserListComponent } from './components/user/user-list.component';
 import { UserShellComponent } from './pages/user-shell/user-shell.component';
 import { CreateUserListComponent } from './components/create-user/create-user.component';
@@ -11,9 +14,6 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { EditUserShellComponent } from './pages/edit-user-shell/edit-user-shell.component';
 
 import { UsersRoutingModule } from './users-routing.module';
-
-
-
 
 @NgModule({
   declarations: [
@@ -29,8 +29,12 @@ import { UsersRoutingModule } from './users-routing.module';
   imports: [
     CommonModule,
     UsersRoutingModule,
-    BrowserModule,
-
+    ReactiveFormsModule,
+    AngularMaterialModule,
+    SharedModule
+  ],
+  exports:[
+    UserShellComponent
   ]
 })
 export class UsersModule { }
