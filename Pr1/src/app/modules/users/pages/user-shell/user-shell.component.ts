@@ -83,7 +83,6 @@ export class UserShellComponent implements OnInit {
       .getUsers(this.pageIndex, this.pageSize)
       .pipe(takeWhile(() => this.componentActive))
       .subscribe((users: any) => {
-        console.log(users);
         this.users = users;
       });
   }

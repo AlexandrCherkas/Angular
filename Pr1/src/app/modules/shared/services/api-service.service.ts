@@ -41,7 +41,6 @@ export class ApiServiceService {
 
   public getUserByID(path: string, params?: object): any{
     const userID = params?.['userId']
-    console.log(userID)
     return this.httpService.get(path).pipe(
       map((response: any) => {
         return response.filter((user: any) => user.login.uuid == userID)

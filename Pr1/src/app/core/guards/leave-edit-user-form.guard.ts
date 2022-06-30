@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {  UrlTree, CanDeactivate} from '@angular/router';
+import { UrlTree, CanDeactivate} from '@angular/router';
 import { Observable } from 'rxjs';
 import { ICanDeactivatePage } from '../interfaces/deactivatePage';
 import { ModalService } from '../services/modal.service';

@@ -17,7 +17,9 @@ export class CardComponent implements OnInit {
 
   @Output() toFavoriteEvent = new EventEmitter();
   @Output() toSaveEvent = new EventEmitter();
+  @Output() toEditEvent = new EventEmitter();
   @Output() toExportToExcelEvent = new EventEmitter();
+
 
   constructor() {}
 
@@ -35,4 +37,10 @@ export class CardComponent implements OnInit {
   exportToExcel(): void {
     this.toExportToExcelEvent.emit();
   }
+
+  edit(): void{
+    this.toEditEvent.emit();
+  }
+  // [routerLink] = "['/user/edit', id]"
+
 }

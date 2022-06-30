@@ -5,8 +5,9 @@
       [image]="user.picture"
       [id]="user.id"
       [isLikes]="checkIfFavored(user.id)"
-      (toFavoriteEvent)="addToFavorite(user)"
 
+      (toFavoriteEvent)="addToFavorite(user)"
+      (toEditEvent)="editUser(user.id)"
       (toExportToExcelEvent)="exportUserToExcel(user.id, user.name)"
       (toSaveEvent)="saveUser(user.id, user.name)"
       >

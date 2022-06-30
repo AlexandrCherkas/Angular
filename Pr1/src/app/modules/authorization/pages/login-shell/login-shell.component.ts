@@ -1,6 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { Subject, takeWhile, tap } from 'rxjs';
 import { AuthorizationService } from '../../services/authorization.service';
 import { IAuthUser } from '../../interfaces/IAuthUser';
@@ -19,9 +19,11 @@ export class LoginShellComponent implements OnInit {
   constructor(
     private authorizationService: AuthorizationService,
     private router: Router
-  ) {}
+  ) { }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   onLoginUser(Form: FormGroup): void {
     this.parentFormGroup.addControl('user', Form);
@@ -36,11 +38,8 @@ export class LoginShellComponent implements OnInit {
         .pipe(takeWhile(() => this.componentActive))
         .subscribe((data) => {
           if (data) {
+            this.router.navigate(['/users']);
             this.authorizationService.authorizedUser(data)
-
-                this.router.navigate(['/users']);
-
-
           } else {
             alert('Please, check the entered data name or password!!');
           }

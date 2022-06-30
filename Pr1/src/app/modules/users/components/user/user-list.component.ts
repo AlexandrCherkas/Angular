@@ -21,6 +21,7 @@ import {
   takeWhile,
   tap,
 } from 'rxjs';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-list',
@@ -40,7 +41,8 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private favoritesService: SelectedEntitiesService,
-    private userService: UserdataService
+    private userService: UserdataService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -82,6 +84,10 @@ export class UserListComponent implements OnInit {
   saveUser(userID: string, userName: string): void {
     let id = userName + ' - ID : ' + userID;
     this.saveSubj.next(id);
+  }
+
+  editUser(userID: string): void{
+    this.router.navigate(['/user/edit', userID])
   }
 
   ngOnDestroy(): void {

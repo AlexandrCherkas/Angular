@@ -12,16 +12,16 @@ import { AuthorizationService } from 'src/app/modules/authorization/services/aut
   providedIn: 'root',
 })
 export class AllowEntryGuard implements CanActivate {
+
   isUserLogged: boolean = false;
+
   private componentActive = true;
 
   constructor(private authorization: AuthorizationService) {
-    debugger
-    this.authorization.getCurrentUser()
 
-    // .pipe(takeWhile(()=> this.componentActive))
+    this.authorization.getCurrentUser()
+    .pipe(takeWhile(()=> this.componentActive))
     .subscribe((data) => {
-      console.log(data)
       return data ? this.isUserLogged = true : this.isUserLogged = false;
     });
   }
@@ -34,7 +34,7 @@ export class AllowEntryGuard implements CanActivate {
     | Promise<boolean | UrlTree>
     | boolean
     | UrlTree {
-      console.log(this.isUserLogged)
+
     return this.isUserLogged;
   }
 

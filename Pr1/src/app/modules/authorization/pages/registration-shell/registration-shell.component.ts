@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
 import { takeWhile } from 'rxjs';
 import { IAuthUser } from '../../interfaces/IAuthUser';
 import { AuthorizationService } from '../../services/authorization.service';
@@ -17,7 +17,22 @@ export class RegistrationShellComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private authService: AuthorizationService) { }
+    private authService: AuthorizationService) {
+
+      this.router.events.subscribe((event) => {
+        if (event instanceof NavigationStart) {
+          console.log(`Navigation Start to "${event.url}"`)
+        }
+
+        if (event instanceof NavigationCancel) {
+          console.log(`The Guard interrupted the transition to "${event.url}"`)
+        }
+
+        if (event instanceof NavigationEnd) {
+          console.log(`Navigation End to "${event.url}"`)
+        }
+      })
+    }
 
   ngOnInit(): void {
   }

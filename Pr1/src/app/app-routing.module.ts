@@ -4,63 +4,52 @@ import { AppModule } from './app.module';
 import { LoginShellComponent } from './modules/authorization/pages/login-shell/login-shell.component';
 import { RegistrationShellComponent } from './modules/authorization/pages/registration-shell/registration-shell.component';
 import { CreateUserShellComponent } from './modules/users/pages/create-user-shell/create-user-shell.component';
-// import { CarShellComponent } from './modules/cars/components/car-shell/car-shell.component';
-// import { UserShellComponent } from './modules/users/pages/user-shell/user-shell.component';
-// import { CreateUserShellComponent } from './modules/users/pages/create-user-shell/create-user-shell.component';
-// import { EditUserShellComponent } from './modules/users/pages/edit-user-shell/edit-user-shell.component';
-// import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
-// import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
-// import { RegistrationShellComponent } from './modules/authorization/pages/registration-shell/registration-shell.component';
-// import { LoginShellComponent } from './modules/authorization/pages/login-shell/login-shell.component';
+import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 import { AllowEntryGuard } from './core/guards/allow-entry.guard';
-
 
 const routes: Routes = [
   {
-    path : '',
+    path: '',
     redirectTo: 'login',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
   {
-    path : 'login',
-    component: LoginShellComponent
+    path: 'login',
+    component: LoginShellComponent,
   },
   {
-    path : 'registration',
-    component: RegistrationShellComponent
+    path: 'registration',
+    component: RegistrationShellComponent,
   },
-
   {
-    path : 'cars',
+    path: 'cars',
     canActivate: [AllowEntryGuard],
-    loadChildren: () => import('./modules/cars/cars.module')
-      .then(module => module.CarsModule),
-
+    loadChildren: () =>
+      import('./modules/cars/cars.module').then((module) => module.CarsModule),
   },
   {
-    path : 'users',
+    path: 'users',
     canActivate: [AllowEntryGuard],
-    loadChildren: () => import('./modules/users/users.module')
-      .then(module => module.UsersModule)
+    loadChildren: () =>
+      import('./modules/users/users.module').then(
+        (module) => module.UsersModule
+      ),
   },
 
-  // {
-  //  path : 'create',
-  //  canActivate: [AllowEntryGuard],
-  //   loadChildren: () => import('./modules/users/users.module')
-  //   .then(module => module.UsersModule)
-  // },
-  // {
-  //   path : 'user/edit/:id', loadChildren: () => import('./modules/users/users.module')
-  //   .then(module => module.UsersModule)
-  // },
-
-
-
+  {
+    path: 'create',
+    canActivate: [AllowEntryGuard],
+    component: CreateUserShellComponent,
+  },
+  {
+    path: 'user/edit/:id',
+    canActivate: [AllowEntryGuard],
+    component: EditUserComponent,
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
