@@ -15,7 +15,9 @@ export class HeaderComponent implements OnInit{
   public photo: string;
   private componentActive = true;
 
-  constructor(private authorizationService: AuthorizationService) {}
+  constructor(
+    private authorizationService: AuthorizationService,
+    ) {}
 
   ngOnInit(): void {
     this.authorizationService
@@ -27,9 +29,8 @@ export class HeaderComponent implements OnInit{
   }
 
   logOut(): void {
-    this.user = undefined;
-    this.photo = undefined;
-  }
+    this.authorizationService.signOut({username: '', pass: ''})
+   }
 
    ngOnDestroy(): void {
     this.componentActive = false;

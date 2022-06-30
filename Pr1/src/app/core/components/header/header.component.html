@@ -5,7 +5,7 @@
 
     <ng-container *ngIf="!user">
       <button mat-stroked-button color="primary" routerLink="/registration">Registration</button>
-      <button mat-stroked-button color="primary" routerLink="/login">Login</button>
+      <button mat-stroked-button color="primary" routerLink="/login">Sign in</button>
     </ng-container>
 
     <ng-container *ngIf="user">
@@ -21,7 +21,7 @@
     <div class="righted">
       <img  class="userPhoto" src={{photo}} width="50px">
       <p>{{user}}</p>
-      <button mat-stroked-button  class='buttonLogOut' color="primary" (click)="logOut()" routerLink="/login">Log out</button>
+      <button mat-stroked-button  class='buttonLogOut' color="primary" (click)="logOut()" routerLink="/login">Sign out</button>
   </div>
   </ng-container>
 

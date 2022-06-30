@@ -38,11 +38,11 @@ export class LoginShellComponent implements OnInit {
         .pipe(takeWhile(() => this.componentActive))
         .subscribe((data) => {
           if (data) {
-            this.router.navigate(['/users']);
             this.authorizationService.authorizedUser(data)
           } else {
             alert('Please, check the entered data name or password!!');
           }
+          this.router.navigate(['/users']);
         });
     }
   }

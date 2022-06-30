@@ -49,20 +49,21 @@ export class UserListComponent implements OnInit {
 
     this.saveSubj
       .pipe(
+        takeWhile(() => this.componentActive),
         concatMap((req) =>
           this.userService
             .saveUser(req)
-            .pipe(takeWhile(() => this.componentActive))
+
         )
       )
       .subscribe((data) => console.log(data));
 
     this.exportSubj
       .pipe(
+        takeWhile(() => this.componentActive),
         mergeMap((req) =>
           this.userService
             .exportUserToExcel(req)
-            .pipe(takeWhile(() => this.componentActive))
         )
       )
       .subscribe((data) => console.log(data));

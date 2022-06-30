@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { AppModule } from './app.module';
 import { LoginShellComponent } from './modules/authorization/pages/login-shell/login-shell.component';
 import { RegistrationShellComponent } from './modules/authorization/pages/registration-shell/registration-shell.component';
 import { CreateUserShellComponent } from './modules/users/pages/create-user-shell/create-user-shell.component';
@@ -35,7 +34,6 @@ const routes: Routes = [
         (module) => module.UsersModule
       ),
   },
-
   {
     path: 'create',
     canActivate: [AllowEntryGuard],

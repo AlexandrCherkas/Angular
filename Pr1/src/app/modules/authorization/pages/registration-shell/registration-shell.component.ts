@@ -21,15 +21,15 @@ export class RegistrationShellComponent implements OnInit {
 
       this.router.events.subscribe((event) => {
         if (event instanceof NavigationStart) {
-          console.log(`Navigation Start to "${event.url}"`)
+          console.log(`NavigationStart to "${event.url}"`)
         }
 
         if (event instanceof NavigationCancel) {
-          console.log(`The Guard interrupted the transition to "${event.url}"`)
+          console.log(`The Guard forbade the transition to "${event.url}"`)
         }
 
         if (event instanceof NavigationEnd) {
-          console.log(`Navigation End to "${event.url}"`)
+          console.log(`NavigationEnd to "${event.url}"`)
         }
       })
     }

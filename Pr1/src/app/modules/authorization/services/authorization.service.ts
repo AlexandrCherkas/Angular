@@ -5,7 +5,7 @@ import {
   FormGroupDirective,
   NgForm,
 } from '@angular/forms';
-import { delay, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
+import { AsyncSubject, BehaviorSubject, delay, map, Observable, of, ReplaySubject, Subject, tap } from 'rxjs';
 import { ApiServiceService } from '../../shared/services/api-service.service';
 import { IAuthUser } from '../interfaces/IAuthUser';
 
@@ -14,7 +14,8 @@ import { IAuthUser } from '../interfaces/IAuthUser';
 })
 export class AuthorizationService {
 
-  private USER = new ReplaySubject <IAuthUser>();
+  private userSubj = new ReplaySubject <IAuthUser>();
+  private USER: IAuthUser;
   private authenticatedUsers: IAuthUser[] = [];
 
   constructor() {}
@@ -26,12 +27,22 @@ export class AuthorizationService {
     return of(user).pipe(delay(500));
   }
 
-  public authorizedUser(user: IAuthUser): void {
-    this.USER.next(user);
+  public authorizedUser(user: IAuthUser | null): void {
+    this.USER = user
+    this.userSubj.next(user)
   }
 
-  public getCurrentUser(): Observable<IAuthUser> {
-    return this.USER.asObservable();
+  public getCurrentUser(): Observable<IAuthUser>{
+    return this.userSubj.asObservable()
+  }
+
+  public checkAuthUser(): IAuthUser{
+    return this.USER
+  }
+
+  public signOut( user: IAuthUser): void{
+    this.USER = undefined
+    this.userSubj.next(user)
   }
 
   public createNewUser(user: IAuthUser): Observable<string> {

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate,
+  Router,
   RouterStateSnapshot,
   UrlTree,
 } from '@angular/router';
@@ -13,18 +14,10 @@ import { AuthorizationService } from 'src/app/modules/authorization/services/aut
 })
 export class AllowEntryGuard implements CanActivate {
 
-  isUserLogged: boolean = false;
-
-  private componentActive = true;
-
-  constructor(private authorization: AuthorizationService) {
-
-    this.authorization.getCurrentUser()
-    .pipe(takeWhile(()=> this.componentActive))
-    .subscribe((data) => {
-      return data ? this.isUserLogged = true : this.isUserLogged = false;
-    });
-  }
+  constructor(
+    private authorization: AuthorizationService,
+    private router: Router
+  ) {}
 
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -35,10 +28,12 @@ export class AllowEntryGuard implements CanActivate {
     | boolean
     | UrlTree {
 
-    return this.isUserLogged;
+    if (this.authorization.checkAuthUser()) {
+      return true;
+    } else {
+      this.router.navigate(['/login']);
+      return false;
+    }
   }
 
-  ngOnDestroy(): void {
-    this.componentActive = false;
-  }
 }

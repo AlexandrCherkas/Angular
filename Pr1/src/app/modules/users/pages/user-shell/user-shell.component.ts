@@ -30,8 +30,10 @@ export class UserShellComponent implements OnInit {
   public pageSizeOptions: number[] = [6, 12, 24, 48];
 
   public spinnerStatusSubj: Subject<string> = new Subject();
-
   public statusButton = false;
+
+  public refreshSubj = new Subject<void>();
+  public postponeSubj = new Subject<void>();
 
   constructor(
     private usersService: UserdataService,
@@ -41,34 +43,34 @@ export class UserShellComponent implements OnInit {
 
   ngOnInit(): void {
 
-    fromEvent(document.getElementById('refreshPage'), 'click')
+    this.refreshSubj
       .pipe(
         takeWhile(() => this.componentActive),
         switchMap(() => {
-          return this.usersService
-            .getUsers(this.pageIndex, this.pageSize)
-            .pipe(
-              takeWhile(() => this.componentActive),
-              switchMap((res) => res));
+          return this.usersService.getUsers(this.pageIndex, this.pageSize)
         })
       )
       .subscribe(() => console.log('ok'));
 
-    fromEvent(document.getElementById('button'), 'click')
+    this.postponeSubj
       .pipe(
         takeWhile(() => this.componentActive),
-        tap(() => console.log('Send')),
-        exhaustMap(() => {
-          return this.usersService.getUsers(this.pageIndex, this.pageSize).pipe(
-            takeWhile(() => this.componentActive),
-            exhaustMap((res) => res)
-          );
-        })
+        exhaustMap(() =>
+          this.usersService.getUsers(this.pageIndex, this.pageSize)
+        )
       )
       .subscribe(() => console.log('ok'));
 
     this.getUsers();
     this.getFavoriteUsers();
+  }
+
+  refreshPage(): void{
+    this.refreshSubj.next()
+  }
+
+  postponeDownload(): void{
+    this.postponeSubj.next()
   }
 
   disableMethod(): void {
