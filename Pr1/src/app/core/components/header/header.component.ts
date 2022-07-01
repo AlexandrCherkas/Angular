@@ -1,4 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { takeWhile } from 'rxjs';
 import { IAuthUser } from 'src/app/modules/authorization/interfaces/IAuthUser';
 import { AuthorizationService } from 'src/app/modules/authorization/services/authorization.service';
@@ -18,6 +19,7 @@ export class HeaderComponent implements OnInit{
 
   constructor(
     private authorizationService: AuthorizationService,
+    private router: Router
     ) {}
 
   ngOnInit(): void {
@@ -31,6 +33,7 @@ export class HeaderComponent implements OnInit{
 
   logOut(): void {
     this.authorizationService.signOut({username: '', pass: ''})
+    this.router.navigate(['/login'])
   }
 
   ngOnDestroy(): void {
