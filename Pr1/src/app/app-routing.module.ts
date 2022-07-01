@@ -5,7 +5,7 @@ import { RegistrationShellComponent } from './modules/authorization/pages/regist
 import { CreateUserShellComponent } from './modules/users/pages/create-user-shell/create-user-shell.component';
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 import { AllowEntryGuard } from './core/guards/allow-entry.guard';
-
+import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
 
 const routes: Routes = [
   {
@@ -43,6 +43,7 @@ const routes: Routes = [
   {
     path: 'user/edit/:id',
     canActivate: [AllowEntryGuard],
+    canDeactivate : [LeaveEditUserFormGuard],
     component: EditUserComponent,
   },
 ];

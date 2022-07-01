@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AngularMaterialModule } from 'src/angular-material.module';
 import { SharedModule } from '../shared/shared.module';
-
 import { UserListComponent } from './components/user/user-list.component';
 import { UserShellComponent } from './pages/user-shell/user-shell.component';
 import { CreateUserListComponent } from './components/create-user/create-user.component';
@@ -24,17 +23,15 @@ import { UsersRoutingModule } from './users-routing.module';
     AddressesComponent,
     AddressComponent,
     EditUserComponent,
-    EditUserShellComponent
+    EditUserShellComponent,
   ],
   imports: [
     CommonModule,
     UsersRoutingModule,
     ReactiveFormsModule,
     AngularMaterialModule,
-    SharedModule
+    SharedModule,
   ],
-  exports:[
-    UserShellComponent
-  ]
+  exports: [UserShellComponent],
 })
-export class UsersModule { }
+export class UsersModule {}

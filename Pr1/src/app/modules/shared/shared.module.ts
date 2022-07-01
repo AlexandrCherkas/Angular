@@ -9,17 +9,18 @@ import { MatInputModule } from '@angular/material/input';
 import { MatListModule } from '@angular/material/list';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-
+import { MatDialogModule } from '@angular/material/dialog';
 import { CardComponent } from './components/card/card.component';
 import { SetbarComponent } from './components/setbar/setbar.component';
 import { SearchComponent } from './components/search/search.component';
+import { DialogAnimationsExampleDialog } from './components/dialog-leave-page/dialog-leave-page.component';
 
 @NgModule({
   declarations: [
     CardComponent,
     SetbarComponent,
     SearchComponent,
-
+    DialogAnimationsExampleDialog,
   ],
   imports: [
     CommonModule,
@@ -31,12 +32,9 @@ import { SearchComponent } from './components/search/search.component';
     MatInputModule,
     MatListModule,
     ReactiveFormsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatDialogModule,
   ],
-  exports: [
-    CardComponent,
-    SetbarComponent,
-    SearchComponent,
-  ]
+  exports: [CardComponent, SetbarComponent, SearchComponent],
 })
-export class SharedModule { }
+export class SharedModule {}

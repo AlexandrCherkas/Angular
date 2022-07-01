@@ -40,7 +40,7 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatSortModule,
+    MatSortModule
   ]
 })
 export class AngularMaterialModule { }
