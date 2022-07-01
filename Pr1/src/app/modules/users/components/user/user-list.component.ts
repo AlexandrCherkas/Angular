@@ -51,8 +51,7 @@ export class UserListComponent implements OnInit {
       .pipe(
         takeWhile(() => this.componentActive),
         concatMap((req) =>
-          this.userService
-            .saveUser(req)
+          this.userService.saveUser(req)
 
         )
       )
@@ -62,8 +61,7 @@ export class UserListComponent implements OnInit {
       .pipe(
         takeWhile(() => this.componentActive),
         mergeMap((req) =>
-          this.userService
-            .exportUserToExcel(req)
+          this.userService.exportUserToExcel(req)
         )
       )
       .subscribe((data) => console.log(data));

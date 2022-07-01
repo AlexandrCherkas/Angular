@@ -1,6 +1,11 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { NavigationCancel, NavigationEnd, NavigationStart, Router } from '@angular/router';
+import {
+  NavigationCancel,
+  NavigationEnd,
+  NavigationStart,
+  Router,
+} from '@angular/router';
 import { Subject, takeWhile, tap } from 'rxjs';
 import { AuthorizationService } from '../../services/authorization.service';
 import { IAuthUser } from '../../interfaces/IAuthUser';
@@ -11,6 +16,7 @@ import { IAuthUser } from '../../interfaces/IAuthUser';
   styleUrls: ['./login-shell.component.scss'],
 })
 export class LoginShellComponent implements OnInit {
+
   @Output() loginUser = new EventEmitter<any>();
 
   public parentFormGroup: FormGroup = new FormGroup({});
@@ -19,11 +25,9 @@ export class LoginShellComponent implements OnInit {
   constructor(
     private authorizationService: AuthorizationService,
     private router: Router
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   onLoginUser(Form: FormGroup): void {
     this.parentFormGroup.addControl('user', Form);
@@ -38,7 +42,7 @@ export class LoginShellComponent implements OnInit {
         .pipe(takeWhile(() => this.componentActive))
         .subscribe((data) => {
           if (data) {
-            this.authorizationService.authorizedUser(data)
+            this.authorizationService.authorizedUser(data);
           } else {
             alert('Please, check the entered data name or password!!');
           }

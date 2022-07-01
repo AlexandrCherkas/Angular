@@ -6,6 +6,7 @@ import { CreateUserShellComponent } from './modules/users/pages/create-user-shel
 import { EditUserComponent } from './modules/users/components/edit-user/edit-user.component';
 import { AllowEntryGuard } from './core/guards/allow-entry.guard';
 
+
 const routes: Routes = [
   {
     path: '',

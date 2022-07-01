@@ -26,7 +26,6 @@ export class ApiServiceService {
     if(params?.['filter']){
       return this.httpService.get(SearchPath).pipe(
         map((response: any) => {
-          console.log(response)
            return response.filter((user: any) => `${user.name.last} ${user.name.last}`.toLowerCase().includes(params?.['filter']))
         })
       )

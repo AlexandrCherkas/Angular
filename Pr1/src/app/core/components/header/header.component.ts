@@ -13,6 +13,7 @@ export class HeaderComponent implements OnInit{
   public logo: string = '../assets/images/apple-touch-icon.png';
   public user: string;
   public photo: string;
+
   private componentActive = true;
 
   constructor(
@@ -30,9 +31,10 @@ export class HeaderComponent implements OnInit{
 
   logOut(): void {
     this.authorizationService.signOut({username: '', pass: ''})
-   }
+  }
 
-   ngOnDestroy(): void {
+  ngOnDestroy(): void {
     this.componentActive = false;
   }
+
 }

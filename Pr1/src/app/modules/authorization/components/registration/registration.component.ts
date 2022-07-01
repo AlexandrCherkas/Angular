@@ -16,14 +16,11 @@ export class RegistrationComponent implements OnInit {
 
     this.registrationFormGroup = this.fb.group({
       username: ['', Validators.required],
-
       passFormGroup: this.fb.group ({
         pass: ['', Validators.required],
         confirmPass: ['', [Validators.required, passwordMatchValidator('pass')]]
       })
-
     })
-
   }
 
   ngOnInit(): void {

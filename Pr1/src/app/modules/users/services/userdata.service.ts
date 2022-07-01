@@ -49,7 +49,6 @@ export class UserdataService {
 
     return this.apiService.searchUsersByName(path, params).pipe(
       map((usersDTOs: IRemoteUser[]) => {
-        console.log(usersDTOs);
         return usersDTOs.map((user: IRemoteUser) =>
           this.mapUserDTOtoUser(user)
         );

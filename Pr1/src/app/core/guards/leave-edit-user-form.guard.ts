@@ -12,11 +12,10 @@ import { ModalService } from '../services/modal.service';
 
 export class LeaveEditUserFormGuard implements CanDeactivate<ICanDeactivatePage> {
 
-  constructor(private modalService:  ModalService ){
-  }
+  constructor(private modalService:  ModalService ){}
+
   canDeactivate(
     component:ICanDeactivatePage): Observable <boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-
     return component.canDeactivateMetod() ?  this.modalService.showLeavePageDialog() : true
   }
 

@@ -7,7 +7,7 @@ import { DialogAnimationsExampleDialog } from 'src/app/modules/shared/components
 })
 export class ModalService {
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {}
 
   showLeavePageDialog(): any {
     const dialogRef = this.dialog.open(DialogAnimationsExampleDialog, { width: '400px' })
