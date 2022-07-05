@@ -21,6 +21,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpServiceService } from './modules/shared/services/http-service.service';
 import { WrapperHeaderComponent } from './core/components/wrapper-header/wrapper-header.component';
 
+
 @NgModule({
   declarations: [AppComponent, HeaderComponent, FooterComponent, WrapperHeaderComponent],
   imports: [

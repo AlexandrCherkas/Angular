@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
 .user-list{
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
 }
+
+// .card-header{
+//   font-family: 'Lobster', cursive;
+// }
 
 .btn{
   display: block;

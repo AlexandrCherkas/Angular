@@ -11,13 +11,13 @@
       (toExportToExcelEvent)="exportUserToExcel(user.id, user.name)"
       (toSaveEvent)="saveUser(user.id, user.name)"
       >
-      <mat-card-title class="card-header"> {{user.title}} {{user.name}} {{user.secondName}}</mat-card-title>
+      <mat-card-title class="card-header"> {{ user | formatUsername }}</mat-card-title>
 
       <div class="data-conteiner">
         <span class="btn">Age : <span class="grn">{{user.age}} </span> </span>
-        <span class="btn">Gender : <span class="grn">{{user.gender ? "Male" : "Female" }}</span></span>
+        <span class="btn">Gender : <span class="grn">{{user.gender ? "Male" : "Female" }}</span> &nbsp; <img [src]="user.gender | showGenderIcon" width="20px"></span>
         <span class="btn">Phone : <span class="grn">{{user.departament}}</span></span>
-        <span class="btn">Nationality : <span class="grn">{{user.company}}</span></span>
+        <span class="btn">Nationality : <span class="grn">{{user.company}}</span> &nbsp;  <img [src]="user.company | flagCountry" width="20px"></span>
         <span class="btn">Email : <span class="grn">{{user.email}}</span></span>
 
 

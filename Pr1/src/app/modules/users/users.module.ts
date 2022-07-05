@@ -11,9 +11,11 @@ import { AddressesComponent } from './components/addresses/addresses.component';
 import { AddressComponent } from './components/address/address.component';
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { EditUserShellComponent } from './pages/edit-user-shell/edit-user-shell.component';
-
 import { UsersRoutingModule } from './users-routing.module';
 
+import { FormatUsernamePipe } from '../shared/pipes/formatUsername.pipe';
+import { ShowGenderIconPipe } from '../shared/pipes/formatFont.pipe';
+import { FlagCountryPipe } from '../shared/pipes/flagCountry.pipe';
 @NgModule({
   declarations: [
     UserListComponent,
@@ -24,6 +26,10 @@ import { UsersRoutingModule } from './users-routing.module';
     AddressComponent,
     EditUserComponent,
     EditUserShellComponent,
+
+    FormatUsernamePipe,
+    ShowGenderIconPipe,
+    FlagCountryPipe
 
   ],
   imports: [
