@@ -1,4 +1,3 @@
-
 <app-search (changeValueInput)="searchUses($event)" [spinerStatus]="statusSpinner$"></app-search>
 
 <div class="block">
@@ -18,3 +17,5 @@
     aria-label="Select page"
     (page)="OnPageChange($event)">
 </mat-paginator>
+
+<router-outlet></router-outlet>

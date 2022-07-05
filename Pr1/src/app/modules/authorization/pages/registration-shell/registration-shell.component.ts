@@ -22,19 +22,7 @@ export class RegistrationShellComponent implements OnInit {
   constructor(
     private router: Router,
     private authService: AuthorizationService
-  ) {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationStart) {
-        console.log(`NavigationStart to "${event.url}"`);
-      }
-      if (event instanceof NavigationCancel) {
-        console.log(`The Guard forbade the transition to "${event.url}"`);
-      }
-      if (event instanceof NavigationEnd) {
-        console.log(`NavigationEnd to "${event.url}"`);
-      }
-    });
-  }
+  ) {}
 
   ngOnInit(): void {}
 

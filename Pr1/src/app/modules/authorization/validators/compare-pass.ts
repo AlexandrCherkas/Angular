@@ -1,6 +1,6 @@
-import { FormControl, ValidatorFn } from '@angular/forms';
+import { AbstractControl, FormControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 
-function passwordMatchValidator(password: string): ValidatorFn {
+export function passwordMatchValidator(password: string): ValidatorFn {
   return (control: FormControl) => {
     if (!control || !control.parent) {
       return null;
@@ -11,4 +11,8 @@ function passwordMatchValidator(password: string): ValidatorFn {
   };
 }
 
-export { passwordMatchValidator };
+
+
+
+
+

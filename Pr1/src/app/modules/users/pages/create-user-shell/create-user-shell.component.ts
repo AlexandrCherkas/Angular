@@ -19,7 +19,9 @@ export class CreateUserShellComponent implements OnInit {
     private _userdataServece: UserdataService
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    debugger
+  }
 
   onCreateUser(key: string, Form: FormGroup | FormArray): void{
     this.parentFormGroup.addControl(key, Form)

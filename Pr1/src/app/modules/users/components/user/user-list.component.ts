@@ -86,7 +86,7 @@ export class UserListComponent implements OnInit {
   }
 
   editUser(userID: string): void{
-    this.router.navigate(['/user/edit', userID])
+    this.router.navigate(['/users/user/edit', userID])
   }
 
   ngOnDestroy(): void {

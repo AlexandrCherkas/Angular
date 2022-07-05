@@ -24,6 +24,7 @@ import { UsersRoutingModule } from './users-routing.module';
     AddressComponent,
     EditUserComponent,
     EditUserShellComponent,
+
   ],
   imports: [
     CommonModule,
@@ -31,6 +32,7 @@ import { UsersRoutingModule } from './users-routing.module';
     ReactiveFormsModule,
     AngularMaterialModule,
     SharedModule,
+
   ],
   exports: [UserShellComponent],
 })

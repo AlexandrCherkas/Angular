@@ -13,7 +13,6 @@ import { RegistrationShellComponent } from './pages/registration-shell/registrat
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginShellComponent } from './pages/login-shell/login-shell.component';
 import { LoginComponent } from './components/login/login.component';
-
 import { AuthRoutingModule } from './authorization-routing.module';
 
 
@@ -23,7 +22,7 @@ import { AuthRoutingModule } from './authorization-routing.module';
     RegistrationShellComponent,
     LoginShellComponent,
     LoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
   ],
   imports: [
     CommonModule,

@@ -19,9 +19,10 @@ import { AngularMaterialModule } from 'src/angular-material.module';
 import { DemoInterceptor } from './core/interceptors/demo.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpServiceService } from './modules/shared/services/http-service.service';
+import { WrapperHeaderComponent } from './core/components/wrapper-header/wrapper-header.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent],
+  declarations: [AppComponent, HeaderComponent, FooterComponent, WrapperHeaderComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -30,7 +31,6 @@ import { HttpServiceService } from './modules/shared/services/http-service.servi
     AngularMaterialModule,
     FormsModule,
     ReactiveFormsModule,
-
     AuthorizationModule,
   ],
   providers: [

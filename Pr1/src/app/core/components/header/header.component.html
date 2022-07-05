@@ -2,28 +2,21 @@
   <img src={{logo}} width="70px">
 
   <div class="navigation">
-
-    <ng-container *ngIf="!user">
-      <button mat-stroked-button color="primary" routerLink="/registration">Registration</button>
-      <button mat-stroked-button color="primary" routerLink="/login">Sign in</button>
-    </ng-container>
-
-    <ng-container *ngIf="user">
-      <button mat-stroked-button color="primary" routerLink="/create">Add User</button>
-      <button mat-stroked-button color="primary" routerLink="/users">Users</button>
-      <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
-    </ng-container>
+    <button mat-stroked-button color="primary" routerLink="/users/create">Add User</button>
+    <button mat-stroked-button color="primary" routerLink="/users">Users</button>
+    <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
   </div>
 
-
-  <ng-container *ngIf="user">
-
-    <div class="righted">
+  <div class="righted">
+    <!-- <ng-container *ngIf="user"> -->
       <img  class="userPhoto" src={{photo}} width="50px">
       <p>{{user}}</p>
-      <button mat-stroked-button  class='buttonLogOut' color="primary" (click)="logOut()" >Sign out</button>
+    <!-- </ng-container> -->
+
+
+    <button mat-stroked-button  class='buttonLogOut' color="primary" (click)="logOut()" >Sign out</button>
   </div>
-  </ng-container>
 
 </header>
 
+<router-outlet></router-outlet>

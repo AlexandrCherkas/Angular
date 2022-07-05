@@ -26,7 +26,9 @@ export class AuthorizationService {
 
   private userSubj = new ReplaySubject<IAuthUser>();
   private USER: IAuthUser;
-  private authenticatedUsers: IAuthUser[] = [];
+  private authenticatedUsers: IAuthUser[] = [
+     {username: 'test', pass: 'test'}
+  ];
   private message: string;
 
   constructor() {}
