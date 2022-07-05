@@ -8,11 +8,22 @@ import { LeaveEditUserFormGuard } from 'src/app/core/guards/leave-edit-user-form
 import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { CommonModule } from '@angular/common';
 
+import { PersonalInfoComponent } from './pages/personal-info-shell/personal-info.component';
+import { CompanyInfoComponent } from './components/company-info/company-info.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
+
 const routes: Routes = [
-  // { path: '',  redirectTo: '/', pathMatch: 'full'},
   { path: '',  component:  UserShellComponent },
   { path: 'create', component: CreateUserShellComponent },
-  { path: 'user/edit/:id', canDeactivate : [LeaveEditUserFormGuard], component: EditUserComponent }
+  { path: 'user/edit/:id', canDeactivate : [LeaveEditUserFormGuard], component: EditUserComponent },
+  { path: 'user/info/:id', component: PersonalInfoComponent,
+    children: [
+      { path: 'company-info', component: CompanyInfoComponent },
+      { path: 'user-info', component: UserInfoComponent },
+      { path: 'contacts', component: ContactsComponent }
+    ]
+  },
 ]
 
 @NgModule({

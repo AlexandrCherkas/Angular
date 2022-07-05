@@ -1,0 +1,11 @@
+<ng-container *ngIf="user">
+  <h2> User information: {{ user | formatUsername}} </h2>
+</ng-container>
+
+<nav mat-tab-nav-bar>
+  <a mat-tab-link routerLink="company-info">Company Info</a>
+  <a mat-tab-link routerLink="user-info">Personal Info</a>
+  <a mat-tab-link routerLink="contacts">Contacts</a>
+</nav>
+
+<router-outlet></router-outlet>

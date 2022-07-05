@@ -1,21 +1,6 @@
 import { Injectable } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  FormGroupDirective,
-  NgForm,
-} from '@angular/forms';
-import {
-  AsyncSubject,
-  BehaviorSubject,
-  delay,
-  map,
-  Observable,
-  of,
-  ReplaySubject,
-  Subject,
-  tap,
-} from 'rxjs';
+import {  FormControl,  FormGroup,  FormGroupDirective,  NgForm,} from '@angular/forms';
+import {  AsyncSubject,  BehaviorSubject,  delay,  map,  Observable,  of,  ReplaySubject,  Subject,  tap,} from 'rxjs';
 import { ApiServiceService } from '../../shared/services/api-service.service';
 import { IAuthUser } from '../interfaces/IAuthUser';
 
@@ -27,7 +12,7 @@ export class AuthorizationService {
   private userSubj = new ReplaySubject<IAuthUser>();
   private USER: IAuthUser;
   private authenticatedUsers: IAuthUser[] = [
-     {username: 'test', pass: 'test'}
+     {username: '1', pass: '1'}
   ];
   private message: string;
 

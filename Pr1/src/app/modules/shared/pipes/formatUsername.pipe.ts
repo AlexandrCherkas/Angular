@@ -6,7 +6,7 @@ import { IUser } from '../../users/interface/user';
   name: 'formatUsername',
 })
 export class FormatUsernamePipe implements PipeTransform {
-  transform(value: IUser): string {
+  transform(value: any): string {
     let newValue = `${value?.['title']}  ${value?.['name']} ${value?.['secondName']}`;
     return newValue;
   }

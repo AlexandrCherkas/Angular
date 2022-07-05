@@ -72,6 +72,10 @@ export class UserListComponent implements OnInit {
     this.router.navigate(['/users/user/edit', userID])
   }
 
+  personalInfo(userID: string){
+    this.router.navigate(['/users/user/info', userID])
+  }
+
   ngOnDestroy(): void {
     this.componentActive = false;
   }

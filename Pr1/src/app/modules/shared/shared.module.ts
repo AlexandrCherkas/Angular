@@ -14,6 +14,7 @@ import { CardComponent } from './components/card/card.component';
 import { SetbarComponent } from './components/setbar/setbar.component';
 import { SearchComponent } from './components/search/search.component';
 import { DialogAnimationsExampleDialog } from './components/dialog-leave-page/dialog-leave-page.component';
+import { MatTabsModule } from '@angular/material/tabs'
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { DialogAnimationsExampleDialog } from './components/dialog-leave-page/di
     ReactiveFormsModule,
     MatProgressSpinnerModule,
     MatDialogModule,
+    MatTabsModule
   ],
   exports: [CardComponent, SetbarComponent, SearchComponent],
 })

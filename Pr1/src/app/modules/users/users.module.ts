@@ -13,9 +13,15 @@ import { EditUserComponent } from './components/edit-user/edit-user.component';
 import { EditUserShellComponent } from './pages/edit-user-shell/edit-user-shell.component';
 import { UsersRoutingModule } from './users-routing.module';
 
+import { MatTabsModule } from '@angular/material/tabs';
+
 import { FormatUsernamePipe } from '../shared/pipes/formatUsername.pipe';
 import { ShowGenderIconPipe } from '../shared/pipes/formatFont.pipe';
 import { FlagCountryPipe } from '../shared/pipes/flagCountry.pipe';
+import { PersonalInfoComponent } from './pages/personal-info-shell/personal-info.component';
+import { CompanyInfoComponent } from './components/company-info/company-info.component';
+import { ContactsComponent } from './components/contacts/contacts.component';
+import { UserInfoComponent } from './components/user-info/user-info.component';
 @NgModule({
   declarations: [
     UserListComponent,
@@ -29,7 +35,11 @@ import { FlagCountryPipe } from '../shared/pipes/flagCountry.pipe';
 
     FormatUsernamePipe,
     ShowGenderIconPipe,
-    FlagCountryPipe
+    FlagCountryPipe,
+    PersonalInfoComponent,
+    CompanyInfoComponent,
+    ContactsComponent,
+    UserInfoComponent,
 
   ],
   imports: [
@@ -38,6 +48,7 @@ import { FlagCountryPipe } from '../shared/pipes/flagCountry.pipe';
     ReactiveFormsModule,
     AngularMaterialModule,
     SharedModule,
+    MatTabsModule
 
   ],
   exports: [UserShellComponent],
