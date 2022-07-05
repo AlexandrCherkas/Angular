@@ -26,9 +26,7 @@ export class PersonalInfoComponent implements OnInit {
     this.route.paramMap
     .pipe(takeWhile(() => this.componentActive))
     .subscribe(params => {
-      console.log(params)
-      this.id = params.get('');
-      console.log(this.id )
+      this.id = params.get('id');
     });
 
     this.userdataService.getUserByID(this.id)

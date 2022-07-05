@@ -12,7 +12,7 @@ export class CompanyInfoComponent implements OnInit {
 
   private componentActive = true;
   public id;
-  public user;
+  @Input() user;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,11 +21,12 @@ export class CompanyInfoComponent implements OnInit {
 
   ngOnInit(): void {
 
-  //   this.route.paramMap
-  //   .pipe(takeWhile(() => this.componentActive))
-  //   .subscribe(params => {
-  //     this.id = params.get('id');
-  //   });
+    this.route.paramMap
+    .pipe(takeWhile(() => this.componentActive))
+    .subscribe(params => {
+
+      console.log(params.get('/'))
+    });
 
   //   this.userdataService.getUserByID(this.id)
   //   .pipe(takeWhile(() => this.componentActive))

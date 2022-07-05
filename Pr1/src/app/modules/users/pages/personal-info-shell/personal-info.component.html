@@ -3,9 +3,16 @@
 </ng-container>
 
 <nav mat-tab-nav-bar>
-  <a mat-tab-link routerLink="company-info">Company Info</a>
+  <a mat-tab-link routerLink="company-info" >Company Info </a>
   <a mat-tab-link routerLink="user-info">Personal Info</a>
   <a mat-tab-link routerLink="contacts">Contacts</a>
 </nav>
 
 <router-outlet></router-outlet>
+
+
+<mat-tab-group mat-align-tabs="start">
+  <mat-tab label="First">Content 1</mat-tab>
+  <mat-tab label="Second">Content 2</mat-tab>
+  <mat-tab label="Third">Content 3</mat-tab>
+</mat-tab-group>
