@@ -8,6 +8,8 @@ import { AllowEntryGuard } from './core/guards/allow-entry.guard';
 // import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard';
 import { WrapperHeaderComponent } from './core/components/wrapper-header/wrapper-header.component';
 import { HeaderComponent } from './core/components/header/header.component';
+import { TableUiSortComponent } from './modules/tables/components/table-ui-sort/table-ui-sort.component';
+import { TableServerSortComponent } from './modules/tables/components/table-server-sort/table-server-sort.component';
 
 const routes: Routes = [
   {
@@ -28,31 +30,40 @@ const routes: Routes = [
         path: 'registration',
         component: RegistrationShellComponent,
       },
-    ]
+    ],
   },
 
   {
-   path: '',
-   canActivate: [AllowEntryGuard],
-   component: HeaderComponent,
-   children: [
-    {
-      path: 'cars',
-      canActivate: [AllowEntryGuard],
-      loadChildren: () =>
-        import('./modules/cars/cars.module').then((module) => module.CarsModule),
-    },
-    {
-      path: 'users',
-      canActivate: [AllowEntryGuard],
-      loadChildren: () =>
-        import('./modules/users/users.module').then(
-          (module) => module.UsersModule
-        ),
-    },
-   ]
+    path: '',
+    canActivate: [AllowEntryGuard],
+    component: HeaderComponent,
+    children: [
+      {
+        path: 'cars',
+        canActivate: [AllowEntryGuard],
+        loadChildren: () =>
+          import('./modules/cars/cars.module').then(
+            (module) => module.CarsModule
+          ),
+      },
+      {
+        path: 'users',
+        canActivate: [AllowEntryGuard],
+        loadChildren: () =>
+          import('./modules/users/users.module').then(
+            (module) => module.UsersModule
+          ),
+      },
+    ],
   },
-
+  {
+    path: 'remoteSort',
+    component: TableServerSortComponent,
+  },
+  {
+    path: 'localSort',
+    component: TableUiSortComponent,
+  },
 ];
 
 @NgModule({

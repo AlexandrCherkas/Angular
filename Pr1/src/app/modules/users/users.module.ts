@@ -14,6 +14,7 @@ import { EditUserShellComponent } from './pages/edit-user-shell/edit-user-shell.
 import { UsersRoutingModule } from './users-routing.module';
 
 import { MatTabsModule } from '@angular/material/tabs';
+import { AgmCoreModule } from '@agm/core';
 
 import { FormatUsernamePipe } from '../shared/pipes/formatUsername.pipe';
 import { ShowGenderIconPipe } from '../shared/pipes/formatFont.pipe';
@@ -48,7 +49,8 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     ReactiveFormsModule,
     AngularMaterialModule,
     SharedModule,
-    MatTabsModule
+    MatTabsModule,
+
 
   ],
   exports: [UserShellComponent],

@@ -12,7 +12,6 @@ export class ApiServiceService {
 
   getUsers(path: string, params?: object): Observable<any>{
     return this.httpService.get(path, params).pipe(
-
       map((response: any) => {
        return response;
       })

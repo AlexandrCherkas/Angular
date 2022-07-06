@@ -1,4 +1,3 @@
-import { style } from '@angular/animations';
 import { Pipe, PipeTransform } from '@angular/core';
 import { IUser } from '../../users/interface/user';
 
@@ -6,8 +5,7 @@ import { IUser } from '../../users/interface/user';
   name: 'formatUsername',
 })
 export class FormatUsernamePipe implements PipeTransform {
-  transform(value: any): string {
-    let newValue = `${value?.['title']}  ${value?.['name']} ${value?.['secondName']}`;
-    return newValue;
+  transform(value: IUser): string {
+    return `${value.title}  ${value.name} ${value?.secondName}`;
   }
 }

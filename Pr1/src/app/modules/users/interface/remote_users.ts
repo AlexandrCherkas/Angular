@@ -7,7 +7,11 @@ export interface IRemoteUser {
   location: {
     city: string,
     country: string,
-    postcode: number
+    postcode: number,
+    coordinates:{
+      latitude: string,
+      longitude: string
+    }
   },
   name: {
       title: string,

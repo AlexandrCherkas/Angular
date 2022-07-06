@@ -20,10 +20,18 @@ import { DemoInterceptor } from './core/interceptors/demo.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HttpServiceService } from './modules/shared/services/http-service.service';
 import { WrapperHeaderComponent } from './core/components/wrapper-header/wrapper-header.component';
-
+import { TableUiSortComponent } from './modules/tables/components/table-ui-sort/table-ui-sort.component';
+import { TableServerSortComponent } from './modules/tables/components/table-server-sort/table-server-sort.component';
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent, FooterComponent, WrapperHeaderComponent],
+  declarations: [
+    AppComponent,
+    HeaderComponent,
+    FooterComponent,
+    WrapperHeaderComponent,
+    TableUiSortComponent,
+    TableServerSortComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

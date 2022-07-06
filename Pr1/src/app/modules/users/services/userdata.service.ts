@@ -98,6 +98,7 @@ export class UserdataService {
           addressLine: userDTO.location.country,
           city: userDTO.location.city,
           zip: userDTO.location.postcode,
+          coordinates: userDTO.location.coordinates
         },
       ],
     };

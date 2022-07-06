@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, takeWhile } from 'rxjs';
 import { UserdataService } from '../../services/userdata.service';
 import { IUser } from '../../interface/user';
+import { DataRoutingService } from '../../services/data-routing.service';
 
 @Component({
   selector: 'app-personal-info',
@@ -12,13 +13,13 @@ import { IUser } from '../../interface/user';
 export class PersonalInfoComponent implements OnInit {
 
   private componentActive = true
-  public id: any;
-  public user: Observable <IUser>;
+  public id: string;
+  public user: IUser;
 
   constructor(
     private route: ActivatedRoute,
     private userdataService: UserdataService,
-    private router: Router
+    private dataRoutingService: DataRoutingService
   ) { }
 
   ngOnInit(): void {
@@ -31,7 +32,10 @@ export class PersonalInfoComponent implements OnInit {
 
     this.userdataService.getUserByID(this.id)
     .pipe(takeWhile(() => this.componentActive))
-    .subscribe(data => this.user = data);
+    .subscribe(data => {
+      this.user = data,
+      this.dataRoutingService.pushUser(data)
+    });
   }
 
   ngOnDestroy(): void {

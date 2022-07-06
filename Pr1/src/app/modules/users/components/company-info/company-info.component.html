@@ -1,2 +1,3 @@
-<h1> it working</h1>
-<router-outlet></router-outlet>
+<ng-container *ngIf="user">
+  <div> <span> Nationality : {{user.company}}  &nbsp;  <img [src]="user.company | flagCountry" width="20px"></span></div>
+</ng-container>

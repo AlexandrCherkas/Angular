@@ -1,2 +1,8 @@
-<p>user-info works!</p>
-<router-outlet></router-outlet>
+<ng-container *ngIf="user">
+  <div>Age : <span> {{user.age}} </span> </div>
+  <div>Email : <span> {{user.email}}</span></div>
+  <div>Gender : <span> {{user.gender ? "Male" : "Female" }}</span> &nbsp; <img [src]="user.gender | showGenderIcon" width="20px"></div>
+
+</ng-container>
+
+

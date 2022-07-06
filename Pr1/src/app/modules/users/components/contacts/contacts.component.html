@@ -1,2 +1,14 @@
-<p>contacts works!</p>
-<router-outlet></router-outlet>
+<ng-container *ngIf="user">
+  <div>Phone : {{ user.departament }}</div>
+  <div>Country : {{ user.address[0].addressLine }}</div>
+  <div>City : {{ user.address[0].city }}</div>
+  <div>Postcode : {{ user.address[0].zip }}</div>
+
+
+<!-- <agm-map  [latitude]="lat"  [longitude]="lng">
+    <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+  </agm-map>  -->
+
+
+
+</ng-container>
