@@ -99,6 +99,7 @@ export class UserShellComponent implements OnInit {
   }
 
   OnPageChange(event: PageEvent): void {
+    console.log(event)
     this.pageIndex = event.pageIndex + 1;
     this.pageSize = event.pageSize;
     this.getUsers();

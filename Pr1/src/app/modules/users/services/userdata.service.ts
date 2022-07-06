@@ -21,6 +21,7 @@ export class UserdataService {
     const path = `?page=${page}&results=${results}&seed=abc`;
     return this.apiService.getUsers(path).pipe(
       map((usersDTOs: IRemoteUser[]) => {
+        console.log(usersDTOs)
         return usersDTOs.map((user: IRemoteUser) =>
           this.mapUserDTOtoUser(user)
         );

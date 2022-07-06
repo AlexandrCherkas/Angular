@@ -15,6 +15,7 @@ import { LeaveEditUserFormGuard } from './core/guards/leave-edit-user-form.guard
 import { AuthorizationModule } from './modules/authorization/authorization.module';
 
 import { AngularMaterialModule } from 'src/angular-material.module';
+import { MatTableModule } from '@angular/material/table'
 
 import { DemoInterceptor } from './core/interceptors/demo.interceptor';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -41,6 +42,7 @@ import { TableServerSortComponent } from './modules/tables/components/table-serv
     FormsModule,
     ReactiveFormsModule,
     AuthorizationModule,
+    MatTableModule
   ],
   providers: [
     LeaveEditUserFormGuard,

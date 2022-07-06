@@ -30,6 +30,14 @@ const routes: Routes = [
         path: 'registration',
         component: RegistrationShellComponent,
       },
+      {
+        path: 'remoteSort',
+        component: TableServerSortComponent,
+      },
+      {
+        path: 'localSort',
+        component: TableUiSortComponent,
+      },
     ],
   },
 
@@ -55,14 +63,6 @@ const routes: Routes = [
           ),
       },
     ],
-  },
-  {
-    path: 'remoteSort',
-    component: TableServerSortComponent,
-  },
-  {
-    path: 'localSort',
-    component: TableUiSortComponent,
   },
 ];
 
