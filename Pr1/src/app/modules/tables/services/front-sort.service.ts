@@ -7,17 +7,16 @@ import { IRemoteUser } from '../interfaces/IRemoteUser';
 import { ITableUser } from '../interfaces/ITableUser';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class FrontSortService {
-
   constructor(private apiService: ApiServiceService) {}
 
-  public getUsers(page: number, results: number, params?: any): Observable<any> {
+  public getUsers(page: number, results: number, params?: any ): Observable<any> {
+    console.log(page,results)
     const path = `?page=${page}&results=${results}&seed=abc`;
     return this.apiService.getUsers(path).pipe(
       map((usersDTOs: IRemoteUser[]) => {
-        console.log(usersDTOs)
         return usersDTOs.map((user: IRemoteUser) =>
           this.mapUserDTOtoUser(user)
         );
@@ -38,9 +37,8 @@ export class FrontSortService {
         country: userDTO.location.country,
         city: userDTO.location.city,
         street: userDTO.location.street.name,
-        number: userDTO.location.street.number
-      }
+        number: userDTO.location.street.number,
+      },
     };
   }
-
 }
