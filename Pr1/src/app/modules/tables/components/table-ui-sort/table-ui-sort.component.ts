@@ -44,6 +44,7 @@ export class TableUiSortComponent implements AfterViewInit {
     })
 
     this.sort.sortChange
+    .pipe(takeWhile(() => this.componentActive))
     .subscribe(() => (this.paginator.pageIndex = 0))
   }
 
