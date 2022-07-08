@@ -4,15 +4,8 @@ import { TableUiSortComponent } from './components/table-ui-sort/table-ui-sort.c
 import { TableServerSortComponent } from './components/table-server-sort/table-server-sort.component';
 import { Routes, RouterModule } from '@angular/router';
 
-
 @NgModule({
-  declarations: [
-    TableUiSortComponent,
-    TableServerSortComponent
-  ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ]
+  declarations: [TableUiSortComponent, TableServerSortComponent],
+  imports: [CommonModule, RouterModule],
 })
-export class TablesModule { }
+export class TablesModule {}

@@ -36,7 +36,7 @@ const routes: Routes = [
       },
       {
         path: 'localSort',
-        component: TableUiSortComponent,
+        component: TableUiSortComponent
       },
     ],
   },

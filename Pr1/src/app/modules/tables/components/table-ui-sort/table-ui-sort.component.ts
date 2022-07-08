@@ -18,7 +18,7 @@ export class TableUiSortComponent implements AfterViewInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  public displayedColumns: string[] = ['email', 'firstName', 'age', 'company'];
+  public displayedColumns: string[] = ['secondName','email',  'age', 'company', 'city'];
   public resultsLength = 96;
   public pageIndex: number = 0;
 

@@ -1,3 +1,4 @@
+import { ITableAddress } from "./ITableAddress"
 export interface ITableUser {
   id: string,
   personStatus: string,
@@ -6,10 +7,6 @@ export interface ITableUser {
   age: number,
   company: string,
   email: string,
-  address: {
-    country: string,
-    city: string,
-    street: string,
-    number: number
-  }
+  city: string,
+  address: ITableAddress
 }

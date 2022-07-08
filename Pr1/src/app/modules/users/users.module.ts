@@ -16,7 +16,7 @@ import { UsersRoutingModule } from './users-routing.module';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AgmCoreModule } from '@agm/core';
 
-import { FormatUsernamePipe } from '../shared/pipes/formatUsername.pipe';
+import { FullUsernamePipe } from '../shared/pipes/fullUsername.pipe';
 import { ShowGenderIconPipe } from '../shared/pipes/formatFont.pipe';
 import { FlagCountryPipe } from '../shared/pipes/flagCountry.pipe';
 import { PersonalInfoComponent } from './pages/personal-info-shell/personal-info.component';
@@ -33,15 +33,14 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     AddressComponent,
     EditUserComponent,
     EditUserShellComponent,
-
-    FormatUsernamePipe,
-    ShowGenderIconPipe,
     FlagCountryPipe,
+    FullUsernamePipe,
+    ShowGenderIconPipe,
+
     PersonalInfoComponent,
     CompanyInfoComponent,
     ContactsComponent,
     UserInfoComponent,
-
   ],
   imports: [
     CommonModule,
@@ -50,8 +49,6 @@ import { UserInfoComponent } from './components/user-info/user-info.component';
     AngularMaterialModule,
     SharedModule,
     MatTabsModule,
-
-
   ],
   exports: [UserShellComponent],
 })

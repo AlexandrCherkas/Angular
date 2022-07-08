@@ -23,7 +23,8 @@ import { HttpServiceService } from './modules/shared/services/http-service.servi
 import { WrapperHeaderComponent } from './core/components/wrapper-header/wrapper-header.component';
 import { TableUiSortComponent } from './modules/tables/components/table-ui-sort/table-ui-sort.component';
 import { TableServerSortComponent } from './modules/tables/components/table-server-sort/table-server-sort.component';
-
+import { FullAddressPipe } from './modules/tables/pipes/fullAddress.pipe';
+import { FlagCountryPipe } from './modules/tables/pipes/flagCountry.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,6 +33,10 @@ import { TableServerSortComponent } from './modules/tables/components/table-serv
     WrapperHeaderComponent,
     TableUiSortComponent,
     TableServerSortComponent,
+    FullAddressPipe,
+    FlagCountryPipe
+
+
   ],
   imports: [
     BrowserModule,
@@ -42,7 +47,8 @@ import { TableServerSortComponent } from './modules/tables/components/table-serv
     FormsModule,
     ReactiveFormsModule,
     AuthorizationModule,
-    MatTableModule
+    MatTableModule,
+
   ],
   providers: [
     LeaveEditUserFormGuard,

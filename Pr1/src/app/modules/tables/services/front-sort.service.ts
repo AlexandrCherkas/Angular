@@ -13,7 +13,6 @@ export class FrontSortService {
   constructor(private apiService: ApiServiceService) {}
 
   public getUsers(page: number, results: number, params?: any ): Observable<any> {
-    console.log(page,results)
     const path = `?page=${page}&results=${results}&seed=abc`;
     return this.apiService.getUsers(path).pipe(
       map((usersDTOs: IRemoteUser[]) => {
@@ -33,12 +32,13 @@ export class FrontSortService {
       age: userDTO.dob.age,
       company: userDTO.nat,
       email: userDTO.email,
+      city: userDTO.location.city,
       address: {
         country: userDTO.location.country,
-        city: userDTO.location.city,
+        cityName: userDTO.location.city,
         street: userDTO.location.street.name,
         number: userDTO.location.street.number,
-      },
+      }
     };
   }
 }

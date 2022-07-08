@@ -11,7 +11,7 @@
       (toExportToExcelEvent)="exportUserToExcel(user.id, user.name)"
       (toSaveEvent)="saveUser(user.id, user.name)"
       >
-      <mat-card-title class="card-header"> {{ user | formatUsername }}
+      <mat-card-title class="card-header"> {{ user | fullUsername }}
         <button mat-icon-button class="info" (click)="personalInfo(user.id)" >
           <mat-icon>account_box</mat-icon>
         </button>
