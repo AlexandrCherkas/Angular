@@ -11,16 +11,14 @@ export class BackSortService {
   constructor(private apiService: ApiServiceService) {}
 
   public getUsers(page: number, results: number, params?: any): Observable<any> {
-
+    const path = `?page=${page}&results=${results}&seed=abc`;
     if (params.direction == 'asc') {
-      const path = `?page=${page}&results=${results}&seed=abc`;
       return this.apiService.getUsers(path).pipe(
         map((usersDTOs: IRemoteUser[]) => {
           return this.sort(params.active, usersDTOs);
         })
       );
     } else {
-      const path = `?page=${page}&results=${results}&seed=abc`;
       return this.apiService.getUsers(path).pipe(
         map((usersDTOs: IRemoteUser[]) => {
           return usersDTOs.map((user: IRemoteUser) =>
