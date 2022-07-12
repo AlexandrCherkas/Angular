@@ -7,38 +7,78 @@ header{
   align-items: center;
   border-bottom: 2px solid greenyellow;
   padding: 5px;
-  height: 70px;
+  height: 80px;
   margin-bottom: 20px;
   overflow:  hidden;
-
-
-}
-.navigation{
-  margin-left: 30px;
-}
-button{
-  margin: 3px;
-  background-color: gainsboro;
-  border: black;
 }
 
-p{
-  display: inline;
-  margin-left: 25px;
+.logo{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo_name{
+  font-size: 15px;
+}
+
+.menu{
+  margin: 0 20px;
+}
+
+.menu__button{
+  border: 1px solid greenyellow;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 0 5px;
+}
+
+.red:hover{
+  border: 2px solid red;
+  transition: 0.2s;
+}
+.green:hover{
+  border: 2px solid green;
+  transition: 0.2s;
+}
+// .orenge:hover{
+//   border: 2px solid orange;
+//   transition: 0.2s;
+// }
+.orenge:active{
+  border: 2px solid orange;
+
+}
+
+
+.profile__button{
+  border: none;
+  background-color: transparent;
+}
+
+.profile__menu-username{
   font-size: 25px;
   font-family: 'Gloria Hallelujah', cursive;
   color: rgb(7, 68, 7);
   font-weight: bold;
-  margin-right: 30px;
+  padding: 10px;
 }
 
-.righted{
+.profile{
   order: 999;
   margin-left: auto;
   display: flex;
   align-items: center;
 }
-.userPhoto{
-  display: inline;
+
+.profile__button-image{
   border-radius: 35px;
 }
+
+.profile__menu{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+

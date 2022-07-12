@@ -1,20 +1,24 @@
 <header class="header">
-  <img src={{logo}} width="70px">
 
-  <div class="navigation">
-    <button mat-stroked-button color="primary" routerLink="/users/create">Add User</button>
-    <button mat-stroked-button color="primary" routerLink="/users">Users</button>
-    <button mat-stroked-button color="primary" routerLink="/cars">Cars</button>
+  <div class="logo">
+    <img class="logo_image" src="{{ logo }}" width="70px" />
+    <div class="logo_name">{{ logoName }}</div>
   </div>
 
-  <div class="righted">
-    <!-- <ng-container *ngIf="user"> -->
-      <img  class="userPhoto" src={{photo}} width="50px">
-      <p>{{user}}</p>
-    <!-- </ng-container> -->
+  <nav class="menu">
+    <button class="menu__button red" routerLink="/users/create">Add User</button>
+    <button class="menu__button green" routerLink="/users">Users</button>
+    <button class="menu__button orenge" routerLink="/cars">Cars</button>
+  </nav>
 
-
-    <button mat-stroked-button  class='buttonLogOut' color="primary" (click)="logOut()" >Sign out</button>
+  <div class="profile">
+    <button class="profile__button" [matMenuTriggerFor]="menu">
+      <img class="profile__button-image" src="{{ photo }}" width="50px" />
+    </button>
+    <mat-menu class="profile__menu" #menu="matMenu">
+      <div class="profile__menu-username">{{ user }}</div>
+      <button class="profile__menu-button" mat-stroked-button color="primary" (click)="logOut()">Sign out</button>
+    </mat-menu>
   </div>
 
 </header>

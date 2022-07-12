@@ -12,6 +12,7 @@ import { AuthorizationService } from 'src/app/modules/authorization/services/aut
 export class HeaderComponent implements OnInit{
 
   public logo: string = '../assets/images/apple-touch-icon.png';
+  public logoName: string = 'LoGO';
   public user: string;
   public photo: string;
 
@@ -35,9 +36,10 @@ export class HeaderComponent implements OnInit{
     this.authorizationService.signOut({username: '', pass: ''})
     this.router.navigate(['/login'])
   }
-  // navigationToCreate(): void{
-  //   this.router.navigate(['/create'])
-  // }
+
+  viewProfile(): void{
+   alert (`Profile ${this.user}`)
+  }
 
   ngOnDestroy(): void {
     this.componentActive = false;

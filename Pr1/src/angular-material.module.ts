@@ -19,6 +19,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableModule } from '@angular/material/table';
+import { MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [],
@@ -40,7 +41,8 @@ import { MatTableModule } from '@angular/material/table';
     MatAutocompleteModule,
     HttpClientModule,
     MatPaginatorModule,
-    MatSortModule
+    MatSortModule,
+    MatMenuModule
   ]
 })
 export class AngularMaterialModule { }
